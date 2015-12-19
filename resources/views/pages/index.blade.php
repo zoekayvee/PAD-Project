@@ -1,9 +1,18 @@
+<!-- use page template, see \resources\views\template.blade.php -->
 @extends('template')
 
+<!-- replaces @yield('title') on the template html, see \resources\views\template.blade.php -->
 @section('title')
 Home
 @endsection
 
+@section('includes')
+<!-- replaces @yield('includes') on the template html, see \resources\views\template.blade.php -->
+  <link rel="stylesheet" type="text/css"
+    href="{{ asset('/css/profile.css') }}">
+@endsection
+
+<!-- replaces @yield('content') on the template html, see \resources\views\template.blade.php -->
 @section('content')
 <div class="container">
 	<h1>HI GUYS.</h1>
