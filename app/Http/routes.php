@@ -13,3 +13,9 @@
 
 Route::get('/', 'HomeController@index'); 
 Route::get('/profile', 'ProfileController@showMyCommittee');
+
+
+Route::get('users', 'UserController@getUsers');
+Route::get('register', function(){
+	return view('auth/register');
+});
