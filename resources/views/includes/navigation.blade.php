@@ -13,6 +13,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/profile">*Name*</a></li>
                 <li><a href="#">Logout</a></li>
+                <li><a href="/users">About Us</a></li>
             </ul>
         </div>
     </div>

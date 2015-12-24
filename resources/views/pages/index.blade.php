@@ -10,6 +10,8 @@ Home
 <!-- replaces @yield('includes') on the template html, see \resources\views\template.blade.php -->
   <link rel="stylesheet" type="text/css"
     href="{{ asset('/css/profile.css') }}">
+   <link rel="stylesheet" type="text/css"
+        href="{{ asset('/css/main.css') }}">
 @endsection
 
 <!-- replaces @yield('content') on the template html, see \resources\views\template.blade.php -->
