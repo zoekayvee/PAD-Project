@@ -13,11 +13,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/profile">*Name*</a></li>
                 <li><a href="#">Logout</a></li>
-                <li><a href="/users">Help</a></li>
             </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
-            </form>
         </div>
     </div>
 </nav>

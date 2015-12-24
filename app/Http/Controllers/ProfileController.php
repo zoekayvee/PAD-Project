@@ -12,4 +12,6 @@ class ProfileController extends Controller {
 		return view('pages/profile');
 	}
 
+	
+
 }

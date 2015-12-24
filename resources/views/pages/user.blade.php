@@ -17,6 +17,7 @@ User List
 @section('content')
 	<div class="container">
 		<h1>Users from the DB:</h1>
+		<button class="btn btn-default"><a href="users/create">Register Here</a></button>
 
 		<table class="table">
 		<tr>
@@ -25,7 +26,6 @@ User List
 			<th>last Name</th>
 			<th>Email</th>
 			<th>Password</th>
-			<th>Birthday</th>
 			<th>Student Number</th>
 			<th>Department</th>
 		</tr>
@@ -36,7 +36,6 @@ User List
 			<td>{{ $user->lastname }}</td>
 			<td>{{ $user->email }}</td>
 			<td>{{ $user->password }}</td>
-			<td>{{ $user->birthday }}</td>
 			<td>{{ $user->studno }}</td>
 			<td>{{ $user->department }}</td>
 		</tr>
