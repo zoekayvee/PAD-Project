@@ -11,8 +11,10 @@
 |
 */
 
-Route::get('/', 'HomeController@index'); 
-Route::get('/profile', 'ProfileController@showMyCommittee');
+Route::get('/', 'HomeController@index');
+Route::get('/profile', 'ProfileController@showCommittee');
+Route::get('/profile/head', 'ProfileController@showHeads');
+Route::get('/profile/oah', 'ProfileController@showOAH');
 
 
 Route::get('users', 'UserController@get');

@@ -8,10 +8,17 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller {
 
 	//
-	public function showMyCommittee() {
+	public function showCommittee() {
 		return view('pages/profile');
 	}
 
+	public function showHeads() {
+		return view('pages/heads');
+	}
+
+	public function showOAH() {
+		return view('pages/oah');
+	}
 	
 
 }
