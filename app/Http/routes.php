@@ -13,7 +13,8 @@
 
 Route::get('/', 'HomeController@index'); 
 Route::get('/profile', 'ProfileController@showMyCommittee');
-
+Route::get('/oah', 'OAHController@showOAH');
+Route::get('/heads', 'HeadsController@showHeads');
 
 Route::get('users', 'UserController@get');
 Route::get('users/create', 'UserController@create');

@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-    OAH
+    Lower Heads
 @endsection
 
 @section('includes')
@@ -28,12 +28,6 @@
                       <li><a href="#">Member 2</a></li>
                       <li><a href="#">Member 3</a></li>
                     </ul>
-<!--/.nav-collapse -->
-
-                    <!-- insert navigation panels here for the ffg
-                            task delegation
-                            task by committee
-                     -->
                 </div>
                 <div class="wrapper cards">
                     <h3>Task 1</h3>
