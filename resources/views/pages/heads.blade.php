@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-    OAH
+    Lower Heads
 @stop
 
 @section('includes')

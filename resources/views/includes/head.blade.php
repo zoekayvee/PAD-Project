@@ -10,3 +10,4 @@
     src="{{ asset('js/bootstrap.js') }}">
     </script>
 <script src="{{ asset('js/docs.min.js') }}"></script>
+<script src="{{ asset('js/Chart.js') }}"></script>
