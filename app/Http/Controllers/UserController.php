@@ -5,34 +5,31 @@ use App\Http\Requests\CreateUserRequest;
 use App\Http\Controllers\Controller;
 use App\User;
 
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Contracts\Auth\Registrar;
+
 use Request;
+use App\Http\Controllers\Auth\ManagesUsers;
 
 class UserController extends Controller {
 
-	public function get() {
-		$users = User::all();
-		return view('pages/user', compact('users'));
+	use ManagesUsers;
+
+	/**
+	 * Create a new authentication controller instance.
+	 *
+	 * @param  \Illuminate\Contracts\Auth\Guard  $auth
+	 * @param  \Illuminate\Contracts\Auth\Registrar  $registrar
+	 * @return void
+	 */
+
+	public function __construct(Guard $auth, Registrar $registrar)
+	{
+		$this->auth = $auth;
+		$this->registrar = $registrar;
+
+//		$this->middleware('guest', ['except' => 'getLogout']);
 	}
 
-	public function create() {
-		return view('pages/register');
-	}
-
-	public function register(CreateUserRequest $request) {
-		$userInfo = Request::all();
-
-		$account = new User;
-		$account->firstname = $userInfo['firstname'];
-		$account->middlename = $userInfo['middlename'];
-		$account->lastname = $userInfo['lastname'];
-		$account->email = $userInfo['email'];
-		$account->password = $userInfo['password'];
-		$account->studno = $userInfo['studno'];
-		$account->department = $userInfo['department'];
-
-		$account->save();
-
-		return redirect('users');
-	}
 
 }

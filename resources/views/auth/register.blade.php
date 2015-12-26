@@ -1,65 +1,62 @@
 @extends('template')
 
+@section('title')
+Register
+@stop
+
+@section('includes')
+<!-- replaces @yield('includes') on the template html, see \resources\views\template.blade.php -->
+  <link rel="stylesheet" type="text/css"
+    href="{{ asset('/css/profile.css') }}">
+@stop
+
 @section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Register</div>
-				<div class="panel-body">
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
+	<br><br>
 
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+	<div class="container">
+	
+	{!! Form::open(['url' => 'users/register']) !!}
+		<div class="form-group">
+		{!! Form::label('firstname', 'First Name:') !!}
+		{!! Form::text('firstname', null, ['class' => 'form-control']) !!}
+	
+		{!! Form::label('middlename', 'Middle Name:') !!}
+		{!! Form::text('middlename', null, ['class' => 'form-control']) !!}
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Name</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="name" value="{{ old('name') }}">
-							</div>
-						</div>
+		{!! Form::label('lastname', 'Last Name:') !!}
+		{!! Form::text('lastname', null, ['class' => 'form-control']) !!}
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
-						</div>
+		{!! Form::label('email', 'Email:') !!}
+		{!! Form::email('email', null, ['class' => 'form-control']) !!}
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
-						</div>
+		<br>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Confirm Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password_confirmation">
-							</div>
-						</div>
+		{!! Form::label('password', 'Password:') !!}
+		{!! Form::password('password', null, ['class' => 'form-control']) !!}
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
-									Register
-								</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
+		<br><br>
+
+		{!! Form::label('studno', 'Student Number:') !!}
+		{!! Form::text('studno', null, ['class' => 'form-control']) !!}
+
+		{!! Form::label('department', 'Department:') !!}
+		{!! Form::text('department', null, ['class' => 'form-control']) !!}
+
+		<br>
+		{!! Form::submit('Register', ['class' => 'btn btn-primary form-control']) !!}
+
 		</div>
+	{!! Form::close() !!}
+
+	<br><br>
+
+	@if($errors->any())
+		<ul class="alert alert-danger">
+			@foreach($errors->all() as $error)
+			<li>{{ $error }}</li>
+			@endforeach
+		</ul>
+	@endif
 	</div>
-</div>
-@endsection
+
+@stop

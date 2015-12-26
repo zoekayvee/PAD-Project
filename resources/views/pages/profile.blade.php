@@ -2,14 +2,14 @@
 
 @section('title')
     Member
-@endsection
+@stop
 
 @section('includes')
     <link rel="stylesheet" type="text/css"
         href="{{ asset('/css/profile.css') }}">
     <link rel="stylesheet" type="text/css"
         href="{{ asset('/css/main.css') }}">
-@endsection
+@stop
 
 @section('content')
     <div class="container">
@@ -66,4 +66,4 @@
         
       </div>
     </div>
-@endsection
+@stop

@@ -9,6 +9,7 @@ class HomeController extends Controller {
 
 	//loads homepage
 	public function index() {
+//		return \Auth::user();
 		return view('pages/index');
 	}
 

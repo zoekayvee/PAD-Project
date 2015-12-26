@@ -2,7 +2,7 @@
 
 @section('title')
 User List
-@endsection
+@stop
 
 @section('includes')
   <link rel="stylesheet" type="text/css"
@@ -12,12 +12,12 @@ User List
   			width: 100%;
   		}
   </style>
-@endsection
+@stop
 
 @section('content')
 	<div class="container">
 		<h1>Users from the DB:</h1>
-		<button class="btn btn-default"><a href="users/create">Register Here</a></button>
+		<button class="btn btn-default"><a href="register">Register Here</a></button>
 
 		<table class="table">
 		<tr>
@@ -42,4 +42,4 @@ User List
 		@endforeach
 		</table>
 	</div>
-@endsection
+@stop

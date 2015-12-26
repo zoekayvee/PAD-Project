@@ -12,11 +12,12 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
+
 Route::get('/profile', 'ProfileController@showCommittee');
 Route::get('/profile/head', 'ProfileController@showHeads');
 Route::get('/profile/oah', 'ProfileController@showOAH');
 
-
-Route::get('users', 'UserController@get');
-Route::get('users/create', 'UserController@create');
-Route::post('users', 'UserController@register');
+Route::controllers([
+	'users' => 'UserController',
+]);
