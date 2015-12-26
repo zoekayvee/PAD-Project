@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommitteeTable extends Migration {
+class CreateCommitteesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateCommitteeTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('committee', function(Blueprint $table)
+		Schema::create('committees', function(Blueprint $table)
 		{
 			$table->increments('comm_id');
 			$table->string('name');
@@ -33,6 +33,6 @@ class CreateCommitteeTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('committee');
+		Schema::drop('committees');
 	}
 }

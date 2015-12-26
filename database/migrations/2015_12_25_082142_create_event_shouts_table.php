@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventsShoutTable extends Migration {
+class CreateEventShoutsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateEventsShoutTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('events_shout', function(Blueprint $table)
+		Schema::create('event_shouts', function(Blueprint $table)
 		{
 			$table->string('shout');
 
@@ -35,6 +35,6 @@ class CreateEventsShoutTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('events_shout');
+		Schema::drop('event_shouts');
 	}
 }

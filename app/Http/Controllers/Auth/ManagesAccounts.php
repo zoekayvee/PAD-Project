@@ -1,12 +1,12 @@
 <?php namespace App\Http\Controllers\Auth;
 
-use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\CreateAccountRequest;
 use App\User;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Http\Request;
 
-trait ManagesUsers
+trait ManagesAccounts
 {
 
     /**
@@ -47,7 +47,7 @@ trait ManagesUsers
      * @return \Illuminate\Http\Response
      */
 
-    public function postRegister(CreateUserRequest $request)
+    public function postRegister(CreateAccountRequest $request)
     {
         $user = $request->all();
         $this->auth->login($this->registrar->create($user));

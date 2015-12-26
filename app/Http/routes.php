@@ -19,5 +19,5 @@ Route::get('/profile/head', 'ProfileController@showHeads');
 Route::get('/profile/oah', 'ProfileController@showOAH');
 
 Route::controllers([
-	'users' => 'UserController',
+	'account' => 'AccountController',
 ]);

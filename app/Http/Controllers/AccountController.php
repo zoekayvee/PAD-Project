@@ -9,11 +9,11 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 
 use Request;
-use App\Http\Controllers\Auth\ManagesUsers;
+use App\Http\Controllers\Auth\ManagesAccounts;
 
-class UserController extends Controller {
+class AccountController extends Controller {
 
-	use ManagesUsers;
+	use ManagesAccounts;
 
 	/**
 	 * Create a new authentication controller instance.

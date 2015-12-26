@@ -6,8 +6,9 @@ Register
 
 @section('includes')
 <!-- replaces @yield('includes') on the template html, see \resources\views\template.blade.php -->
-  <link rel="stylesheet" type="text/css"
-    href="{{ asset('/css/profile.css') }}">
+    <link rel="stylesheet" type="text/css"
+          href="{{ asset('/css/main.css') }}">
+
 @stop
 
 @section('content')
@@ -15,16 +16,19 @@ Register
 
 	<div class="container">
 	
-	{!! Form::open(['url' => 'users/register']) !!}
+	{!! Form::open(['url' => 'account/register']) !!}
 		<div class="form-group">
-		{!! Form::label('firstname', 'First Name:') !!}
-		{!! Form::text('firstname', null, ['class' => 'form-control']) !!}
+		{!! Form::label('fname', 'First Name:') !!}
+		{!! Form::text('fname', "Jason", ['class' => 'form-control']) !!}
 	
-		{!! Form::label('middlename', 'Middle Name:') !!}
-		{!! Form::text('middlename', null, ['class' => 'form-control']) !!}
+		{!! Form::label('mname', 'Middle Name:') !!}
+		{!! Form::text('mname', "Hey", ['class' => 'form-control']) !!}
 
-		{!! Form::label('lastname', 'Last Name:') !!}
-		{!! Form::text('lastname', null, ['class' => 'form-control']) !!}
+		{!! Form::label('lname', 'Last Name:') !!}
+		{!! Form::text('lname', "Derulo", ['class' => 'form-control']) !!}
+
+		{!! Form::label('username', 'Username:') !!}
+		{!! Form::text('username', null, ['class' => 'form-control']) !!}
 
 		{!! Form::label('email', 'Email:') !!}
 		{!! Form::email('email', null, ['class' => 'form-control']) !!}
@@ -40,7 +44,10 @@ Register
 		{!! Form::text('studno', null, ['class' => 'form-control']) !!}
 
 		{!! Form::label('department', 'Department:') !!}
-		{!! Form::text('department', null, ['class' => 'form-control']) !!}
+		{!! Form::text('department', "PAD", ['class' => 'form-control']) !!}
+
+		{!! Form::label('batch', 'YSES Batch:') !!}
+		{!! Form::text('batch', "blendeD", ['class' => 'form-control']) !!}
 
 		<br>
 		{!! Form::submit('Register', ['class' => 'btn btn-primary form-control']) !!}

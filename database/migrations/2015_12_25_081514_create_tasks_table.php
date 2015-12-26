@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTaskTable extends Migration {
+class CreateTasksTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateTaskTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('task', function(Blueprint $table)
+		Schema::create('tasks', function(Blueprint $table)
 		{
 			$table->increments('task_id');
 			$table->string('title');
@@ -26,8 +26,8 @@ class CreateTaskTable extends Migration {
 			//foreign key
 			$table->integer('createdby_id')->unsigned();
 			$table->integer('comm_id')->unsigned();
-			$table->foreign('createdby_id')->references('acct_id')->on('account');
-			$table->foreign('comm_id')->references('comm_id')->on('committee');
+			$table->foreign('createdby_id')->references('id')->on('users');
+			$table->foreign('comm_id')->references('comm_id')->on('committees');
 
 			//$table->rememberToken();
 			$table->timestamps();
@@ -41,6 +41,6 @@ class CreateTaskTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('task');
+		Schema::drop('tasks');
 	}
 }

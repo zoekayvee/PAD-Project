@@ -39,10 +39,21 @@
                     <div>
                         <img src="images/back.jpg" class="displayPic" alt="you">
                     </div>
-                    <div class="info">Name</div>
-                    <div class="info">Birthday</div>
-                    <div class="info">Department</div>
-                    <div class="info">Batch</div>
+                    <div class="info">
+                        {{ $user['username'] }}
+                    </div>
+                    <div class="info">
+                        {{ $user['lname'] }}, {{ $user['mname'] }} {{ $user['fname'] }}
+                    </div>
+                    <div class="info">
+                        {{ $user['studno']}}
+                    </div>
+                    <div class="info">
+                        {{ $user['department']}}
+                    </div>
+                    <div class="info">
+                        {{ $user['batch']}}                        
+                    </div>
                 </div>
 
                 <div class="wrapper side table-responsive">

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMemberTable extends Migration {
+class CreateMembersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,17 +12,17 @@ class CreateMemberTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('member', function(Blueprint $table)
+		Schema::create('members', function(Blueprint $table)
 		{
 			//foreign key
-			$table->integer('acct_id')->unsigned();
+			$table->integer('id')->unsigned();
 			$table->integer('comm_id')->unsigned();
 
-			$table->foreign('acct_id')->references('acct_id')->on('account');
-			$table->foreign('comm_id')->references('comm_id')->on('committee');
+			$table->foreign('id')->references('id')->on('users');
+			$table->foreign('comm_id')->references('comm_id')->on('committees');
 
 			//primary key
-			$table->primary(['acct_id', 'comm_id']);
+			$table->primary(['id', 'comm_id']);
 
 			//$table->rememberToken();
 			$table->timestamps();
@@ -36,6 +36,6 @@ class CreateMemberTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('member');
+		Schema::drop('members');
 	}
 }

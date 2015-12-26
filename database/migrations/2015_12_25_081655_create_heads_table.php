@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHeadTable extends Migration {
+class CreateHeadsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,19 +12,19 @@ class CreateHeadTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('head', function(Blueprint $table)
+		Schema::create('heads', function(Blueprint $table)
 		{
 			$table->string('position');
 
 			//foreign key
-			$table->integer('acct_id')->unsigned();
+			$table->integer('id')->unsigned();
 			$table->integer('comm_id')->unsigned();
 
-			$table->foreign('acct_id')->references('acct_id')->on('account');
-			$table->foreign('comm_id')->references('comm_id')->on('committee');
+			$table->foreign('id')->references('id')->on('users');
+			$table->foreign('comm_id')->references('comm_id')->on('committees');
 
 			//primary key
-			$table->primary(['acct_id', 'comm_id']);
+			$table->primary(['id', 'comm_id']);
 
 			//$table->rememberToken();
 			$table->timestamps();
@@ -38,6 +38,6 @@ class CreateHeadTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('head');
+		Schema::drop('heads');
 	}
 }

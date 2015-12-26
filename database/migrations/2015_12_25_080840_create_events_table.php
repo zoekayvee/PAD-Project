@@ -22,7 +22,7 @@ class CreateEventsTable extends Migration {
 
 			//foreign key
 			$table->integer('oah_id')->unsigned();
-			$table->foreign('oah_id')->references('acct_id')->on('account');
+			$table->foreign('oah_id')->references('id')->on('users');
 
 			//$table->rememberToken();
 			$table->timestamps();

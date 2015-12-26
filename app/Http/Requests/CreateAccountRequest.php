@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class CreateUserRequest extends Request {
+class CreateAccountRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,13 +22,14 @@ class CreateUserRequest extends Request {
 	public function rules()
 	{
 		return [
-			//
-			'firstname' => 'required',
-			'lastname' => 'required',
+			'fname' => 'required',
+			'lname' => 'required',
+			'username' => 'required',
 			'email' => 'required',
 			'password' => 'required',
 			'studno' => 'required|min:10',
-			'department' => 'required'
+			'department' => 'required',
+			'batch' => 'required',
 		];
 	}
 
