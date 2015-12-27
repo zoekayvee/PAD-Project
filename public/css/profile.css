@@ -1,9 +1,4 @@
 /*
-CSS for the profile pages of the members,
-OAH, and upper and lower heads
-*/
-
-/*
 div{
 	border: 1px solid black;
 }*/
@@ -14,13 +9,8 @@ div{
   margin:8px;
 }
 
-/*
-Cards and Tasks
-*/
+/* TASKS */
 
-p{
-  color: #919999;
-}
 .cards{
   background-color: white;
   border-radius: 10px;
@@ -33,6 +23,7 @@ p{
 .form-control{
   text-align: center;
 }
+
 .form-control{
   width: 50%;
   margin-left: auto;
@@ -40,35 +31,51 @@ p{
   margin-bottom: 10px;
 }
 
-/*
-Graph
-*/
+.btn{
+  background-color: #919999;
+  color: #f4fce8;
+  border-color: #919999;
+}
+
+/* GRAPH */
+
 #canvas-holder{
   width:100%;
   text-align: center;
 }
 
 canvas{
-  display: inline;
+  display: inline-block;
 }
 
-
-/*
-sidebar containing the profile and all events
-*/
-
-ul{
-  list-style: none;
-}
+/* PROFILE INFO AND PAST ROLES */
 
 .displayPic{
-  max-width:70%;
+  max-width:60%;
   border-radius: 5px;
   margin-bottom: 10px;
   margin-top: 10px;
 }
 
-th{
+.table{
   text-align: center;
 }
+
+.side{
+  margin:10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px #888888;
+}
+
+.info{
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.info:hover{
+  background-color: #a1bee6;
+  border-color: #a1bee6;
+}
+
 

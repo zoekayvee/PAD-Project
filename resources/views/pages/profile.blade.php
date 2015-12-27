@@ -6,9 +6,9 @@
 
 @section('includes')
     <link rel="stylesheet" type="text/css"
-        href="{{ asset('/css/profile.css') }}">
-    <link rel="stylesheet" type="text/css"
         href="{{ asset('/css/main.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('/css/profile.css') }}">
 @endsection
 
 @section('content')
