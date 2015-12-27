@@ -9,6 +9,10 @@ div{
   margin:8px;
 }
 
+p{
+  color: #919999;
+}
+
 /* TASKS */
 
 .cards{
@@ -77,5 +81,3 @@ canvas{
   background-color: #a1bee6;
   border-color: #a1bee6;
 }
-
-
