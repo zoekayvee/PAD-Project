@@ -14,11 +14,15 @@ class ProfileController extends Controller {
 	}
 
 	public function showHeads() {
-		return view('pages/heads');
+		$user = \Auth::user();
+		if($user == "") return "<h1>You are not signed in! Accomplish the registration. Link at <a href='/home'>localhost:8000</a></h1>";
+		return view('pages/heads', compact('user'));
 	}
 
 	public function showOAH() {
-		return view('pages/oah');
+		$user = \Auth::user();
+		if($user == "") return "<h1>You are not signed in! Accomplish the registration. Link at <a href='/home'>localhost:8000</a></h1>";
+		return view('pages/oah', compact('user'));
 	}
 	
 

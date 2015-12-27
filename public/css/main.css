@@ -1,27 +1,29 @@
 body {
 	margin-top: 60px;
-    background-color: rgba(234, 235, 250, 0.8);
+    background-color: #f4fce8;
 }
 
 .navbar {
     border: none;
-	background-color: rgba(2, 41, 84, 1);
-    box-shadow: 0 0 8px #777;
+	background-color: #7f94b0;
+    /*vertical horizontal blur color*/
 }
 
 .navbar-inverse .navbar-toggle:focus,
 .navbar-inverse .navbar-toggle:hover{
-	background-color: rgba(53, 76, 124, 1);
+	background-color: #7f94b0;
 }
 
 .navbar-inverse .navbar-nav>li>a,
 .navbar-inverse .navbar-brand {
-  color: rgba(255,255,255, 0.7);
+	color: white;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus,
 .navbar-inverse .navbar-brand:focus,
 .navbar-inverse .navbar-brand:hover{
-  color: rgb(234, 235, 250);
+	color: #a1bee6;
 }
+
+

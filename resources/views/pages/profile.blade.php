@@ -6,9 +6,9 @@
 
 @section('includes')
     <link rel="stylesheet" type="text/css"
-        href="{{ asset('/css/profile.css') }}">
-    <link rel="stylesheet" type="text/css"
         href="{{ asset('/css/main.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('/css/profile.css') }}">
 @stop
 
 @section('content')
@@ -16,75 +16,31 @@
         <div class="row">
             <div class="col-lg-9">
                 <h1 class="page-header">Tasks</h1>
-                <div class="wrapper cards">
-                    <h3>Task 1</h3>
+                <div class="col-md-4 cards">
                     <div>
-                        <p>Details, for what, etc</p>
+                        <h3>Venue Permit</h3>
+                        <h5>Due: January 35, 2098</h5>
+                        <p>Get form from the office, then pay for the venue fee with tech head.</p>
                     </div>
-                    <div class="wrapper">
+                    <div>
                         <div class="form-group">
                             <label class="">Percentage done</label>
                             <input class="form-control" placeholder="%">
+                            <button class="btn btn-primary" href="#">Done</button>
                         </div>
 
                         <div id="canvas-holder">
-                            <canvas id="chart-area" width="150" height="150"/>
+                            <canvas id="chart-area"/>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-3">
-                <div class="wrapper side">
-                    <div>
-                        <img src="images/back.jpg" class="displayPic" alt="you">
-                    </div>
-                    <div class="info">
-                        {{ $user['username'] }}
-                    </div>
-                    <div class="info">
-                        {{ $user['lname'] }}, {{ $user['mname'] }} {{ $user['fname'] }}
-                    </div>
-                    <div class="info">
-                        {{ $user['studno']}}
-                    </div>
-                    <div class="info">
-                        {{ $user['department']}}
-                    </div>
-                    <div class="info">
-                        {{ $user['batch']}}                        
-                    </div>
-                </div>
-
-                <div class="wrapper side table-responsive">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>Event</th>
-                          <th>Position</th>
-                          <th>Department</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Get 1/4 2015</td>
-                          <td>Member</td>
-                          <td>Secretariat</td>
-                        </tr>
-                        <tr>
-                          <td>PF/JF 2016</td>
-                          <td>Member</td>
-                          <td>Promotions</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                </div>
-            </div>
+            @include('../includes/profileInfo')
         </div>
     </div>
 
     <script>
-
         var pieData = [
                 {
                     value: 96,
@@ -100,10 +56,10 @@
                 }
             ];
 
-            window.onload = function(){
-                var ctx = document.getElementById("chart-area").getContext("2d");
-                window.myPie = new Chart(ctx).Pie(pieData);
-            };
+        window.onload = function(){
+            var ctx = document.getElementById("chart-area").getContext("2d");
+            window.myPie = new Chart(ctx).Pie(pieData);
+        };
             
     </script>
 @stop

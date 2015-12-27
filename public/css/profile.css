@@ -1,8 +1,7 @@
-
-/*div{
+/*
+div{
 	border: 1px solid black;
 }*/
-
 
 .wrapper{
   float:left;
@@ -10,26 +9,17 @@
   margin:8px;
 }
 
+p{
+  color: #919999;
+}
+
+/* TASKS */
+
 .cards{
   background-color: white;
   border-radius: 10px;
-}
-
-ul{
-  list-style: none;
-}
-
-.displayPic{
-  max-width:70%;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
-
-.side{
-  margin:10px;
-  background-color: rgba(255,255,255, 0.6);
-  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 5px 7px 5px #888888;
 }
 
 .form-group,
@@ -42,17 +32,52 @@ ul{
   width: 50%;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 10px;
 }
 
+.btn{
+  background-color: #919999;
+  color: #f4fce8;
+  border-color: #919999;
+}
+
+/* GRAPH */
+
 #canvas-holder{
-  padding-left: 10%;
-  padding-right: 10%;
+  width:100%;
+  text-align: center;
+}
+
+canvas{
+  display: inline-block;
+}
+
+/* PROFILE INFO AND PAST ROLES */
+
+.displayPic{
+  max-width:60%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.table{
+  text-align: center;
+}
+
+.side{
+  margin:10px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px #888888;
 }
 
 .info{
   margin: 5px;
+  border-radius: 5px;
 }
 
 .info:hover{
-  background-color: rgba(255,255,255, 0.9);
+  background-color: #a1bee6;
+  border-color: #a1bee6;
 }
