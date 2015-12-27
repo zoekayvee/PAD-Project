@@ -1,8 +1,12 @@
+/*
+CSS for the profile pages of the members,
+OAH, and upper and lower heads
+*/
 
-/*div{
+/*
+div{
 	border: 1px solid black;
 }*/
-
 
 .wrapper{
   float:left;
@@ -10,26 +14,18 @@
   margin:8px;
 }
 
+/*
+Cards and Tasks
+*/
+
+p{
+  color: #919999;
+}
 .cards{
   background-color: white;
   border-radius: 10px;
-}
-
-ul{
-  list-style: none;
-}
-
-.displayPic{
-  max-width:70%;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
-
-.side{
-  margin:10px;
-  background-color: rgba(255,255,255, 0.6);
-  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 5px 7px 5px #888888;
 }
 
 .form-group,
@@ -37,22 +33,42 @@ ul{
 .form-control{
   text-align: center;
 }
-
 .form-control{
   width: 50%;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 10px;
 }
 
+/*
+Graph
+*/
 #canvas-holder{
-  padding-left: 10%;
-  padding-right: 10%;
+  width:100%;
+  text-align: center;
 }
 
-.info{
-  margin: 5px;
+canvas{
+  display: inline;
 }
 
-.info:hover{
-  background-color: rgba(255,255,255, 0.9);
+
+/*
+sidebar containing the profile and all events
+*/
+
+ul{
+  list-style: none;
 }
+
+.displayPic{
+  max-width:70%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+th{
+  text-align: center;
+}
+

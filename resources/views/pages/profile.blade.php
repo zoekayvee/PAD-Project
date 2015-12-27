@@ -16,19 +16,20 @@
         <div class="row">
             <div class="col-lg-9">
                 <h1 class="page-header">Tasks</h1>
-                <div class="wrapper cards">
-                    <h3>Task 1</h3>
+                <div class="col-md-4 cards">
                     <div>
-                        <p>Details, for what, etc</p>
+                        <h3>Venue Permit</h3>
+                        <p>Get form from the office, then pay for the venue fee with tech head.</p>
                     </div>
-                    <div class="wrapper">
+                    <div>
                         <div class="form-group">
                             <label class="">Percentage done</label>
                             <input class="form-control" placeholder="%">
+                            <button class="btn btn-primary" href="#">Done</button>
                         </div>
 
                         <div id="canvas-holder">
-                            <canvas id="chart-area" width="150" height="150"/>
+                            <canvas id="chart-area"/>
                         </div>
                     </div>
                 </div>
@@ -51,19 +52,24 @@
                         <tr>
                           <th>Event</th>
                           <th>Position</th>
-                          <th>Department</th>
+                          <th>Comm</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Get 1/4 2015</td>
+                          <td><a href="#">Get 1/4 2015</a></td>
                           <td>Member</td>
-                          <td>Secretariat</td>
+                          <td>Sec</td>
                         </tr>
                         <tr>
-                          <td>PF/JF 2016</td>
+                          <td><a href="#">PF/JF 2016</a></td>
                           <td>Member</td>
-                          <td>Promotions</td>
+                          <td>Prom</td>
+                        </tr>
+                        <tr>
+                          <td><a href="#">Get 1/4 2016</a></td>
+                          <td>Member</td>
+                          <td>VL</td>
                         </tr>
                       </tbody>
                     </table>
@@ -73,7 +79,6 @@
     </div>
 
     <script>
-
         var pieData = [
                 {
                     value: 96,
@@ -89,10 +94,10 @@
                 }
             ];
 
-            window.onload = function(){
-                var ctx = document.getElementById("chart-area").getContext("2d");
-                window.myPie = new Chart(ctx).Pie(pieData);
-            };
+        window.onload = function(){
+            var ctx = document.getElementById("chart-area").getContext("2d");
+            window.myPie = new Chart(ctx).Pie(pieData);
+        };
             
     </script>
 @endsection
