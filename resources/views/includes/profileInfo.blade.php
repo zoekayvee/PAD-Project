@@ -3,6 +3,7 @@
                     <div>
                         <img src="images/back.jpg" class="displayPic" alt="you">
                     </div>
+
                     <div class="info">
                         {{ $user['username'] }}
                     </div>
@@ -18,6 +19,7 @@
                     <div class="info">
                         {{ $user['batch']}}                        
                     </div>
+
                 </div>
   
 

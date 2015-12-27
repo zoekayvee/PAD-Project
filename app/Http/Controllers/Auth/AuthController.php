@@ -5,6 +5,7 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use App\Http\Requests\CreateUserRequest;
+use App\User;
 
 class AuthController extends Controller {
 
@@ -33,7 +34,14 @@ class AuthController extends Controller {
 		$this->auth = $auth;
 		$this->registrar = $registrar;
 
-		$this->middleware('guest', ['except' => 'getLogout']);
+		$this->middleware('guest', ['except' => 'getLogout', 'except' => 'getShow']);
+
 	}
+	
+    public function getShow()
+    {
+        $users = User::all();
+        return view('pages/user', compact('users'));
+    }
 
 }

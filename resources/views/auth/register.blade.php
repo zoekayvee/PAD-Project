@@ -19,13 +19,13 @@ Register
 	{!! Form::open(['url' => 'account/register']) !!}
 		<div class="form-group">
 		{!! Form::label('fname', 'First Name:') !!}
-		{!! Form::text('fname', "Jason", ['class' => 'form-control']) !!}
+		{!! Form::text('fname', null, ['class' => 'form-control']) !!}
 	
 		{!! Form::label('mname', 'Middle Name:') !!}
-		{!! Form::text('mname', "Hey", ['class' => 'form-control']) !!}
+		{!! Form::text('mname', null, ['class' => 'form-control']) !!}
 
 		{!! Form::label('lname', 'Last Name:') !!}
-		{!! Form::text('lname', "Derulo", ['class' => 'form-control']) !!}
+		{!! Form::text('lname', null, ['class' => 'form-control']) !!}
 
 		{!! Form::label('username', 'Username:') !!}
 		{!! Form::text('username', null, ['class' => 'form-control']) !!}
@@ -44,10 +44,10 @@ Register
 		{!! Form::text('studno', null, ['class' => 'form-control']) !!}
 
 		{!! Form::label('department', 'Department:') !!}
-		{!! Form::text('department', "PAD", ['class' => 'form-control']) !!}
+		{!! Form::text('department', null, ['class' => 'form-control']) !!}
 
 		{!! Form::label('batch', 'YSES Batch:') !!}
-		{!! Form::text('batch', "blendeD", ['class' => 'form-control']) !!}
+		{!! Form::text('batch', null, ['class' => 'form-control']) !!}
 
 		<br>
 		{!! Form::submit('Register', ['class' => 'btn btn-primary form-control']) !!}
