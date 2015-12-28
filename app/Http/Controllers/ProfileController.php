@@ -8,8 +8,16 @@ class ProfileController extends Controller {
 
 	public function getUser() {
 		$user = \Auth::user();
-		if($user == "") return "<h1>You are not signed in! Accomplish the registration. Link at <a href='/home'>localhost:8000</a></h1>";
-		else return $user;
+		if(\Auth::guest()) {
+			$user['username'] = "gellopogi";
+			$user['lname'] = "Guiam";
+			$user['mname'] = "Capa";
+			$user['fname'] = "Angelo";
+			$user['studno'] = "2013-04596";
+			$user['department'] = "PAD";
+			$user['batch'] = "blendeD";
+		}
+		return $user;
 	}
 
 	public function showCommittee() {
