@@ -1,0 +1,40 @@
+#canvas-holder{
+  width:100%;
+  text-align: center;
+}
+
+canvas{
+  display: inline-block;
+}
+
+.oah{
+  margin-top:30%;
+  padding:5px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px #888888;
+}
+
+.oah h4{
+  text-align:center;
+}
+
+.oah p{
+  padding:10px;
+}
+
+.head{
+  margin-top:10px;
+  padding:5px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px #888888;
+}
+
+.head h4{
+  text-align:center;
+}
+
+.head p{
+  padding:10px;
+}
