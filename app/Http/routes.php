@@ -21,3 +21,11 @@ Route::get('/profile/oah', 'ProfileController@showOAH');
 Route::controllers([
 	'account' => 'Auth\AuthController'
 ]);
+
+Route::get('login',function(){
+		return view('pages/login');
+});
+
+Route::get('/mainpage',function(){
+		return view('pages/mainpage');
+});
