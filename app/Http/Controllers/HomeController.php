@@ -19,7 +19,10 @@ class HomeController extends Controller {
 		return $oah;
 
 		return \Auth::user();
-*/		return view('pages/index');
+*/		
+		$user = \Auth::user();
+		if($user == "") return view('pages/index');
+		return view('pages/home');
 	}
 
 

@@ -48,6 +48,10 @@ class AuthController extends Controller {
         return view('pages/user', compact('users'));
     }
 
+    public function getLogin() {
+    	return view('auth/login');
+    }
+
 	public function postLogin(Request $request)
 	{
 		$this->validate($request, [
