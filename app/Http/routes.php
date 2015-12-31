@@ -13,11 +13,13 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
-
+/*
 Route::get('/profile', 'ProfileController@showCommittee');
 Route::get('/profile/head', 'ProfileController@showHeads');
 Route::get('/profile/oah', 'ProfileController@showOAH');
-
+Route::get('/profile/task', 'ProfileController@getCreateTask');
+*/
 Route::controllers([
-	'account' => 'Auth\AuthController'
+	'account' => 'Auth\AuthController',
+	'profile' => 'ProfileController'
 ]);

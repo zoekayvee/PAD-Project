@@ -3,36 +3,46 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Middleware\Authenticate;
+use App\Event;
+use App\User;
+use App\Head;
 
 class ProfileController extends Controller {
 
-	public function getUser() {
+	//middleware to prevent guest to access sub routes
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
+
+	public function getUser()
+	{
 		$user = \Auth::user();
-		if(\Auth::guest()) {
-			$user['username'] = "gellopogi";
-			$user['lname'] = "Guiam";
-			$user['mname'] = "Capa";
-			$user['fname'] = "Angelo";
-			$user['studno'] = "2013-04596";
-			$user['department'] = "PAD";
-			$user['batch'] = "blendeD";
-		}
 		return $user;
 	}
 
-	public function showCommittee() {
+
+	public function getIndex()
+	{
 		$user = $this->getUser();
+		$event = Event::latest('created_at')->first();
+		
+		//check if current user is OAH
+		if($event['oah_id'] == $user['id']) return view('pages/oah', compact('user'));
+
+		//check if current user is upper head
+			//get current event id		
+			$event_id = $event['event_id'];
+
+			//get all heads of current event
+			$heads = Head::where('event_id', $event_id)->where('user_id', $user['id'])->get();
+
+			//return heads page if user is lower head
+			if($heads != "[]") return view('pages/heads', compact('user'));
+
+
 		return view('pages/profile', compact('user'));
-	}
-
-	public function showHeads() {
-		$user = $this->getUser();
-		return view('pages/heads', compact('user'));
-	}
-
-	public function showOAH() {
-		$user = $this->getUser();
-		return view('pages/oah', compact('user'));
 	}
 	
 

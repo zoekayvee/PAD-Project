@@ -16,10 +16,11 @@ class CreateCommitteesTable extends Migration {
 		{
 			$table->increments('comm_id');
 			$table->string('name');
+			$table->integer('weight')->unsigned();
 
 			//foreign key
-			$table->integer('events_id')->unsigned();
-			$table->foreign('events_id')->references('events_id')->on('events');
+			$table->integer('event_id')->unsigned();
+			$table->foreign('event_id')->references('event_id')->on('events');
 
 			//$table->rememberToken();
 			$table->timestamps();

@@ -14,11 +14,12 @@ class CreateEventsTable extends Migration {
 	{
 		Schema::create('events', function(Blueprint $table)
 		{
-			$table->increments('events_id');
+			$table->increments('event_id');
 			$table->string('theme');
 			$table->string('title');
 			$table->string('year', 4);
-			$table->string('sem'); 
+			$table->string('sem');
+			$table->integer('weight')->unsigned();
 
 			//foreign key
 			$table->integer('oah_id')->unsigned();

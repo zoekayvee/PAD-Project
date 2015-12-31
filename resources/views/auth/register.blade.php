@@ -1,14 +1,13 @@
 @extends('template')
 
 @section('title')
-Register
+Register 
 @stop
 
 @section('includes')
 <!-- replaces @yield('includes') on the template html, see \resources\views\template.blade.php -->
     <link rel="stylesheet" type="text/css"
           href="{{ asset('/css/main.css') }}">
-
 @stop
 
 @section('content')

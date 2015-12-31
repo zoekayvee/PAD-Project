@@ -17,11 +17,11 @@ class CreateEventShoutsTable extends Migration {
 			$table->string('shout');
 
 			//foreign key
-			$table->integer('events_id')->unsigned();
-			$table->foreign('events_id')->references('events_id')->on('events');
+			$table->integer('event_id')->unsigned();
+			$table->foreign('event_id')->references('event_id')->on('events');
 	
 			//primary key
-			$table->primary(['events_id', 'shout']);
+			$table->primary(['event_id', 'shout']);
 
 			//$table->rememberToken();
 			$table->timestamps();
