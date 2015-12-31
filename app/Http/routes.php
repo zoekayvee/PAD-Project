@@ -23,3 +23,11 @@ Route::controllers([
 	'account' => 'Auth\AuthController',
 	'profile' => 'ProfileController'
 ]);
+
+Route::get('login',function(){
+		return view('pages/login');
+});
+
+Route::get('/mainpage',function(){
+		return view('pages/mainpage');
+});
