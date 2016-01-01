@@ -13,6 +13,10 @@ p{
   color: #919999;
 }
 
+.page-header{
+  text-shadow: 3px 1px 5px gray;
+}
+
 /* TASKS */
 
 .cards{
@@ -20,6 +24,7 @@ p{
   border-radius: 10px;
   padding: 20px;
   box-shadow: 5px 7px 5px #888888;
+  margin: 20px;
 }
 
 .form-group,
@@ -70,6 +75,7 @@ canvas{
   background-color: white;
   border-radius: 10px;
   box-shadow: 3px 3px 5px #888888;
+  padding: 20px;
 }
 
 .info{
