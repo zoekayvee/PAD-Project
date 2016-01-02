@@ -39,15 +39,6 @@ class AuthController extends Controller {
 //		$this->middleware('guest', ['except' => 'getSino']);
 	}
 	
-    public function getShow()
-    {
-//		$this->auth->logout();
-	
-//		return \Auth::user();
-        $users = User::all();
-        return view('pages/user', compact('users'));
-    }
-
     public function getLogin() {
     	return view('auth/login');
     }

@@ -22,6 +22,9 @@ class CreateCommitteesTable extends Migration {
 			$table->integer('event_id')->unsigned();
 			$table->foreign('event_id')->references('event_id')->on('events');
 
+/*			$table->integer('head_id')->unsigned();
+			$table->foreign('head_id')->references('id')->on('users');
+*/
 			//$table->rememberToken();
 			$table->timestamps();
 		});

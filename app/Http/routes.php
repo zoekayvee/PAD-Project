@@ -13,21 +13,9 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
-/*
-Route::get('/profile', 'ProfileController@showCommittee');
-Route::get('/profile/head', 'ProfileController@showHeads');
-Route::get('/profile/oah', 'ProfileController@showOAH');
-Route::get('/profile/task', 'ProfileController@getCreateTask');
-*/
+
 Route::controllers([
 	'account' => 'Auth\AuthController',
-	'profile' => 'ProfileController'
+	'profile' => 'ProfileController',
+	'admin' => 'AdminController',
 ]);
-
-Route::get('login',function(){
-		return view('pages/login');
-});
-
-Route::get('/mainpage',function(){
-		return view('pages/mainpage');
-});
