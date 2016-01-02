@@ -11,9 +11,17 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">name</a></li>
-                <li><a href="#">Logout</a></li>
-                <li><a href="#">Help</a></li>
+                <form class="form-inline">
+                  <div class="form-group">
+                    <label class="sr-only">Email address</label>
+                    <input type="email" class="form-control" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only">Password</label>
+                    <input type="password" class="form-control" placeholder="Password">
+                  </div>
+                  <button type="submit" class="btn btn-default">Sign in</button>
+                </form>
             </ul>
         </div>
     </div>
