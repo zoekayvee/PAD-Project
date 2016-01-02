@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Middleware\Authenticate;
+use App\Committee;
 use App\Event;
 use App\User;
 use App\Head;
@@ -27,6 +28,8 @@ class ProfileController extends Controller {
 	{
 		$user = $this->getUser();
 		$event = Event::latest('created_at')->first();
+		$events = Event::all();
+		$committes = Committee::where('event_id', $event['event_id']);
 		
 		//check if current user is OAH
 		if($event['oah_id'] == $user['id']) return view('pages/oah', compact('user'));
@@ -42,7 +45,7 @@ class ProfileController extends Controller {
 			if($heads != "[]") return view('pages/heads', compact('user'));
 
 
-		return view('pages/profile', compact('user'));
+		return view('pages/profile', compact('user', 'events', 'committes'));
 	}
 	
 

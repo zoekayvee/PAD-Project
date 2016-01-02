@@ -12,15 +12,15 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <form class="form-inline">
-                  <div class="form-group">
-                    <label class="sr-only">Email address</label>
-                    <input type="email" class="form-control" placeholder="Email">
-                  </div>
-                  <div class="form-group">
-                    <label class="sr-only">Password</label>
-                    <input type="password" class="form-control" placeholder="Password">
-                  </div>
-                  <button type="submit" class="btn btn-default">Sign in</button>
+                    <a href="/account/login">
+                    <button class="btn btn-default">Log In</button>
+                    </a>
+                    <a href="account/register">
+                    <button class="btn btn-default">Register</button>
+                    </a>
+                    <a href="admin/data">
+                    <button class="btn btn-default">Admin</button>
+                    </a>
                 </form>
             </ul>
         </div>

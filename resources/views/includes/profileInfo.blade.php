@@ -30,21 +30,13 @@
           </tr>
         </thead>
         <tbody>
+          @foreach($events as $event)
           <tr>
-            <td><a href="#">Get 1/4 2015</a></td>
+            <td><a href="#">{{$event->title}} : {{$event->theme}}</a></td>
             <td>Member</td>
             <td>Sec</td>
           </tr>
-          <tr>
-            <td><a href="#">PF/JF 2016</a></td>
-            <td>Member</td>
-            <td>Prom</td>
-          </tr>
-          <tr>
-            <td><a href="#">Get 1/4 2016</a></td>
-            <td>Member</td>
-            <td>VL</td>
-          </tr>
+          @endforeach
         </tbody>
       </table>
   </div>

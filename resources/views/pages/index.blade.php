@@ -26,7 +26,10 @@
     </style>
     @stop
 
-            <!-- replaces @yield('content') on the template html, see \resources\views\template.blade.php -->
+@section('navigation')
+    @include('../includes/navigation-false')
+@endsection
+
 @section('content')
     <div class="container">
         <H1>Dummy Home Page</H1>

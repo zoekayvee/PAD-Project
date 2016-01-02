@@ -11,6 +11,11 @@
     href="{{ asset('/css/mainpage.css') }}">
 @stop
 
+@section('navigation')
+    @include('../includes/navigation-false')
+@endsection
+
+
 @section('content')
 
 <div class="container">

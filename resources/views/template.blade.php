@@ -17,7 +17,7 @@
 <body>
 
 	<!-- includes navigation bar of the page, see includes/navigation.blade.php -->
-	@include('includes/navigation')
+	@yield('navigation')
 
     <!-- <div class="container">
 		Standard yung header navigation bar natin. Without repeating the code

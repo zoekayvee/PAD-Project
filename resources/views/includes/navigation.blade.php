@@ -11,8 +11,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">name</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="profile">{{ $user->username }}</a></li>
+                <li><a href="account/logout">Logout</a></li>
                 <li><a href="#">Help</a></li>
             </ul>
         </div>
