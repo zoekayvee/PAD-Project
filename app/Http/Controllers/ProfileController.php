@@ -27,25 +27,25 @@ class ProfileController extends Controller {
 	public function getIndex()
 	{
 		$user = $this->getUser();
-		$event = Event::latest('created_at')->first();
+		$curr_event = Event::latest('created_at')->first();
+		$committees = Committee::where('event_id', $curr_event['event_id']);
 		$events = Event::all();
-		$committes = Committee::where('event_id', $event['event_id']);
 		
+		$url = "pages/profile";
 		//check if current user is OAH
-		if($event['oah_id'] == $user['id']) return view('pages/oah', compact('user'));
+		if($curr_event['oah_id'] == $user['id']) $url = "pages/oah";
 
 		//check if current user is upper head
-			//get current event id		
-			$event_id = $event['event_id'];
+			//get current event id
+			$curr_event_id = $curr_event['event_id'];
 
 			//get all heads of current event
-			$heads = Head::where('event_id', $event_id)->where('user_id', $user['id'])->get();
+			$heads = Head::where('event_id', $curr_event_id)->where('user_id', $user['id'])->get();
 
 			//return heads page if user is lower head
-			if($heads != "[]") return view('pages/heads', compact('user'));
+			if($heads != "[]") $url = "pages/heads";
 
-
-		return view('pages/profile', compact('user', 'events', 'committes'));
+		return view($url, compact('user', 'events', 'committees'));
 	}
 	
 

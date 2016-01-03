@@ -11,6 +11,10 @@
           href="{{ asset('/css/main.css') }}">
 @stop
 
+@section('navigation')
+    @include('../includes/navigation')
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">

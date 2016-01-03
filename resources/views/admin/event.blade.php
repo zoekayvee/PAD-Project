@@ -43,7 +43,7 @@ Create Event
 
 
         <div class="form-group">
-        {!! Form::label('oah_id','Semester') !!}
+        {!! Form::label('oah_id','OAH') !!}
         	<br>
     		@foreach($users as $user)
     		{!! Form::radio('oah_id', $user['id'], ['class'=>'btn btn-default']) !!} {{ $user->username }}

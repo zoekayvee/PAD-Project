@@ -40,7 +40,9 @@
 
   	{!! Form::close() !!}
   	<br>
-  	<button type="button" class="btn btn-primary form-control">Sign Up</button>
+    <a href="register">
+    	<button type="button" class="btn btn-primary form-control">Sign Up</button>
+    </a>
 
 </div>
 @stop

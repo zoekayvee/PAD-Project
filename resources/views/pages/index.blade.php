@@ -50,9 +50,9 @@
                 <div class="button">SHOW PROFILE</div>
                 </div>
             </a>
-            <a href="/profile/show">
+            <a href="/admin/data">
                 <div class="col-md-3">           
-                <div class="button">SHOW REGISTERED USERS</div>
+                <div class="button">ADMIN</div>
                 </div>
             </a>
         </div>

@@ -12,7 +12,7 @@
 @stop
 
 @section('navigation')
-    @include('../includes/navigation-false')
+    @include('../includes/navigation')
 @endsection
 
 
@@ -22,7 +22,9 @@
     <div class="row">
         <div class="col-lg-8">
             <h1 class="page-header">Event Overview</h1>
-            <center><h2>GET 1/4 (2015-2016)</h2></center>
+            <center><h2>{{ $event->title }} : {{ $event->theme }}</h2>
+            <h3>{{ $event->sem}}, {{ $event->year }}</h3>
+            </center>
 
             <br>
 
