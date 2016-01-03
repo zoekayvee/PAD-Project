@@ -13,19 +13,19 @@
 
 @section('navigation')
     @include('../includes/navigation')
-@endsection
+@stop
 
 @section('content')
     <div class="container">
+        @include('../includes/profileInfo')
+    </div>
+    <div class="container">
         <div class="row">
-            <div class="col-lg-9">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#"><h3>Committee Tasks</h3></a></li>
-                    <li role="presentation"><a href="#"><h3>Personal Tasks</h3></a></li>
-                  </ul>         
-                @include('../includes/individualTasks')
-            </div>
-            @include('../includes/profileInfo')
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#"><h3>Committee Tasks</h3></a></li>
+                <li role="presentation"><a href="#"><h3>Personal Tasks</h3></a></li>
+              </ul>         
+            @include('../includes/individualTasks')
         </div>
     </div>
 @stop

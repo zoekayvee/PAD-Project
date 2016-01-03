@@ -1,9 +1,8 @@
-<div class="col-lg-3">
-  <div class="side">
+<div class="row informations">
+  <div class="col-lg-3 profile">
     <div>
       <img src="{{asset('images/back.jpg')}}" class="displayPic" alt="you">
     </div>
-
     <div class="info">
       {{ $user['username'] }}
     </div>
@@ -20,25 +19,29 @@
       {{ $user['batch']}}                        
     </div>
   </div>
-  <div class="side table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Event</th>
-            <th>Position</th>
-            <th>Comm</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($events as $event)
-          <tr>
-            <td><a href="#">{{$event->title}} : {{$event->theme}}</a></td>
-            <td>Member</td>
-            <td>Sec</td>
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
-  </div>
+
+  <hr>
+
+  <div class="table-responsive col-lg-9">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Event</th>
+          <th>Semester</th>
+          <th>Position</th>
+          <th>Committee</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($events as $event)
+        <tr>
+          <td><a href="#">{{$event->title}} : {{$event->theme}}</a></td>
+          <td>1st-2016</td>
+          <td>Member</td>
+          <td>Sec</td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
   </div>
 </div>

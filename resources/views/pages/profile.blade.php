@@ -17,12 +17,15 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-lg-9">
-                <h1 class="page-header">Tasks</h1>
-                @include('../includes/individualTasks')
-            </div>
-            @include('../includes/profileInfo')
+        @include('../includes/profileInfo')
+    </div>
+    <div class="container">
+        <div class="row ">
+            <h1 class="page-header">Tasks</h1>
+            <!-- Will only be visible if a task is given,
+                otherwise, put "No assigne task/s" -->
+            @include('../includes/individualTasks')
         </div>
     </div>
+    
 @stop

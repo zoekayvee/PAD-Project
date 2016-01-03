@@ -1,4 +1,4 @@
-<div class="col-md-4 cards">
+<div class="col-md-3 cards">
     <div>
         <h3>Venue Permit</h3>
         <h5>Due: January 35, 2098</h5>
