@@ -4,19 +4,19 @@
       <img src="{{asset('images/back.jpg')}}" class="displayPic" alt="you">
     </div>
     <div class="info">
-      {{ $user['username'] }}
+      {{ $user->username }}
     </div>
     <div class="info">
-      {{ $user['lname'] }}, {{ $user['fname'] }} {{ $user['mname'] }} 
+      {{ $user->lname }}, {{ $user->fname }} {{ $user->mname }} 
     </div>
     <div class="info">
-      {{ $user['studno']}}
+      {{ $user->studno }}
     </div>
     <div class="info">
-      {{ $user['department']}}
+      {{ $user->department }}
       </div>
     <div class="info">
-      {{ $user['batch']}}                        
+      {{ $user->batch }}                        
     </div>
   </div>
 
@@ -36,7 +36,7 @@
         @foreach($events as $event)
         <tr>
           <td><a href="#">{{$event->title}} : {{$event->theme}}</a></td>
-          <td>1st-2016</td>
+          <td>{{$event->sem}}, {{$event->year}}</td>
           <td>Member</td>
           <td>Sec</td>
         </tr>
