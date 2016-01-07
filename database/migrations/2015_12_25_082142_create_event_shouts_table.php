@@ -18,7 +18,7 @@ class CreateEventShoutsTable extends Migration {
 
 			//foreign key
 			$table->integer('event_id')->unsigned();
-			$table->foreign('event_id')->references('event_id')->on('events');
+			$table->foreign('event_id')->references('id')->on('events');
 	
 			//primary key
 			$table->primary(['event_id', 'shout']);

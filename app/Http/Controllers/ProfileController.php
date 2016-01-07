@@ -27,21 +27,25 @@ class ProfileController extends Controller {
 	public function getIndex()
 	{
 		$user = $this->getUser();
-		$curr_event = Event::latest('created_at')->first();
-		$committees = Committee::where('event_id', $curr_event['event_id']);
+		$curr_event = Event::latest('id')->first();
+		$committees = Committee::where('event_id', $curr_event->id);
 		$events = Event::all();
 		
 		$url = "pages/profile";
+		//check if curret user is admin
+		if($user->id == 1) {
+			return redirect('/admin/');
+		}
+
 		//check if current user is OAH
-		if($curr_event['oah_id'] == $user['id']) $url = "pages/oah";
+		if($curr_event->oah_id == $user->id) $url = "pages/oah";
 
 		//check if current user is upper head
 			//get current event id
-			$curr_event_id = $curr_event['event_id'];
+			$curr_event_id = $curr_event->id;
 
 			//get all heads of current event
-			$heads = Head::where('event_id', $curr_event_id)->where('user_id', $user['id'])->get();
-
+			$heads = Head::where('event_id', $curr_event_id)->where('user_id', $user->id)->get();
 			//return heads page if user is lower head
 			if($heads != "[]") $url = "pages/heads";
 

@@ -14,7 +14,7 @@ class CreateTasksTable extends Migration {
 	{
 		Schema::create('tasks', function(Blueprint $table)
 		{
-			$table->increments('task_id');
+			$table->increments('id');
 			$table->string('title');
 			$table->text('description');
 			$table->integer('progress');
@@ -25,12 +25,12 @@ class CreateTasksTable extends Migration {
 
 			//foreign key
 			$table->integer('createdby_id')->unsigned();
-			$table->foreign('createdby_id')->references('head_id')->on('heads');
+			$table->foreign('createdby_id')->references('id')->on('heads');
 
 			$table->string('assigned_to')->references('id')->on('users');
 
 			$table->integer('comm_id')->unsigned();
-			$table->foreign('comm_id')->references('comm_id')->on('committees');
+			$table->foreign('comm_id')->references('id')->on('committees');
 
 			//$table->rememberToken();
 			$table->timestamps();

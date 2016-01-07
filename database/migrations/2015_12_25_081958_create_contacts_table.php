@@ -17,11 +17,11 @@ class CreateContactsTable extends Migration {
 			$table->string('contactno');
 
 			//foreign key
-			$table->integer('id')->unsigned();
-			$table->foreign('id')->references('id')->on('users');
+			$table->integer('user_id')->unsigned();
+			$table->foreign('user_id')->references('id')->on('users');
 	
 			//primary key
-			$table->primary(['id', 'contactno']);
+			$table->primary(['user_id', 'contactno']);
 
 			//$table->rememberToken();
 			$table->timestamps();

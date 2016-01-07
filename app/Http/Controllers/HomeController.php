@@ -13,18 +13,10 @@ class HomeController extends Controller {
 	//loads homepage
 	public function index() {
 		$event = Event::latest('created_at')->first();
-/*		$oah = User::find($event['oah_id']);
-		$committee = Committee::all();
-		return $committee;
-		return $oah;
-
-		return \Auth::user();
-*/		
 		$user = \Auth::user();
-		if($user == "") return view('pages/index');
+		if($user == "") return view('auth/login');
 		return view('pages/home', compact('user', 'event'));
 	}
-
 
 
 

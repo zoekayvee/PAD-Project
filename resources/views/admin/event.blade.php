@@ -16,7 +16,7 @@ Create Event
 		{!! Form::open(['url' => 'admin/event']) !!}
 
         <div class="form-group">
-        {!! Form::label('title','Sex') !!}
+        {!! Form::label('title','Eex') !!}
         <br>
         {!! Form::radio('title', 'Get 1/4' , ['class'=>'btn btn-default']) !!} Get 1/4
         <br>

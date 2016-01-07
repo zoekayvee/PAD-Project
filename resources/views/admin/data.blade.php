@@ -1,28 +1,3 @@
-@extends('template')
-
-@section('title')
-DB Data
-@stop
-
-@section('includes')
-  <link rel="stylesheet" type="text/css"
-    href="{{ asset('/css/main.css') }}">
-
-  <style type="text/css">
-  		table {
-  			width: 100%;
-  			margin-top: 20px;
-  		}
-  		h4 {
-  			font-weight: bold;
-  		}
-  </style>
-
-@stop
-
-@section('content')
-	<div class="container">
-		<h4>Users from the DB:</h4>
 		<table class="table">
 		<tr>
 			<th>ID</th>
@@ -67,7 +42,7 @@ DB Data
 		</tr>
 		@foreach($events as $event)
 		<tr>
-			<td>{{ $event->event_id }}</td>
+			<td>{{ $event->id }}</td>
 			<td>{{ $event->title }}</td>
 			<td>{{ $event->theme }}</td>
 			<td>{{ $event->sem }}</td>
@@ -90,7 +65,7 @@ DB Data
 		</tr>
 		@foreach($committees as $committee)
 		<tr>
-			<td>{{ $committee->comm_id }}</td>
+			<td>{{ $committee->id }}</td>
 			<td>{{ $committee->name }}</td>
 			<td>{{ $committee->weight }}</td>
 			<td>{{ $committee->event_id }}</td>
@@ -111,7 +86,7 @@ DB Data
 		</tr>
 		@foreach($heads as $head)
 		<tr>
-			<td>{{ $head->head_id }}</td>
+			<td>{{ $head->id }}</td>
 			<td>{{ $head->position }}</td>
 			<td>{{ $head->user_id }}</td>
 			<td>{{ $head->comm_id }}</td>
@@ -119,6 +94,3 @@ DB Data
 		</tr>
 		@endforeach
 		</table>
-	</div>
-
-@stop

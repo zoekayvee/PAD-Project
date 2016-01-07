@@ -1,0 +1,53 @@
+body {
+	background-color: #FEFEFE;
+}
+
+div {
+/*	border: solid 1px red;
+*/}
+
+#admin-container {
+	padding-bottom: 15px;
+	margin-bottom: 15px;
+}
+
+.section {
+	padding: 15px;
+}
+
+.request-panel {
+	background: #2C95E2;
+	padding: 15px;
+	margin-bottom: 10px;
+	box-shadow: 1px 1px 5px #989898;
+	color: white;
+}
+
+.request-panel .user {
+	text-align: left;
+}
+
+.request-panel .committee {
+	text-align: left;
+}
+
+.request-panel select {
+	color: black;
+}
+
+.request-panel .col-md-4 {
+	text-align: center;
+}
+
+.request-panel .btn {
+	border-radius: 5px;
+	background-color: #D34A86;
+	color: white;	
+	box-shadow: 1px 1px 5px #444;
+	margin: 10px;
+}
+
+.request-panel .btn:hover {
+	background-color: #E6A32A;
+
+}

@@ -14,15 +14,14 @@ class CreateMembersTable extends Migration {
 	{
 		Schema::create('members', function(Blueprint $table)
 		{
+			$table->increments('id');
+
 			//foreign key
-			$table->integer('id')->unsigned();
+			$table->integer('user_id')->unsigned();
 			$table->integer('comm_id')->unsigned();
 
-			$table->foreign('id')->references('id')->on('users');
-			$table->foreign('comm_id')->references('comm_id')->on('committees');
-
-			//primary key
-			$table->primary(['id', 'comm_id']);
+			$table->foreign('user_id')->references('id')->on('users');
+			$table->foreign('comm_id')->references('id')->on('committees');
 
 			//$table->rememberToken();
 			$table->timestamps();

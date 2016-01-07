@@ -14,6 +14,9 @@
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 
+Route::get('/initialize', 'DataController@setData');
+Route::get('/clean', 'DataController@removeData');
+
 Route::controllers([
 	'account' => 'Auth\AuthController',
 	'profile' => 'ProfileController',

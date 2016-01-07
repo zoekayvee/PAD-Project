@@ -15,17 +15,17 @@ class CreateHeadsTable extends Migration {
 		Schema::create('heads', function(Blueprint $table)
 		{
 			$table->string('position');
-			$table->increments('head_id');
+			$table->increments('id');
 
 			//foreign key
 			$table->integer('user_id')->unsigned();
 			$table->foreign('user_id')->references('id')->on('users');
 
 			$table->integer('comm_id')->unsigned();
-			$table->foreign('comm_id')->references('comm_id')->on('committees');
+			$table->foreign('comm_id')->references('id')->on('committees');
 
 			$table->integer('event_id')->unsigned();
-			$table->foreign('event_id')->references('event_id')->on('events');
+			$table->foreign('event_id')->references('id')->on('events');
 
 			//primary key
 //			$table->primary(['head_id', 'comm_id']);

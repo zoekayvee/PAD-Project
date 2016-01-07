@@ -41,7 +41,9 @@
   	{!! Form::close() !!}
   	<br>
     <a href="register">
+      <a href="/account/register">
     	<button type="button" class="btn btn-primary form-control">Sign Up</button>
+      </a>
     </a>
 
 </div>

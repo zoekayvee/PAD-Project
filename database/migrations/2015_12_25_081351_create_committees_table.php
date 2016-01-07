@@ -14,13 +14,13 @@ class CreateCommitteesTable extends Migration {
 	{
 		Schema::create('committees', function(Blueprint $table)
 		{
-			$table->increments('comm_id');
+			$table->increments('id');
 			$table->string('name');
 			$table->integer('weight')->unsigned();
 
 			//foreign key
 			$table->integer('event_id')->unsigned();
-			$table->foreign('event_id')->references('event_id')->on('events');
+			$table->foreign('event_id')->references('id')->on('events');
 
 /*			$table->integer('head_id')->unsigned();
 			$table->foreign('head_id')->references('id')->on('users');
