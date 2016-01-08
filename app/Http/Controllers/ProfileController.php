@@ -8,6 +8,7 @@ use App\Committee;
 use App\Event;
 use App\User;
 use App\Head;
+use App\Task;
 
 class ProfileController extends Controller {
 
@@ -28,8 +29,10 @@ class ProfileController extends Controller {
 	{
 		$user = $this->getUser();
 		$curr_event = Event::latest('id')->first();
-		$committees = Committee::where('event_id', $curr_event->id);
+		$committees = Committee::where('event_id', $curr_event->id)->get();
 		$events = Event::all();
+		$tasks = Task::where('assigned_to', $user['id'])->get();	//tasks assigned to current user
+		$all_tasks = Task::all();
 		
 		$url = "pages/profile";
 		//check if curret user is admin
@@ -37,19 +40,27 @@ class ProfileController extends Controller {
 			return redirect('/admin/');
 		}
 
+		//get current event id
+		$curr_event_id = $curr_event->id;
+
 		//check if current user is OAH
 		if($curr_event->oah_id == $user->id) $url = "pages/oah";
 
 		//check if current user is upper head
-			//get current event id
-			$curr_event_id = $curr_event->id;
 
 			//get all heads of current event
 			$heads = Head::where('event_id', $curr_event_id)->where('user_id', $user->id)->get();
-			//return heads page if user is lower head
-			if($heads != "[]") $url = "pages/heads";
+			//get all comm_id where current user is a head 
+			$heads_comm = Head::where('event_id', $curr_event_id)->where('user_id', $user['id'])->get(array('comm_id'))->toArray();
+			
 
-		return view($url, compact('user', 'events', 'committees'));
+			//return heads page if user is lower head
+			if($heads != "[]"){
+				$url = "pages/heads";
+				$head_committees = Committee::whereIn('id', $heads_comm)->get();			
+			}
+
+		return view($url, compact('user', 'events', 'committees', 'tasks', 'all_tasks', 'head_committees'));
 	}
 	
 

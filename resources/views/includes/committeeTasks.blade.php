@@ -1,11 +1,13 @@
 <div class="col-md-4 cards">
     <div>
-        <h3>Secretariat Committee</h3>
+        <h3>{{ $committee->name }}</h3>
         <ul>
-            <li>Venue permit</li>
-            <li>Activity Permit</li>
-            <li>Letters to judges</li>
-            <li>Registration Form</li>
+            @foreach ($all_tasks as $task)
+                @if($task->comm_id == $committee->comm_id)
+                    <li>{{ $task->title }}</li>
+                <br>
+                @endif
+            @endforeach
         </ul>
     </div>
     <div>

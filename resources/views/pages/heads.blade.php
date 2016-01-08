@@ -21,11 +21,31 @@
     </div>
     <div class="container">
         <div class="row">
-            <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#"><h3>Committee Tasks</h3></a></li>
-                <li role="presentation"><a href="#"><h3>Personal Tasks</h3></a></li>
-              </ul>         
-            @include('../includes/individualTasks')
+            <a href="/task">
+                <div class="col-md-3">           
+                    <div class="button">CREATE TASK</div>
+                </div>
+            </a>
         </div>
+        <div class="row">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#comm"><h3>Committee Tasks</h3></a></li>
+                <li role="presentation"><a href="#tsk"><h3>Personal Tasks</h3></a></li>
+            </ul>         
+        </div>
+        <div id="comm" class="row">         
+                @foreach ($head_committees as $committee)
+                    @include('../includes/committeeTasks');
+                @endforeach
+            </div> 
+            <div id='tsk' class="row">
+                @if(count($tasks) > 0)
+                    @foreach ($tasks as $task)
+                        @include('../includes/individualTasks')
+                    @endforeach
+                @else 
+                    <p>No assigned task</p>
+                @endif
+            <div> 
     </div>
 @stop

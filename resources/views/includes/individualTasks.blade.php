@@ -1,8 +1,8 @@
 <div class="col-md-3 cards">
     <div>
-        <h3>Venue Permit</h3>
-        <h5>Due: January 35, 2098</h5>
-        <p>Get form from the office, then pay for the venue fee with tech head.</p>
+        <h3>{{ $task->title }}</h3>
+        <h5>Due: {{ $task->deadline }}</h5>
+        <p>{{{ $task->description }}}</p>
     </div>
     <div>
         <div class="form-group">

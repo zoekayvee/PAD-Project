@@ -17,6 +17,9 @@ Route::get('/home', 'HomeController@index');
 Route::get('/initialize', 'DataController@setData');
 Route::get('/clean', 'DataController@removeData');
 
+Route::get('/task', 'TaskController@getTask');
+Route::post('/task', 'TaskController@postTask');
+
 Route::controllers([
 	'account' => 'Auth\AuthController',
 	'profile' => 'ProfileController',

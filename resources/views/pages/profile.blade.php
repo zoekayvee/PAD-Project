@@ -24,7 +24,13 @@
             <h1 class="page-header">Tasks</h1>
             <!-- Will only be visible if a task is given,
                 otherwise, put "No assigne task/s" -->
-            @include('../includes/individualTasks')
+            @if(count($tasks) > 0)
+                @foreach ($tasks as $task)
+                    @include('../includes/individualTasks')
+                @endforeach
+            @else 
+                <p>No assigned task</p>
+            @endif
         </div>
     </div>
     

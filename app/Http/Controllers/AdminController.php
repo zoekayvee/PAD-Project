@@ -10,6 +10,7 @@ use App\Event;
 use App\Committee;
 use App\Head;
 use App\Member;
+use App\Task;
 
 class AdminController extends Controller {
 
@@ -32,7 +33,8 @@ class AdminController extends Controller {
 		$heads = Head::all();
 		$users = User::all();
 		$events = Event::all();
-		return view('admin/admin', compact('user','users','pendings','events','heads','committee','committees'));
+		$tasks = Task::all();
+		return view('admin/admin', compact('user','users','pendings','events','heads','committee','committees','tasks'));
 	}
 
 	public function postEvaluate(Request $request) {

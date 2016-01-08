@@ -1,3 +1,4 @@
+	<div>
 		<table class="table">
 		<tr>
 			<th>ID</th>
@@ -94,3 +95,39 @@
 		</tr>
 		@endforeach
 		</table>
+	</div>
+
+	<div class="container">
+		<h4>Tasks from the DB:</h4>
+		<table class="table">
+		<tr>
+			<th>ID</th>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Progress</th>
+			<th>Weight</th>
+			<th>Deadline</th>
+			<th>Remark</th>
+			<th>Date Created</th>
+			<th>Created By</th>
+			<th>Assigned to</th>
+			<th>Committee</th>
+		</tr>
+		
+		@foreach($tasks as $task)
+		<tr>
+			<td>{{ $task->task_id }}</td>
+			<td>{{ $task->title }}</td>
+			<td>{{ $task->description }}</td>
+			<td>{{ $task->progress }}</td>
+			<td>{{ $task->weight }}</td>
+			<td>{{ $task->deadline }}</td>
+			<td>{{ $task->remark }}</td>
+			<td>{{ $task->created_date }}</td>
+			<td>{{ $task->createdby_id }}</td>
+			<td>{{ $task->assigned_to }}</td>
+			<td>{{ $task->comm_id }}</td>
+		</tr>
+		@endforeach
+		</table>
+	</div>

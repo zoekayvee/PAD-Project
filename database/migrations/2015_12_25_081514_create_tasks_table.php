@@ -25,9 +25,9 @@ class CreateTasksTable extends Migration {
 
 			//foreign key
 			$table->integer('createdby_id')->unsigned();
-			$table->foreign('createdby_id')->references('id')->on('heads');
+			$table->foreign('createdby_id')->references('id')->on('users');
 
-			$table->string('assigned_to')->references('id')->on('users');
+			$table->integer('assigned_to')->references('id')->on('users');
 
 			$table->integer('comm_id')->unsigned();
 			$table->foreign('comm_id')->references('id')->on('committees');

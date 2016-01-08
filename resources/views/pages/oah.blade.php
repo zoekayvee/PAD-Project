@@ -24,7 +24,8 @@
             <h1 class="page-header">Tasks</h1>
             <!-- Will only be visible if a task is given,
                 otherwise, put "No assigne task/s" -->
-            @include('../includes/committeeTasks')
-        </div>
+            @foreach ($committees as $committee)
+                @include('../includes/committeeTasks');
+            @endforeach
     </div>
 @stop
