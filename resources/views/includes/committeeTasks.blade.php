@@ -3,7 +3,7 @@
         <h3>{{ $committee->name }}</h3>
         <ul>
             @foreach ($all_tasks as $task)
-                @if($task->comm_id == $committee->comm_id)
+                @if($task->comm_id == $committee->id)
                     <li>{{ $task->title }}</li>
                 <br>
                 @endif
