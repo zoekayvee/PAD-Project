@@ -9,6 +9,7 @@ use App\Event;
 use App\User;
 use App\Head;
 use App\Task;
+use App\Member;
 
 class ProfileController extends Controller {
 
@@ -29,6 +30,7 @@ class ProfileController extends Controller {
 	{
 		$user = $this->getUser();
 		$curr_event = Event::latest('id')->first();
+		$all_comm = Committee::all();
 		$committees = Committee::where('event_id', $curr_event->id)->get();
 		$events = Event::all();
 		$tasks = Task::where('assigned_to', $user['id'])->get();	//tasks assigned to current user
@@ -50,7 +52,7 @@ class ProfileController extends Controller {
 
 			//get all heads of current event
 			$heads = Head::where('event_id', $curr_event_id)->where('user_id', $user->id)->get();
-			//get all comm_id where current user is a head 
+			//get all comm_id(as array) where current user is a head 
 			$heads_comm = Head::where('event_id', $curr_event_id)->where('user_id', $user['id'])->get(array('comm_id'))->toArray();
 			
 
@@ -60,7 +62,12 @@ class ProfileController extends Controller {
 				$head_committees = Committee::whereIn('id', $heads_comm)->get();			
 			}
 
-		return view($url, compact('user', 'events', 'committees', 'tasks', 'all_tasks', 'head_committees'));
+			//current user is a head 
+			$heads_comm = Head::where('event_id', $curr_event_id)->where('user_id', $user['id'])->get();
+			
+			//committees where current user is a member 
+			$mem_comm = Member::where('user_id', $user['id'])->get();
+		return view($url, compact('user', 'events', 'all_comm','committees', 'tasks', 'all_tasks', 'head_committees', 'heads_comm', 'mem_comm'));
 	}
 	
 

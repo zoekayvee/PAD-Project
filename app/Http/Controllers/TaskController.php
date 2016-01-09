@@ -41,6 +41,6 @@ class TaskController extends Controller {
 		$evnt = Event::where('id', $comm_eventid['event_id'])->increment('weight', $task['weight']);
 
 		Task::create($task);
-		return redirect('task');
+		return redirect('profile');
 	}
 }
