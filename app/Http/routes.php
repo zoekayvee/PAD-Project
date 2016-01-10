@@ -20,6 +20,8 @@ Route::get('/clean', 'DataController@removeData');
 Route::get('/task', 'TaskController@getTask');
 Route::post('/task', 'TaskController@postTask');
 
+Route::resource('profile','ProfileController');
+
 Route::controllers([
 	'account' => 'Auth\AuthController',
 	'profile' => 'ProfileController',

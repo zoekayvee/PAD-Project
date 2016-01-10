@@ -14,12 +14,16 @@ var pieData = [
 ];
 
 window.onload = function(){
-    var ctx = document.getElementById("chart-area").getContext("2d");
-    window.myPie = new Chart(ctx).Pie(pieData);
+    var elements = document.getElementsByClassName('chart-area');
+    for (var i = 0; i < elements.length; i++) {
+        var ctx = elements[i].getContext("2d");
+        window.myPie = new Chart(ctx).Pie(pieData);
+    }
 };
 
 var progress = document.getElementById("progress").value;
 function changeProgress () {
+    
     pieData[0].value = progress;
     pieData[1].value = 100-progress;
 };

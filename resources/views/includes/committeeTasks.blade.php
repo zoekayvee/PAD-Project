@@ -14,11 +14,11 @@
         <div class="form-group">
             <label class="">Percentage done</label>
             <input class="form-control" placeholder="%">
-            <button class="btn btn-primary" href="#">Done</button>
+            <!--   <button class="btn btn-primary" href="#">Done</button>   -->
         </div>
 
         <div id="canvas-holder">
-            <canvas id="chart-area"/>
+            <canvas class="chart-area"/>
         </div>
     </div>
 </div>

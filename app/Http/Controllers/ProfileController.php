@@ -69,6 +69,28 @@ class ProfileController extends Controller {
 			$mem_comm = Member::where('user_id', $user['id'])->get();
 		return view($url, compact('user', 'events', 'all_comm','committees', 'tasks', 'all_tasks', 'head_committees', 'heads_comm', 'mem_comm'));
 	}
-	
 
+	
+	public function edit($id)
+	{
+	   $task=Task::find($id);
+	   return view('profile.edit',compact('task'));
+	}
+
+	//UPDATE TASK
+	public function update($id, Request $request)
+	{
+	   
+	   $taskUpdate=$request->all();
+	   $task=Task::find($id);
+	   $task->update($taskUpdate);
+	   return redirect('profile');
+	}
+
+	//DELETE TASK
+	public function destroy($id)
+	{
+	   Task::find($id)->delete();
+	   return redirect('profile');
+	}
 }
