@@ -20,7 +20,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-md-8">
             <h1 class="page-header">Event Overview</h1>
             <center><h2>{{ $event->title }} : {{ $event->theme }}</h2>
             <h3>{{ $event->sem}}, {{ $event->year }}</h3>
@@ -51,29 +51,56 @@
         </div>
 
 
+        <div class="col-md-4">
 
-        <div class="col-lg-4">
-          <div class="oah">
-              <div>
-                <h4>Message from OAH</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
+          <?php
+            $is_head = false;
+            if($heads->where("user_id", $user->id) != '[]') $is_head = true;
+            elseif ($event->oah_id == $user->id) $is_head = true;
+          ?>
+
+          @if($is_head)
+          <div class="col-md-12 card shout-form">
+          {!! Form::open(['url' => '/']) !!}
+              <h3>Post Announcement</h3>
+              <div class="form-group">
+              <label name="title">Title</label>
+              <input type="text" name="title" class="form-control"/>
               </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="head">
-              <div>
-                <h4>Message from Committee Head</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
+              <div class="form-group">
+              <label name="shout">Body</label>
+              <textarea type="text" name="shout" class="form-control"/></textarea>
+              <input type="hidden" name="event_id" value="{{ $event->id}}">
+              <input type="hidden" name="user_id" value="{{ $user->id}}">
               </div>
+              {!! Form::submit("SHOUT", ["class"=>"btn btn-default"]) !!}
+          {!! Form::close() !!}
           </div>
-        </div>
+          @endif
 
-    </div>
+
+          @foreach($shouts as $shout)
+          <div class="col-md-12 card">
+              <h4> {{ $shout->title }} </h4>
+              <p> {{ $shout->shout }} </p>
+
+              <?php
+                $owner = "";
+                $id = $shout->user_id;
+                if($event->oah_id == $id) $owner = "Overall Activity Head";
+                else {
+                  $head = $heads->where('user_id', $id)->first();
+                  $owner = $head->position;
+                }
+              ?>
+              
+              <h6>by {{ $owner }} <br>
+               {{ $shout->created_at }} <br>
+
+              </h6>
+          </div>
+          @endforeach
+
+        </div>
 </div>
 @stop

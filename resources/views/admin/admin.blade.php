@@ -34,7 +34,7 @@ Admin Panel
 						</div>
 					</div>
 					<div class="col-md-4">
-						{!! Form::open(['url' => 'admin/evaluate']) !!}
+					{!! Form::open(['url' => 'admin/evaluate']) !!}
 						<div class="committee">
 						Is the User the OAH?<br>
 						<input type="radio" name="isoah" value="YES" required> YES

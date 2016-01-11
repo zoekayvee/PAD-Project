@@ -14,15 +14,17 @@ class CreateEventShoutsTable extends Migration {
 	{
 		Schema::create('event_shouts', function(Blueprint $table)
 		{
+			$table->increments('id');
+			$table->string('title');
 			$table->string('shout');
 
 			//foreign key
 			$table->integer('event_id')->unsigned();
 			$table->foreign('event_id')->references('id')->on('events');
-	
-			//primary key
-			$table->primary(['event_id', 'shout']);
 
+			$table->integer('user_id')->unsigned();
+			$table->foreign('user_id')->references('id')->on('users');
+	
 			//$table->rememberToken();
 			$table->timestamps();
 		});

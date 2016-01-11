@@ -38,3 +38,29 @@ canvas{
 .head p{
   padding:10px;
 }
+
+.card {
+  background-color: white;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-shadow: 1px 1px 5px #999;
+  line-height: 10px;
+}
+
+.card h4 {
+  color: navy;
+}
+
+.card h6 {
+  font-style: italic;
+  color: #989898;
+}
+
+.shout-form {
+  padding: 20px;
+}
+
+.shout-form .btn {
+  float: right;
+}

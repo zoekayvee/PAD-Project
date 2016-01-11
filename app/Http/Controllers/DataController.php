@@ -120,11 +120,12 @@ class DataController extends Controller {
 		$this->createHead(4,"Secretariat Committee Head",7,4,3);
 		$this->createHead(5,"Programs Committee Head",3,5,3);
 		$this->createHead(6,"Finance Committee Head",8,6,3);
+
 		}
 		
 		$this->createMember(1,2,1);
 
-		return redirect('/home');
+		return redirect('/');
 	}
 
 	public function removeData() {

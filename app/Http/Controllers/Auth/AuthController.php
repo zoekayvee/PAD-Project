@@ -61,7 +61,7 @@ class AuthController extends Controller {
 			$user = $user[0];
 			if($user['password'] == $credentials['password']) {
 				$this->auth->login($user);
-				return redirect('/profile');			
+				return redirect('/');			
 			}
 		}
 
