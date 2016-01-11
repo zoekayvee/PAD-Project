@@ -10,6 +10,7 @@ use App\User;
 use App\Head;
 use App\Task;
 use App\Member;
+use App\Comment;
 
 class ProfileController extends Controller {
 
@@ -37,6 +38,7 @@ class ProfileController extends Controller {
 		$tasks = Task::where('assigned_to', $user['id'])->get();	//tasks assigned to current user
 		$all_tasks = Task::all();
 		$categories = array('Pending', 'In-progress', 'Delayed', 'Finished');
+		$comments = Comment::all();
 
 		$url = "pages/profile";
 		//check if curret user is admin
@@ -69,7 +71,7 @@ class ProfileController extends Controller {
 			
 			//committees where current user is a member 
 			$mem_comm = Member::where('user_id', $user['id'])->get();
-		return view($url, compact('users', 'user', 'events', 'all_comm','committees', 'tasks', 'all_tasks', 'categories', 'head_committees', 'heads_comm', 'mem_comm'));
+		return view($url, compact('users', 'user', 'events', 'all_comm','committees', 'tasks', 'all_tasks', 'categories', 'comments', 'head_committees', 'heads_comm', 'mem_comm'));
 	}
 
 	
@@ -94,5 +96,15 @@ class ProfileController extends Controller {
 	{
 	   Task::find($id)->delete();
 	   return redirect('profile');
+	}
+
+	//ADD COMMENT
+	public function store(Request $request)
+	{
+
+	  	$comment=$request->all();
+
+	   	Comment::create($comment);
+		return redirect('profile');
 	}
 }

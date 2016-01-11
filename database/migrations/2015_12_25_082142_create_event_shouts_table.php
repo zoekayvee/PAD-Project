@@ -14,7 +14,7 @@ class CreateEventShoutsTable extends Migration {
 	{
 		Schema::create('event_shouts', function(Blueprint $table)
 		{
-			$table->string('shout');
+			$table->text('shout');
 
 			//foreign key
 			$table->integer('event_id')->unsigned();

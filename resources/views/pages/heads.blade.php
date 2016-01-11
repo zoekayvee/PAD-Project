@@ -55,7 +55,7 @@
             @foreach ($head_committees as $committee)
                 @foreach ($all_tasks as $task)
                     @if($task->comm_id == $committee->id)
-                        @include('../includes/individualTasks')
+                        @include('../includes/head_committeeTasks')
                     @endif
                 @endforeach
             @endforeach
