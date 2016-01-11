@@ -28,6 +28,7 @@ class ProfileController extends Controller {
 
 	public function getIndex()
 	{
+		$users = User::all();
 		$user = $this->getUser();
 		$curr_event = Event::latest('id')->first();
 		$all_comm = Committee::all();
@@ -35,7 +36,8 @@ class ProfileController extends Controller {
 		$events = Event::all();
 		$tasks = Task::where('assigned_to', $user['id'])->get();	//tasks assigned to current user
 		$all_tasks = Task::all();
-		
+		$categories = array('Pending', 'In-progress', 'Delayed', 'Finished');
+
 		$url = "pages/profile";
 		//check if curret user is admin
 		if($user->id == 1) {
@@ -67,7 +69,7 @@ class ProfileController extends Controller {
 			
 			//committees where current user is a member 
 			$mem_comm = Member::where('user_id', $user['id'])->get();
-		return view($url, compact('user', 'events', 'all_comm','committees', 'tasks', 'all_tasks', 'head_committees', 'heads_comm', 'mem_comm'));
+		return view($url, compact('users', 'user', 'events', 'all_comm','committees', 'tasks', 'all_tasks', 'categories', 'head_committees', 'heads_comm', 'mem_comm'));
 	}
 
 	

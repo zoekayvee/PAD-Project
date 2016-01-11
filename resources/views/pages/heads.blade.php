@@ -31,21 +31,34 @@
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#comm"><h3>Committee Tasks</h3></a></li>
                 <li role="presentation"><a href="#tsk"><h3>Personal Tasks</h3></a></li>
+                @foreach ($head_committees as $committee)
+                    <li role="presentation"><a href="#"><h3>{{$committee->name}}</h3></a></li>
+                @endforeach
             </ul>         
         </div>
         <div id="comm" class="row">         
-                @foreach ($head_committees as $committee)
-                    @include('../includes/committeeTasks');
+            @foreach ($head_committees as $committee)
+                @include('../includes/committeeTasks');
+            @endforeach
+        </div> 
+        <div id='tsk' class="row">
+            @if(count($tasks) > 0)
+                @foreach ($tasks as $task)
+                    @include('../includes/individualTasks')
                 @endforeach
-            </div> 
-            <div id='tsk' class="row">
-                @if(count($tasks) > 0)
-                    @foreach ($tasks as $task)
+            @else 
+                <p>No assigned task</p>
+            @endif
+        <div> 
+        <div class="row"> 
+            <br><br><br>        
+            @foreach ($head_committees as $committee)
+                @foreach ($all_tasks as $task)
+                    @if($task->comm_id == $committee->id)
                         @include('../includes/individualTasks')
-                    @endforeach
-                @else 
-                    <p>No assigned task</p>
-                @endif
-            <div> 
+                    @endif
+                @endforeach
+            @endforeach
+        </div> 
     </div>
 @stop
