@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventShoutsTable extends Migration {
+class CreateCommentsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,20 +12,17 @@ class CreateEventShoutsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('event_shouts', function(Blueprint $table)
+		Schema::create('comments', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('title');
-			$table->text('shout');
-
+			$table->text('description');
 			//foreign key
-			$table->integer('event_id')->unsigned();
-			$table->foreign('event_id')->references('id')->on('events');
-
 			$table->integer('user_id')->unsigned();
 			$table->foreign('user_id')->references('id')->on('users');
-	
-			//$table->rememberToken();
+
+			$table->integer('task_id')->unsigned();
+			$table->foreign('task_id')->references('id')->on('tasks');
+
 			$table->timestamps();
 		});
 	}
@@ -37,6 +34,7 @@ class CreateEventShoutsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('event_shouts');
+		Schema::drop('comments');
 	}
+
 }

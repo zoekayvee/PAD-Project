@@ -52,7 +52,7 @@
 
 		<div class="form-group">
         {!! Form::label('remark', 'Remark:') !!}
-        {!! Form::text('remark', null, ['class' => 'form-control', 'placeholder' => 'e.g. In-progress']) !!}
+        {!! Form::select('remark', $categories, ['class' => 'form-control']) !!}
 		</div>
 
         <div class="form-group">

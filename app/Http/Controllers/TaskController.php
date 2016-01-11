@@ -19,7 +19,8 @@ class TaskController extends Controller {
         $events = Event::all();
         $event = Event::latest('created_at')->first();
         $tasks = Task::all();
-        
+        $categories = array('Pending', 'In-progress', 'Delayed', 'Finished');
+
         //committees where curr_user is head
         $heads_comm = Head::where('user_id', $curr_user->id)->get(array('comm_id'))->toArray();
         //members of committee
@@ -29,7 +30,7 @@ class TaskController extends Controller {
         $committees = Committee::whereIn('id', $heads_comm)->get();	
         //$matchThese = ['user_id' => $curr_user['id'], 'event_id' => $event['event_id']];
         //$head = Head::where($matchThese)->get();
-  		return view('pages/task', compact('curr_user', 'users', 'events', 'committees', 'tasks'));
+  		return view('pages/task', compact('curr_user', 'users', 'events', 'committees', 'tasks', 'categories'));
 	}
 
 	function postTask(Request $request) {
@@ -41,6 +42,6 @@ class TaskController extends Controller {
 		$evnt = Event::where('id', $comm_eventid['event_id'])->increment('weight', $task['weight']);
 
 		Task::create($task);
-		return redirect('task');
+		return redirect('profile');
 	}
 }
