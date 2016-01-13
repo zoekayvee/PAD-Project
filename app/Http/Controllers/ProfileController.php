@@ -73,6 +73,7 @@ class ProfileController extends Controller {
 			$mem_comm = Member::where('user_id', $user['id'])->get();
 
 		if($user->standing == "unconfirmed") $url = "pages/oops";
+
 		return view($url, compact('users', 'user', 'events', 'all_comm','committees', 'tasks', 'all_tasks', 'categories', 'comments', 'head_committees', 'heads_comm', 'mem_comm'));
 	}
 

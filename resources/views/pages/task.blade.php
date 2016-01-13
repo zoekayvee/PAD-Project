@@ -63,13 +63,13 @@
 		</div>
 
         <div class="form-group">
-        {!! Form::hidden('createdby_id', $curr_user['id'], ['class' => 'form-control']) !!}
+        {!! Form::hidden('createdby_id', $user['id'], ['class' => 'form-control']) !!}
         </div>
 
         <div class="form-group">
         {!! Form::label('assigned_to','Assigned To') !!}
         	<br>
-        	{!! Form::radio('assigned_to', $curr_user['id'], ['class'=>'btn btn-default']) !!} {{ $curr_user->username }}<br>
+        	{!! Form::radio('assigned_to', $user['id'], ['class'=>'btn btn-default']) !!} {{ $user->username }}<br>
     		@foreach($users as $user)
     		{!! Form::radio('assigned_to', $user['id'], ['class'=>'btn btn-default']) !!} {{ $user->username }}
     		<br>
