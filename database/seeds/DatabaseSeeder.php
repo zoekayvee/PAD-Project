@@ -8,6 +8,7 @@ use App\Event;
 use App\Committee;
 use App\Head;
 use App\Member;
+use App\FinancialStatus;
 
 class DatabaseSeeder extends Seeder {
 
@@ -30,6 +31,7 @@ class DatabaseResetter extends Seeder {
 
 	public function run()
 	{
+		DB::table('financial_statuses')->delete();
 		DB::table('members')->delete();
 		DB::table('heads')->delete();
 		DB::table('committees')->delete();
@@ -433,5 +435,25 @@ class MembersTableSeeder extends Seeder
 			'comm_id' => '3',
 		]);
 
+		$this->call('FinancialStatusesTableSeeder');
+
+	}
+}
+
+class FinancialStatusesTableSeeder extends Seeder
+{
+	public function run()
+	{
+		FinancialStatus::create([
+			'id' => '1',
+			'cash_in' => '2000',
+			'cash_out' => '1500',
+			'weekly_income' => '500',
+			'payables' => '4900',
+			'cash_in_hand' => '7543.50',
+			'target_budget' => '23543.50',
+			'event_id' => '3',
+			'head_id' => Head::where('event_id', 3)->where('position', 'Finance Committee Head')->first()->id,
+		]);
 	}
 }

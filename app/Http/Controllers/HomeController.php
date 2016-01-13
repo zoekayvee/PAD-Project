@@ -9,6 +9,7 @@ use App\User;
 use App\Committee;
 use App\Head;
 use App\EventShout;
+use App\FinancialStatus;
 
 class HomeController extends Controller {
 
@@ -22,20 +23,37 @@ class HomeController extends Controller {
 	public function getIndex() {
 		$event = Event::latest('id')->first();
 		$user = \Auth::user();
+		$fin_status = FinancialStatus::latest('created_at')->first();
 
 		if($user == "") return view('auth/login');
 
 		$shouts = EventShout::where('event_id', $event->id)->latest('created_at')->get();
 		$heads = Head::where("event_id", $event->id)->get();
-		return view('pages/home', compact('user', 'event','shouts','heads'));
+		return view('pages/home', compact('user', 'event','shouts','heads', 'fin_status'));
 	}
 
-	public function postIndex(Request $request) {
+	public function postAnnouncement(Request $request) {
 		$data = $request->all();
 		EventShout::create($data);
 		return redirect("/");
 	}
 
+	public function postFinancialStatus(Request $request) {
+		$data = $request->all();
+		
+		$latest = FinancialStatus::latest('created_at')->first();
+		$event_id = Event::latest('id')->first()->id;		
+		$head_id = Head::where('event_id', $event_id)->where('position', 'Finance Committee Head')->first()->id;
+
+		$data['weekly_income'] = $data['cash_in'] - $data['cash_out'];
+		$data['cash_in_hand'] = $latest->cash_in_hand + $data['weekly_income'];
+		$data['target_budget'] = $latest['target_budget'];
+		$data['event_id'] = $event_id;
+		$data['head_id'] = $head_id;
+
+		FinancialStatus::create($data);
+		return redirect("/");
+	}
 
 
 }

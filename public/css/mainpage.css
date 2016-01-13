@@ -45,7 +45,7 @@ canvas{
   margin-bottom: 10px;
   padding: 10px;
   box-shadow: 1px 1px 5px #999;
-  line-height: 10px;
+  line-height: 15px;
 }
 
 .card h4 {
@@ -63,4 +63,34 @@ canvas{
 
 .shout-form .btn {
   float: right;
+}
+
+.fin-card {
+  text-align: center;
+  padding: 10px;
+}
+
+
+.fin-card > div {
+  padding: 10px;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+#fin-overlay-panel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+  background-color: rgba(0,0,0,0.7);
+}
+
+#fin-overlay-panel .card {
+  width: 600px;
+  margin: auto;
+  margin-top: 100px;
+  box-shadow: 1px 1px 5px #333;
+}
+
+#fin-overlay-panel #fin-form {
+  padding: 20px;
 }
