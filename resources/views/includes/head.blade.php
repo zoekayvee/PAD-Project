@@ -18,3 +18,4 @@
 <script src="{{ asset('js/docs.min.js') }}"></script>
 <script src="{{ asset('js/Chart.js') }}"></script>
 <script src="{{ asset('js/taskChart.js') }}"></script>
+<script src="{{ asset('js/committeeChart.js') }}"></script>

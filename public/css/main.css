@@ -1,6 +1,7 @@
 body {
-	margin-top: 60px;
     background-color: #f4fce8;
+    font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+    font-size: 17px;
 }
 
 .navbar {
@@ -24,6 +25,19 @@ body {
 .navbar-inverse .navbar-brand:focus,
 .navbar-inverse .navbar-brand:hover{
 	color: #a1bee6;
+}
+
+/* Creting a task form */
+.form{
+	margin-top: 20px; 
+	background-color: white;
+	padding:40px;
+	width:50%;
+}
+
+.page-title{
+	text-align: center;
+	margin-bottom: 10px;
 }
 
 
