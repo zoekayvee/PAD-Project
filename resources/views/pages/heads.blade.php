@@ -36,7 +36,7 @@
                 </div>
             </a>          
             @foreach ($head_committees as $committee)
-                @include('../includes/committeeTasks');
+                @include('../includes/committeeTasks')
             @endforeach
         </div> 
         <div id='tsk' class="row">

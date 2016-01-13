@@ -15,6 +15,10 @@
   </style>
 @stop
 
+@section('navigation')
+    @include('../includes/navigation')
+@stop
+
 @section('content')
 	<div class="container form">
         <div class="page-title">
