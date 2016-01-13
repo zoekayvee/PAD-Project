@@ -10,13 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-/*
-Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index');
-Route::post('/shout', 'HomeController@shout');
-*/
-Route::get('/initialize', 'DataController@setData');
-Route::get('/clean', 'DataController@removeData');
 
 Route::get('/task', 'TaskController@getTask');
 Route::post('/task', 'TaskController@postTask');
