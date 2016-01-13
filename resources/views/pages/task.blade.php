@@ -9,10 +9,6 @@
         href="{{ asset('/css/main.css') }}">
 
     <style type="text/css">
-  		table {
-  			width: 100%;
-  			margin-top: 20px;
-  		}
   		h4 {
   			font-weight: bold;
   		}
@@ -20,8 +16,10 @@
 @stop
 
 @section('content')
-	<div class="container">
-		<h4>Create a Task</h4>
+	<div class="container form">
+        <div class="page-title">
+            <h2>Create a Task</h2>
+        </div>
 
 		{!! Form::open(['url' => 'task']) !!}
         

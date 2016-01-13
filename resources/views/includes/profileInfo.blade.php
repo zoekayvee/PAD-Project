@@ -23,7 +23,13 @@
   <hr>
 
   <div class="table-responsive col-lg-9">
-    <table class="table table-striped">
+    <h3>Committee Progress</h3>
+        <!-- Committee progress Pag heads pababa, else Event progress pag OAh -->
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><span class="">100% Complete</span></div>
+    </div>
+    <br>
+    <table class="table table-condensed table-hover table-border">
       <thead>
         <tr>
           <th>Event</th>
