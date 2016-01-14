@@ -1,43 +1,40 @@
 body{
-    background-image: url("../images/background.jpg");
-		background-repeat: no-repeat;
-		margin:0;
-    background-size: 100%;
-}
-
-
-#overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255,255,255,0.6);
-}
-
-#panel-wrapper {
-  margin-top: 85px;
-}
-
-#login-wrapper {
-  text-align: center;
-}
-
-.card {
-  background-color: white;
-  padding: 25px;
-  padding-top: 5px;
-  box-shadow: 1px 1px 5px #676767;
-
-  background-image: url("../images/feather.png");
+  background-color: black;
+  background-image: url("../images/background.jpg");
+  background-image: url("../images/uplb-blur.jpg");
+  background-repeat: no-repeat;
+	margin:0;
   background-size: 100%;
- }
-
-#foreword {
-  padding: 25px 100px 25px 50px;
-  text-align: justify;
+  font-size: auto;
 }
 
-hr {
-  border: solid 1px;
+#login-panel {
+  margin: auto;
+  margin-top: 140px;
+  margin-bottom: 50px;
+  padding: 30px;
+  width: 550px;
+  background-color: white;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  border-radius: 5px;
+}
+
+#logo {
+  border-radius: 100%;
+  background-color: white;
+  margin: 0;
+  position: absolute;
+  margin-top: -130px;
+  margin-left: 145px;
+  width: 200px;
+  height: 200px;
+}
+
+#welcome {
+  margin-top: 70px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-family: coutur;
 }
 
 input {
@@ -59,13 +56,5 @@ input {
   height: 35px;
   margin: none;
   margin-top: -10px;
-  box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
-}
-
-#logo {
-}
-
-#logo img {
-  width:200px;
-  height:200px;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
 }

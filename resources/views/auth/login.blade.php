@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-  YSES Tracker :: Login
+  YSES Tracker
 @stop
 
 @section('includes')
@@ -12,28 +12,11 @@
 @stop
 
 @section('content')
-<div id="overlay"></div>
 
 <div class="container">
-    <div class="col-md-12" id="panel-wrapper">
-
-        <div class="col-md-7" id="foreword">
-            <h1>YSES TRACKER</h1>
-            <hr>
-            <h4>WELCOME YSERS!</h4>
-            <p><br>Supporting plant tissue culture for genetic conservation is like supporting human survival.
-            It is a good and efficient way of preserving plants because it speeds up propagation of many species and varieties of plants.
-            <br><br>It is our responsibility to conserve current species for future use and plant tissue culture is an innovation to make this happen.</p>
-            <hr>
-        </div>
-
-    <div class="col-md-5 card" id="login-panel">
-
-        <div class="" id="logo">
-            <center>                
-            <img src="{{ asset('images/logo.png') }}" alt="logo">
-            </center>
-        </div>
+    <div class="container" id="login-panel">
+            
+        <img src="{{ asset('images/logo.png') }}" id="logo" alt="logo">
         
         @if($errors->any())
             <span class="alert alert-danger">
@@ -42,8 +25,7 @@
                 @endforeach
             </span>
         @endif
-
-
+        <h2 id="welcome">Welcome to YSES Tracker</h2>
         {!! Form::open(['url' => 'account/login']) !!}
 
             <div class="form-group">
@@ -63,9 +45,8 @@
         <a href="/account/register">
             <button type="button" class="btn btn-primary">Sign Up</button>
         </a>
-        
-    </div>
 
     </div>
+
 </div>
 @stop
