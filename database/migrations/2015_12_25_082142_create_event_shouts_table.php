@@ -15,7 +15,6 @@ class CreateEventShoutsTable extends Migration {
 		Schema::create('event_shouts', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('title');
 			$table->text('shout');
 
 			//foreign key

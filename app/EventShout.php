@@ -11,6 +11,6 @@ class EventShout extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['title', 'shout', 'event_id', 'user_id'];
+	protected $fillable = ['shout', 'event_id', 'user_id'];
 
 }

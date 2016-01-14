@@ -9,6 +9,7 @@ use App\Committee;
 use App\Head;
 use App\Member;
 use App\FinancialStatus;
+use App\EventShout;
 
 class DatabaseSeeder extends Seeder {
 
@@ -31,6 +32,7 @@ class DatabaseResetter extends Seeder {
 
 	public function run()
 	{
+		DB::table('event_shouts')->delete();
 		DB::table('financial_statuses')->delete();
 		DB::table('members')->delete();
 		DB::table('heads')->delete();
@@ -454,6 +456,22 @@ class FinancialStatusesTableSeeder extends Seeder
 			'target_budget' => '23543.50',
 			'event_id' => '3',
 			'head_id' => Head::where('event_id', 3)->where('position', 'Finance Committee Head')->first()->id,
+		]);
+
+		$this->call('EventShoutsSeeder');
+
+	}
+}
+
+class EventShoutsSeeder extends Seeder
+{
+	public function run()
+	{
+		EventShout::create([
+			'id' => '1',
+			'shout' => 'Hi Guys, deadline na nito sa January 22, 2015! We can do this. Please clean and optimize all your tasks.',
+			'event_id' => '3',
+			'user_id' => '5',			
 		]);
 	}
 }

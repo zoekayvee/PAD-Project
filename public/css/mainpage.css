@@ -1,3 +1,49 @@
+div {
+/*  border: solid red 1px;
+*/}
+
+body {
+  background-image: url('../images/feather2.png');
+  background-size: 500px;
+}
+
+.section-title {
+  font-family: coutur;
+  text-align: center;
+}
+
+.section {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#home-wrapper {
+  margin-top: 75px;
+  margin-bottom: 25px;
+}
+
+#home-left {
+  padding: 30px;
+  background-color: white;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+#home-right {
+  padding: 30px;
+  padding-top: 0;
+  height: 100%;
+}
+
+#task-reminders {
+  width: 100%;
+  font-size: 10pt;
+}
+
+.deadline {
+  color: red;
+  text-align: right;
+}
+
 #canvas-holder{
   width:100%;
   text-align: center;
@@ -39,26 +85,7 @@ canvas{
   padding:10px;
 }
 
-.card {
-  background-color: white;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  padding: 10px;
-  box-shadow: 1px 1px 5px #999;
-  line-height: 15px;
-}
-
-.card h4 {
-  color: navy;
-}
-
-.card h6 {
-  font-style: italic;
-  color: #989898;
-}
-
 .shout-form {
-  padding: 20px;
 }
 
 .shout-form .btn {
@@ -69,7 +96,6 @@ canvas{
   text-align: center;
   padding: 10px;
 }
-
 
 .fin-card > div {
   padding: 10px;
@@ -93,4 +119,38 @@ canvas{
 
 #fin-overlay-panel #fin-form {
   padding: 20px;
+}
+
+@-webkit-keyframes load {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: {{ $fin_progress/2 }}%;
+  }
+  100% {
+    width: {{ $fin_progress}}%;
+  }
+}
+
+.progress-bar-striped {
+  -webkit-animation: load 3s;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+
+.progress {
+  background-color: #DEDEDE;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.5) inset;
+}
+
+.shout {
+  padding: 0;
+  padding-top: 10px;
+  border-bottom: solid 1px rgba(0,0,0,0.1);
+}
+
+.shout-body {
+  font-weight: bold;
+  font-size: 11pt;
+  line-height: 13pt;
 }

@@ -10,6 +10,7 @@ use App\Committee;
 use App\Head;
 use App\EventShout;
 use App\FinancialStatus;
+use App\Task;
 
 class HomeController extends Controller {
 
@@ -24,12 +25,14 @@ class HomeController extends Controller {
 		$event = Event::latest('id')->first();
 		$user = \Auth::user();
 		$fin_status = FinancialStatus::latest('created_at')->first();
+		$tasks = Task::where('assigned_to', $user->id)->latest('deadline')->get();
 
 		if($user == "") return view('auth/login');
 
 		$shouts = EventShout::where('event_id', $event->id)->latest('created_at')->get();
 		$heads = Head::where("event_id", $event->id)->get();
-		return view('pages/home', compact('user', 'event','shouts','heads', 'fin_status'));
+
+		return view('pages/home', compact('user', 'event','shouts','heads', 'fin_status', 'tasks'));
 	}
 
 	public function postAnnouncement(Request $request) {
