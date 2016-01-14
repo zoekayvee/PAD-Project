@@ -24,6 +24,11 @@ class HomeController extends Controller {
 	public function getIndex() {
 		$event = Event::latest('id')->first();
 		$user = \Auth::user();
+
+		if($user->standing == 'unconfirmed') {
+			return view('pages/oops', compact('user'));
+		}
+
 		$fin_status = FinancialStatus::latest('created_at')->first();
 		$tasks = Task::where('assigned_to', $user->id)->latest('deadline')->get();
 
@@ -56,6 +61,11 @@ class HomeController extends Controller {
 
 		FinancialStatus::create($data);
 		return redirect("/");
+	}
+
+	public function getOops() {
+		$user = \Auth::user();		
+		return view('pages/oops', compact('user'));
 	}
 
 

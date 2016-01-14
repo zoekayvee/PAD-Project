@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('/home', 'HomeController@getIndex');
+
 Route::get('/task', 'TaskController@getTask');
 Route::post('/task', 'TaskController@postTask');
 

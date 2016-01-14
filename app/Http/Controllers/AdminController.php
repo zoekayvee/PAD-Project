@@ -41,16 +41,13 @@ class AdminController extends Controller {
 		$data = $request->all();
 		$user_id = $data['user_id'];
 		$comm_id = $data['comm_id'];
-		$isaprv = ($data['isaprv'] == "YES")? true : false;
-		$isoah = ($data['isoah'] == "YES")? true : false;
-		$ishead = ($data['ishead'] == "YES")? true : false;
+		$position = $data['position'];
+		$evaluation = $data['evaluation'];
 
-		$user = User::where("id", $user_id)->get();
-		$user = $user[0];
-
+		$user = User::where("id", $user_id)->first();
 		$event = $this->currentEvent();
 		
-		if(!$isaprv) {			
+		if($evaluation == "false") {			
 			$user->delete();
 		}
 
@@ -58,12 +55,12 @@ class AdminController extends Controller {
 			$user->standing = "active";
 			$user->save();
 
-			if($isoah) {
+			if($position == "Overall Activity Head") {
 				$event->oah_id = $user_id;
 				$event->save();
 			}
 
-			elseif($ishead) {
+			elseif($position == "Committee Head") {
 				$comm = Committee::where("event_id", $event->id)->where("id", $comm_id)->first();
 				$head = new Head();
 				$head->position = $comm->name . " Head";

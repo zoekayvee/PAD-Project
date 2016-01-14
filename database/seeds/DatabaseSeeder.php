@@ -202,7 +202,7 @@ class EventsTableSeeder extends Seeder
 			'title' => 'PFJF',
 			'theme' => 'CTRL + Shift',
 			'sem' => 'Second Semester',
-			'year' => '2014-2015',
+			'year' => '2014 - 2015',
 			'oah_id' => User::where('fname', 'Almer')->first()->id,
 			'weight' => '0',
 		]);
@@ -212,7 +212,7 @@ class EventsTableSeeder extends Seeder
 			'title' => 'GET 1/4',
 			'theme' => 'Overclocked',
 			'sem' => 'First Semester',
-			'year' => '2015-2016',
+			'year' => '2015 - 2016',
 			'oah_id' => User::where('fname', 'Celyn')->first()->id,
 			'weight' => '0',
 		]);
@@ -222,7 +222,7 @@ class EventsTableSeeder extends Seeder
 			'title' => 'PFJF',
 			'theme' => 'Decode Your Future',
 			'sem' => 'Second Semester',
-			'year' => '2015-2016',
+			'year' => '2015 - 2016',
 			'oah_id' => User::where('fname', 'Charlie')->first()->id,
 			'weight' => '0',
 		]);

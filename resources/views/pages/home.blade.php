@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-  YSES Tracker :: Home
+    Home
 @stop
 
 @section('includes')
@@ -26,22 +26,26 @@
 
 
 @section('content')
-<div id="fin-overlay-panel">
+<div class="col-md-12" id="fin-overlay-panel">
   <div class="card container">
     <div class="col-md-12" id='fin-form'>
     {!! Form::open(['url' => '/financial-status']) !!}
-      <h4>Financial Status Report Update</h4>
+      <h4 class="section-title">Financial Status Report Update</h4>
       <hr>
-      <p>Each group shall have four to five participants for this game. Members of the group will line-up horizontally. Each adjacent leg will be tied – legs that are not owned by the same person (see Figure 1). The total number of leg should be equal to the total number of members plus one (five members = 6 legs; four members = 5 legs).</p><br>
+      <p>Each group shall have four to five participants for this game.
+      Members of the group will line-up horizontally.
+      Each adjacent leg will be tied – legs that are not owned by the same person (see Figure 1).
+      </p><br>
         <label name="cash_in">Weekly Cash In</label>
-        <input type="number" name="cash_in" class="form-control"/><br>
+        <input type="number" name="cash_in" class="form-control" required/><br>
         <label name="cash_out">Weekly Cash Out</label>
-        <input type="number" name="cash_out" class="form-control"/><br>
+        <input type="number" name="cash_out" class="form-control" required/><br>
         <label name="payables">Total Amout Payables</label>
-        <input type="number" name="payables" class="form-control"/><br>
+        <input type="number" name="payables" class="form-control" required/><br>
 
         {!! Form::submit("UPDATE", ["class"=>"btn btn-primary form-control"]) !!}
       {!! Form::close() !!}
+      <button class="btn btn-default form-control" id="close-fin-form">CLOSE</button>
     </div>   
   </div>
 </div>
@@ -88,15 +92,15 @@
             <div class="col-md-12">
                 <div class="col-md-4">                
                     <h5>Cash in Hand: </h5>
-                    <h4>{{ $fin_status->cash_in_hand }}</h4>
+                    <h4>P{{ $fin_status->cash_in_hand }}</h4>
                 </div>
                 <div class="col-md-4">                
                     <h5>Payables: </h5>
-                    <h4>{{ $fin_status->payables }}</h4>
+                    <h4>P{{ $fin_status->payables }}</h4>
                 </div>
                 <div class="col-md-4">                
                     <h5>Target Budget: </h5>
-                    <h4>{{ $fin_status->target_budget }}</h4>
+                    <h4>P{{ $fin_status->target_budget }}</h4>
                 </div>
             </div>
 
@@ -104,19 +108,19 @@
                 <div class="col-md-4 fin-card">
                     <div>
                         <h5>Weekly Cash In</h5>
-                        <h2>{{ $fin_status->cash_in }}</h2>
+                        <h2 class="value">P{{ $fin_status->cash_in }}</h2>
                     </div>
                 </div>
                 <div class="col-md-4 fin-card">
                     <div>
                         <h5>Weekly Cash Out</h5>
-                        <h2>{{ $fin_status->cash_out }}</h2>
+                        <h2 class="value">P{{ $fin_status->cash_out }}</h2>
                     </div>
                 </div>
                 <div class="col-md-4 fin-card">
                     <div>
                         <h5>Weekly Income</h5>
-                        <h2>{{ $fin_status->weekly_income }}</h2>
+                        <h2 class="value">P{{ $fin_status->weekly_income }}</h2>
                     </div>
                 </div>
             </div>
@@ -186,7 +190,6 @@
           {!! Form::close() !!}
         @endif
         </div>
-
 
         </div>
 

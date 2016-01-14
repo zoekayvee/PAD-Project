@@ -17,7 +17,7 @@ class CreateEventsTable extends Migration {
 			$table->increments('id');
 			$table->string('theme');
 			$table->string('title');
-			$table->string('year', 4);
+			$table->string('year');
 			$table->string('sem');
 			$table->integer('weight')->unsigned();
 

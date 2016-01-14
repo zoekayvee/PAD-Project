@@ -1,10 +1,16 @@
 body {
-	background-color: #FEFEFE;
+  background-image: url('../../images/feather2.png');
+  background-size: 500px;
 }
 
 div {
 /*	border: solid 1px red;
 */}
+
+#admin-panel {
+	padding-top: 75px;
+	padding-bottom: 25px;
+}
 
 #admin-container {
 	padding-bottom: 15px;
@@ -15,39 +21,75 @@ div {
 	padding: 15px;
 }
 
-.request-panel {
-	background: #2C95E2;
-	padding: 15px;
+.section-title {
+	font-family: coutur;
+}
+
+.designation {
+	margin-top: 10px;
 	margin-bottom: 10px;
-	box-shadow: 1px 1px 5px #989898;
-	color: white;
+}
+
+.request-panel {
+	background: white;
+	padding: 15px;
+	margin-left: -15px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
 }
 
 .request-panel .user {
 	text-align: left;
+	line-height: 12pt;
+	font-size: 11pt;
+}
+
+hr {
+	margin: 5px;
+}
+
+p.label {
+	color: black;
+}
+
+.user h4 {
+	text-align: center;
+	font-weight: bold;
 }
 
 .request-panel .committee {
 	text-align: left;
 }
 
-.request-panel select {
-	color: black;
+#summary-panel {
+	padding: 0;
 }
 
-.request-panel .col-md-4 {
-	text-align: center;
+.table-wrapper {
+	padding: 15px;
+	margin-bottom: 30px;
+	background-color: white;
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
 }
 
-.request-panel .btn {
-	border-radius: 5px;
-	background-color: #D34A86;
-	color: white;	
-	box-shadow: 1px 1px 5px #444;
-	margin: 10px;
+#committees-table {
 }
 
-.request-panel .btn:hover {
-	background-color: #E6A32A;
+.create-button {
+	position: absolute;
+	margin-top: -20px;
+	right: 20px;
+	height: 50px;
+	width: 50px;
+	border-radius: 100%;
+	font-size: 20pt;
+	background-color: royalblue;
+	color: white;
+	border: none;
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
 
+td {
+	font-size: 11pt;
 }

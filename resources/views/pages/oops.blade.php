@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css"
         href="{{ asset('/css/main.css') }}">
     <link rel="stylesheet" type="text/css"
-        href="{{ asset('/css/profile.css') }}">
+        href="{{ asset('/css/oops.css') }}">
 @stop
 
 @section('navigation')
@@ -16,10 +16,22 @@
 @endsection	
 
 @section('content')
-	<br><br><br><br>
-	<div class="container">
-		<h1>You should not be here.</h1>
-		<h1>The Admin will confirm your registration soon.</h1>
+	<div class="container" id="remark-panel">
+		<div class="col-md-12">
+			<div class="col-md-4">
+				<img src="{{ asset('images/pusheen.gif') }}" id="pusheen">
+			</div>
+
+			<div class="col-md-8">
+				<h1>Setting up your account.</h1>
+				<hr>
+				<p>The Admin will confirm your registration soon.</p>
+				<p>Calm your ass, kid.</p>
+				<br>
+				<p>You may now logout,</p>
+				<p>or stare at the cuteness of this Pusheen.</p>
+				<p>Pusheen heart heart. Pusheen is love.</p>
+			</div>
+		</div>
 	</div>
-	<br><br><br><br>
 @stop

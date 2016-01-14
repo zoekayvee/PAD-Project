@@ -1,0 +1,17 @@
+body {
+  background-image: url('../../images/feather2.png');
+  background-size: 500px;
+}
+
+#remark-panel {
+	margin-top: 75px;
+	margin-bottom: 25px;
+	padding: 25px;
+	background-color: white;
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+}
+
+#pusheen {
+	margin: auto;
+	border-radius: 100%;
+}

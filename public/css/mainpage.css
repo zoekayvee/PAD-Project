@@ -98,27 +98,39 @@ canvas{
 }
 
 .fin-card > div {
-  padding: 10px;
-  box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  padding: 5px 0;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+  background-color: #F0F0F0;
+  border-top: solid 3px navy;
+}
+
+.value {
+  margin-top: 0;
+}
+
+#fin-form .btn {
+  margin-top: 10px;
 }
 
 #fin-overlay-panel {
   position: absolute;
   width: 100%;
   height: 100%;
+  top: 0;
   z-index: 2000;
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0,0,0,0.5);
 }
 
 #fin-overlay-panel .card {
   width: 600px;
+  background-color: white;
   margin: auto;
-  margin-top: 100px;
-  box-shadow: 1px 1px 5px #333;
+  margin-top: 75px;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
 }
 
 #fin-overlay-panel #fin-form {
-  padding: 20px;
+  padding: 25px;
 }
 
 @-webkit-keyframes load {
@@ -129,7 +141,7 @@ canvas{
     width: {{ $fin_progress/2 }}%;
   }
   100% {
-    width: {{ $fin_progress}}%;
+    width: {{ $fin_progress }}%;
   }
 }
 
@@ -154,3 +166,4 @@ canvas{
   font-size: 11pt;
   line-height: 13pt;
 }
+

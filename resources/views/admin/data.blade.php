@@ -1,46 +1,15 @@
-	<div>
-		<table class="table">
-		<tr>
-			<th>ID</th>
-			<th>First Name</th>
-			<th>Middle Name</th>
-			<th>Last Name</th>
-			<th>Username</th>
-			<th>Email</th>
-			<th>Password</th>
-			<th>Student Number</th>
-			<th>Department</th>
-			<th>YSES Batch</th>
-		</tr>
-		@foreach($users as $user)
-		<tr>
-			<td>{{ $user->id }}</td>
-			<td>{{ $user->fname }}</td>
-			<td>{{ $user->mname }}</td>
-			<td>{{ $user->lname }}</td>
-			<td>{{ $user->username }}</td>
-			<td>{{ $user->email }}</td>
-			<td>{{ $user->password }}</td>
-			<td>{{ $user->studno }}</td>
-			<td>{{ $user->department }}</td>
-			<td>{{ $user->batch }}</td>
-		</tr>
-		@endforeach
-		</table>
-	</div>
-
-	<div class="container">
-		<h4>Events from the DB:</h4>
-		<table class="table">
-		<tr>
-			<th>Event ID</th>
+<div class="col-md-12" id="summary-panel">
+	<div class="col-md-12 table-wrapper">
+		<table class="table table-condensed table-striped" id="events-table">
+		<thead>
+			<th>Event</th>
 			<th>Title</th>
 			<th>Theme</th>
 			<th>Semester</th>
 			<th>Year</th>
 			<th>Weight</th>
-			<th>OAH / User ID (foreign)</th>
-		</tr>
+			<th>OAH</th>
+		</thead>
 		@foreach($events as $event)
 		<tr>
 			<td>{{ $event->id }}</td>
@@ -49,85 +18,76 @@
 			<td>{{ $event->sem }}</td>
 			<td>{{ $event->year }}</td>
 			<td>{{ $event->weight }}</td>
-			<td>{{ $event->oah_id }}</td>
+
+		<?php
+			$oah = $users->where('id', $event->oah_id)->first();
+		?>
+			<td>{{ $oah->fname }} {{ $oah->lname }}</td>
 		</tr>
 		@endforeach
 		</table>
+		<a href="/admin/event">
+			<button class="btn btn-default create-button">+</button>		
+		</a>
 	</div>
 
-	<div class="container">
-		<h4>Committees from the DB:</h4>
-		<table class="table">
-		<tr>
-			<th>Comm ID</th>
-			<th>Comm Name</th>
+	<div class="col-md-12 table-wrapper" id="committees-table">
+		<table class="table table-condensed table-striped">
+		<thead>
+			<th>Committee</th>
+			<th>Name</th>
 			<th>Weight</th>
 			<th>Event ID (foreign)</th>
-		</tr>
+		</thead>
 		@foreach($committees as $committee)
 		<tr>
 			<td>{{ $committee->id }}</td>
 			<td>{{ $committee->name }}</td>
 			<td>{{ $committee->weight }}</td>
-			<td>{{ $committee->event_id }}</td>
+
+		<?php
+			$event_what = $events->where('id', $committee->event_id)->first();
+		?>			
+			<td>{{ $event_what->title }}, {{ $event_what->year }}</td>
 		</tr>
 		@endforeach
 		</table>
+
+		<a href="/admin/committee">
+			<button class="btn btn-default create-button">+</button>		
+		</a>
 	</div>
 
-	<div class="container">
-		<h4>Heads from the DB:</h4>
-		<table class="table">
-		<tr>
-			<th>Head ID</th>
+	<div class="col-md-12 table-wrapper" id="heads-table">
+		<table class="table table-condensed table-striped">
+		<thead>
+			<th>Head</th>
 			<th>Position</th>
-			<th>Head / User ID (foreign)</th>
-			<th>Comm ID (foreign)</th>
-			<th>Event ID (foreign)</th>
-		</tr>
+			<th>User</th>
+			<th>Committee</th>
+			<th>Event</th>
+
+		</thead>
 		@foreach($heads as $head)
 		<tr>
 			<td>{{ $head->id }}</td>
 			<td>{{ $head->position }}</td>
-			<td>{{ $head->user_id }}</td>
-			<td>{{ $head->comm_id }}</td>
-			<td>{{ $head->event_id }}</td>
+
+			<?php
+				$head_user = $users->where('id', $head->user_id)->first();
+				$head_comm = $committees->where('id', $head->comm_id)->first();
+				$head_event = $events->where('id', $head->event_id)->first();
+			?>			
+
+			<td>{{ $head_user->fname }} {{ $head_user->lname }}</td>
+			<td>{{ $head_comm->name }}</td>
+			<td>{{ $head_event->title }}, {{ $head_event->year }}</td>
 		</tr>
 		@endforeach
 		</table>
+		<a href="/admin/head">
+			<button class="btn btn-default create-button">+</button>		
+		</a>
 	</div>
 
-	<div class="container">
-		<h4>Tasks from the DB:</h4>
-		<table class="table">
-		<tr>
-			<th>ID</th>
-			<th>Title</th>
-			<th>Description</th>
-			<th>Progress</th>
-			<th>Weight</th>
-			<th>Deadline</th>
-			<th>Remark</th>
-			<th>Date Created</th>
-			<th>Created By</th>
-			<th>Assigned to</th>
-			<th>Committee</th>
-		</tr>
-		
-		@foreach($tasks as $task)
-		<tr>
-			<td>{{ $task->task_id }}</td>
-			<td>{{ $task->title }}</td>
-			<td>{{ $task->description }}</td>
-			<td>{{ $task->progress }}</td>
-			<td>{{ $task->weight }}</td>
-			<td>{{ $task->deadline }}</td>
-			<td>{{ $task->remark }}</td>
-			<td>{{ $task->created_date }}</td>
-			<td>{{ $task->createdby_id }}</td>
-			<td>{{ $task->assigned_to }}</td>
-			<td>{{ $task->comm_id }}</td>
-		</tr>
-		@endforeach
-		</table>
-	</div>
+</div>
