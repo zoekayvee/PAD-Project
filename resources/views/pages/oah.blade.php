@@ -25,7 +25,7 @@
             <!-- Will only be visible if a task is given,
                 otherwise, put "No assigne task/s" -->
             @foreach ($committees as $committee)
-                @include('../includes/committeeTasks');
+                @include('../includes/committeeTasks')
             @endforeach
     </div>
 @stop

@@ -1,11 +1,6 @@
 <div class="col-md-3 cards">
     <div>
         <h3>{{ $task->title }}</h3>
-        @foreach ($users as $assigned_to)
-            @if($task->assigned_to == $assigned_to->id)
-                <h5>Assigned to: {{ $assigned_to->username }}</h5>
-            @endif
-        @endforeach
         <h5>Due: {{ $task->deadline }}</h5>
         <p>{{{ $task->description }}}</p>
     </div>

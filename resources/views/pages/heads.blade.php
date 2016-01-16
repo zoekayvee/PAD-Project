@@ -9,6 +9,9 @@
           href="{{ asset('/css/profile.css') }}">
     <link rel="stylesheet" type="text/css"
           href="{{ asset('/css/main.css') }}">
+    <script type="text/javascript"
+        src="{{ asset('/js/task.js') }}">
+        </script>
 @stop
 
 @section('navigation')
@@ -22,43 +25,39 @@
     <div class="container">
         <div class="row">
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#comm"><h3>Committee</h3></a></li>
-                <li role="presentation"><a href="#tsk"><h3>Personal Tasks</h3></a></li>
-                @foreach ($head_committees as $committee)
-                    <li role="presentation"><a href="#"><h3>{{$committee->name}}</h3></a></li>
-                @endforeach
+                <li role="presentation" id="nav-comm"><a href="#"><h3>Committee</h3></a></li>
+                <li role="presentation" id="nav-tsk"><a href="#"><h3>Personal Tasks</h3></a></li>
             </ul>         
         </div>
-        <div id="comm" class="row">
-            <a href="/task">
-                <div class="col-md-2 addTask">       
-                    +
-                </div>
-            </a>          
-            @foreach ($head_committees as $committee)
-                @include('../includes/committeeTasks')
-            @endforeach
-        </div> 
-        <div id='tsk' class="row">
-            @if(count($tasks) > 0)
-                @foreach ($tasks as $task)
-                    @include('../includes/individualTasks')
+        <div>
+            <div id="commi" class="row">
+                <a href="/task">
+                    <div class="col-md-2 addTask">       
+                        +
+                    </div>
+                </a>
+
+                @foreach ($head_committees as $committee)
+                    @foreach ($all_tasks as $task)
+                        @if($task->comm_id == $committee->id)
+                            @include('../includes/head_committeeTasks')
+                        @endif
+                    @endforeach
                 @endforeach
-            @else 
-                <p>No assigned task</p>
-                <!-- Di po gumana -->
-            @endif
-        <div> 
-        <div class="row"> 
-            <br><br><br>        
-            @foreach ($head_committees as $committee)
-                @foreach ($all_tasks as $task)
-                    @if($task->comm_id == $committee->id)
-                        @include('../includes/head_committeeTasks')
-                    @endif
-                @endforeach
-            @endforeach
-        </div> 
+
+                
+            </div> 
+            <div id="tsk" class="row">
+                @if(count($tasks) > 0)
+                    @foreach ($tasks as $task)
+                        @include('../includes/individualTasks')
+                    @endforeach
+                @else 
+                    <p>No assigned task</p>
+                    <!-- Di po gumana -->
+                @endif
+            </div>             
+        </div>
     </div>
 @stop
 

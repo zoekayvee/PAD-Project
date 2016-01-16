@@ -5,6 +5,11 @@
             @foreach ($all_tasks as $task)
                 @if($task->comm_id == $committee->id)
                     <li>{{ $task->title }}</li>
+                    @foreach ($users as $assigned_to)
+                        @if($task->assigned_to == $assigned_to->id)
+                            <p>Assigned to: {{ $assigned_to->username }}</p>
+                        @endif
+                    @endforeach
                 <br>
                 @endif
             @endforeach
