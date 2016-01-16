@@ -40,37 +40,36 @@ class ProfileController extends Controller {
 		$categories = array('Pending', 'In-progress', 'Delayed', 'Finished');
 		$comments = Comment::all();
 
+		//get current event id
+		$curr_event_id = $curr_event->id;
+
+		
+		//check if current user is upper head
+
+			//get all heads of current event
+			$heads = Head::where('event_id', $curr_event_id)->where('user_id', $user->id)->get();
+			//get all comm_id(as array) in the current event where current user is a head 
+			$heads_comm = Head::where('event_id', $curr_event_id)->where('user_id', $user['id'])->get(array('comm_id'))->toArray();
+			//get all committees in the current event where current user is a head 
+			$head_committees = Committee::whereIn('id', $heads_comm)->get();
+
+			//current user is a head 
+			$heads_comm = Head::where('user_id', $user['id'])->get();
+			
+			//committees where current user is a member 
+			$mem_comm = Member::where('user_id', $user['id'])->get();
+
 		$url = "pages/profile";
 		//check if curret user is admin
 		if($user->id == 1) {
 			return redirect('/admin/');
 		}
 
-		//get current event id
-		$curr_event_id = $curr_event->id;
-
 		//check if current user is OAH
 		if($curr_event->oah_id == $user->id) $url = "pages/oah";
 
-		//check if current user is upper head
-
-			//get all heads of current event
-			$heads = Head::where('event_id', $curr_event_id)->where('user_id', $user->id)->get();
-			//get all comm_id(as array) where current user is a head 
-			$heads_comm = Head::where('event_id', $curr_event_id)->where('user_id', $user['id'])->get(array('comm_id'))->toArray();
-			
-
-			//return heads page if user is lower head
-			if($heads != "[]"){
-				$url = "pages/heads";
-				$head_committees = Committee::whereIn('id', $heads_comm)->get();			
-			}
-
-			//current user is a head 
-			$heads_comm = Head::where('event_id', $curr_event_id)->where('user_id', $user['id'])->get();
-			
-			//committees where current user is a member 
-			$mem_comm = Member::where('user_id', $user['id'])->get();
+		//return heads page if user is lower head
+		if($heads != "[]") $url = "pages/heads";
 
 		if($user->standing == "unconfirmed") $url = "pages/oops";
 

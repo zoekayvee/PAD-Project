@@ -39,24 +39,38 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ($head_committees as $committee)
+
+        <!-- As oah of event  -->
+        @foreach($events as $event)
           <tr>
-          @foreach($events as $event)
-            @if($event->id == $committee->event_id)
-              <td><a href="#">{{$event->title}} : {{$event->theme}}</a></td>
-              <td>{{$event->sem}}, {{$event->year}}</td>
-            @endif
-          @endforeach <!-- endforeach events  -->
-          @foreach($heads_comm as $head)
+          @if($event->oah_id == $user->id)
+            <td><a href="#">{{$event->title}} : {{$event->theme}}</a></td>
+            <td>{{$event->sem}}, {{$event->year}}</td>
+            <td>OAH</td>
+          @endif
+          </tr>
+        @endforeach <!-- endforeach events -->
+
+        <!-- As head of committee  -->
+        @foreach($heads_comm as $head)
+          <tr>
+          @foreach ($all_comm as $committee)
             @if($head->comm_id == $committee->id)
-              <td>{{ $head->position }}</td>
+              @foreach($events as $event)
+                @if($event->id == $committee->event_id)
+                  <td><a href="#">{{$event->title}} : {{$event->theme}}</a></td>
+                  <td>{{$event->sem}}, {{$event->year}}</td>
+                  <td>{{ $head->position }}</td>
+                  <td>{{ $committee->name }}</td>
+                @endif
+              @endforeach <!-- endforeach events  -->
             @endif
-          @endforeach <!-- endforeach heads_comm -->
-          <td>{{ $committee->name }}</td>
-        </tr>
-        @endforeach <!-- endforeach head_committees -->
+          @endforeach <!-- endforeach all_comm -->
+          </tr>
+        @endforeach <!-- endforeach heads_comm -->
 
 
+        <!-- As member of committee  -->
         @foreach ($mem_comm as $member)
           <tr>
             @foreach($all_comm as $committee)
