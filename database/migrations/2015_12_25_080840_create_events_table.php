@@ -19,6 +19,7 @@ class CreateEventsTable extends Migration {
 			$table->string('title');
 			$table->string('year');
 			$table->string('sem');
+			$table->decimal('progress', 5, 2);
 			$table->integer('weight')->unsigned();
 
 			//foreign key

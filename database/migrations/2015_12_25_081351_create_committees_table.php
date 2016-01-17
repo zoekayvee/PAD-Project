@@ -16,6 +16,7 @@ class CreateCommitteesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('name');
+			$table->decimal('progress', 5, 2);
 			$table->integer('weight')->unsigned();
 
 			//foreign key

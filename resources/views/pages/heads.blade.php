@@ -19,7 +19,7 @@
 @stop
 
 @section('content')
-    <div class="container">
+    <div class="container" id="temp">
         @include('../includes/profileInfo')
     </div>
     <div class="container">
@@ -29,7 +29,7 @@
                 <li role="presentation" id="nav-tsk"><a href="#"><h3>Personal Tasks</h3></a></li>
             </ul>         
         </div>
-        <div>
+        <div id="tasks" class="row">
             <div id="commi" class="row">
                 <a href="/task">
                     <div class="col-md-2 addTask">       
