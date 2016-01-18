@@ -1,4 +1,7 @@
 $(document).ready(function(){
+    $('.carousel').carousel({
+        interval: 3000
+    })
 
     $('#fin-overlay-panel').slideUp(0);
 
@@ -9,5 +12,5 @@ $(document).ready(function(){
     $('#close-fin-form').click(function(){
     	$('#fin-overlay-panel').slideUp('slow');
     });
-      
+
 });

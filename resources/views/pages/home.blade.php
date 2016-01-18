@@ -11,7 +11,7 @@
   ?>
   
   <link rel="stylesheet" type="text/css"
-    href="{{ asset('/css/mainpage.css') }}">
+    href="{{ asset('/css/home.css') }}">
   <script type="text/javascript"
     src="{{ asset('/js/home.js') }}">
     </script>
@@ -50,12 +50,17 @@
 
 <div class="container" id="home-wrapper">
     <div class="row">
+
     <div class="col-md-8" id="home-left">
-        <div class="col-md-12 section" id="section-header">        
+        <div class="col-md-12 section" id="section-header-hover">
             <center>
-                <h2 class="section-title">{{ $event->title }} : {{ $event->theme }}</h2>
+                <br>
+                <h1 class="section-title">{{ $event->title }} : {{ $event->theme }}</h1>
                 <p>{{ $event->sem }}, {{ $event->year }}</p>
             </center>
+        </div>        
+
+        <div class="col-md-12 section" id="section-header"> 
         </div>
         
             <!--Overall Progress Chart-->
@@ -101,18 +106,27 @@
             <div class="col-md-12">
                 <div class="col-md-4 fin-card">
                     <div>
+                        <div class="col-md-12 cash_icon">
+                            <img src="{{ asset('images/cash_in.png') }}">
+                        </div>
                         <h5>Weekly Cash In</h5>
                         <h2 class="value">P{{ $fin_status->cash_in }}</h2>
                     </div>
                 </div>
                 <div class="col-md-4 fin-card">
                     <div>
+                        <div class="col-md-12 cash_icon">
+                            <img src="{{ asset('images/cash_out.png') }}">
+                        </div>
                         <h5>Weekly Cash Out</h5>
                         <h2 class="value">P{{ $fin_status->cash_out }}</h2>
                     </div>
                 </div>
                 <div class="col-md-4 fin-card">
                     <div>
+                        <div class="col-md-12 cash_icon">
+                            <img src="{{ asset('images/cash_inc.png') }}">
+                        </div>
                         <h5>Weekly Income</h5>
                         <h2 class="value">P{{ $fin_status->weekly_income }}</h2>
                     </div>
@@ -123,49 +137,27 @@
     </div>
 
     <div class="col-md-4" id="home-right">
-        <div class="col-md-12 section">
+
+        <div class="col-md-12 section right-pannel" id="tasks-panel-wrapper">
             <h4 class="section-title">Task Reminders</h4>
-            <table id="task-reminders">
+            <div class="col-md-12" id="task-panel">
+                
             @if(count($tasks) == 0)          
                 <h6>No pending tasks.</h6>
             @endif
 
             @if(count($tasks) > 0)          
             @foreach($tasks as $task)
-                <tr>
-                    <td>{{ $task->title }}</td>
-                    <td class="deadline">{{ $task->deadline }}</td>
-                </tr>
+                <div class="col-md-12 rem-list">                   
+                    <div class="col-md-7 rem-title">{{ $task->title }}</div>
+                    <div class="col-md-5 rem-deadline">{{ $task->deadline }}</div>
+                </div>
             @endforeach
             @endif
-            </table>
+            </div>
         </div>
 
-        <div class="col-md-12 section">
-            <h4 class="section-title">Announcements</h4>
-                @foreach($shouts as $shout)
-                <div class="col-md-12 shout">
-                    <p class="shout-body"> {{ $shout->shout }} </p>
-
-                    <?php
-                        $owner = "";
-                        $id = $shout->user_id;
-                        if($event->oah_id == $id) $owner = "Overall Activity Head";
-                        else {
-                          $head = $heads->where('user_id', $id)->first();
-                          $owner = $head->position;
-                        }
-                    ?>
-
-                    <h6 class="shout-owner">by {{ $owner }}<br>
-                    {{ $shout->created_at }}<br>
-                    </h6>
-                </div>
-                @endforeach
-            <hr>
-        </div>
-
-        <div class="col-md-12 section shout-form">
+        <div class="col-md-12 section shout-form right-pannel">
         <?php
             $is_head = false;
             if($heads->where("user_id", $user->id) != '[]') $is_head = true;
@@ -184,6 +176,57 @@
           {!! Form::close() !!}
         @endif
         </div>
+
+        <div class="col-md-12 section right-pannel">
+            <h4 class="section-title">Announcements</h4>
+            <div class="carousel slide" data-ride="carousel" id="carousel-example">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="carousel-inner">
+
+                            <div class="item active">
+                                <div class="carousel-content">
+                                    <div>
+                                    <p class="shout-body">MALIGAYANG PAGDATING SA YSES TRACKER!</p>
+                            </div></div></div>
+                
+                            @foreach($shouts as $shout)
+                            <div class="item">
+                                <div class="carousel-content">
+                                    <div>
+                                    <p class="shout-body"> {{ $shout->shout }} </p>
+
+                                    <?php
+                                        $owner = "";
+                                        $id = $shout->user_id;
+                                        if($event->oah_id == $id) $owner = "Overall Activity Head";
+                                        else {
+                                          $head = $heads->where('user_id', $id)->first();
+                                          $owner = $head->position;
+                                        }
+                                    ?>
+
+                                        <h6 class="shout-owner">by {{ $owner }}<br>
+                                        {{ $shout->created_at }}<br>
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a class="left carousel-control" href="#carousel-example" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+
+        </div>
+
 
         </div>
 
