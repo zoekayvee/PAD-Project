@@ -80,10 +80,10 @@
                     if( $head != "") $is_fin_head = true;
                 ?>
                 @if( $is_fin_head)
-                    <button class="btn btn-primary" id="fin-update" style="float:right">UPDATE</button>
+                    <button class="btn btn-primary" style="width:auto; float:right" id="fin-update" style="float:right">UPDATE</button>
                 @endif
             </h4>
-
+            <br>
             <div class="progress">
                 <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{ $fin_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $fin_progress }}%"><span class="">{{ $fin_progress }}% of Target Budget</span></div>
             </div>
@@ -143,7 +143,7 @@
             <div class="col-md-12" id="task-panel">
                 
             @if(count($tasks) == 0)          
-                <h6>No pending tasks.</h6>
+                <div>No pending tasks.</div>
             @endif
 
             @if(count($tasks) > 0)          
@@ -187,8 +187,11 @@
                             <div class="item active">
                                 <div class="carousel-content">
                                     <div>
-                                    <p class="shout-body">MALIGAYANG PAGDATING SA YSES TRACKER!</p>
-                            </div></div></div>
+                                    <p class="shout-body">MALIGAYANG PAGDATING SA YSES TRACKER! Event Natin Ito. Go Ysers! We can do it.<br><br>Next Committee Meeting will be on January 60, 1923.</p>
+                                    <h6 class="shout-owner">by Overall Activity Head<br>
+                                    </div>
+                                </div>
+                            </div>
                 
                             @foreach($shouts as $shout)
                             <div class="item">
