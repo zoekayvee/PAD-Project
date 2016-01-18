@@ -11,8 +11,6 @@
   ?>
   
   <link rel="stylesheet" type="text/css"
-    href="{{ asset('/css/main.css') }}">
-  <link rel="stylesheet" type="text/css"
     href="{{ asset('/css/mainpage.css') }}">
   <script type="text/javascript"
     src="{{ asset('/js/home.js') }}">
@@ -53,37 +51,33 @@
 <div class="container" id="home-wrapper">
     <div class="row">
     <div class="col-md-8" id="home-left">
-        <center>
-            <h2 class="section-title">{{ $event->title }} : {{ $event->theme }}</h2>
-            <p>{{ $event->sem}}, {{ $event->year }}</p>
-            <hr>
-        </center>
+        <div class="col-md-12 section" id="section-header">        
+            <center>
+                <h2 class="section-title">{{ $event->title }} : {{ $event->theme }}</h2>
+                <p>{{ $event->sem }}, {{ $event->year }}</p>
+            </center>
+        </div>
         
             <!--Overall Progress Chart-->
             <div class="col-md-6 section">
                 <h4 class="section-title">Overall Progress</h4>
-                <hr>
-                <div id="canvas-holder">
-                    <!--<canvas id="chart-area"/></canvas>
-                    -->
-                </div>
             </div>
             <!--Overall Progress Chart-->
             <div class="col-md-6 section">
                 <h4 class="section-title">Committee Progress</h4>
-                <hr>
-                <div id="canvas-holder">
-                    <!--<canvas id="chart-area"/></canvas>
-                    -->
-                </div>
             </div>
 
-        <div class="col-md-12 section">
-            <h4 class="section-title"> FINANCIAL STATUS
-                <button class="btn btn-primary" id="fin-update" style="float:right">UPDATE</button>
+        <div class="col-md-12 section" id="fin-panel">
+            <h4 class="section-title" id="fin-status-title"> FINANCIAL STATUS
+                <?php
+                    $is_fin_head = false;
+                    $head = $heads->where('user_id', $user->id)->where('position', 'Finance Committee Head')->first();
+                    if( $head != "") $is_fin_head = true;
+                ?>
+                @if( $is_fin_head)
+                    <button class="btn btn-primary" id="fin-update" style="float:right">UPDATE</button>
+                @endif
             </h4>
-            <hr>
-            <br>
 
             <div class="progress">
                 <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{ $fin_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $fin_progress }}%"><span class="">{{ $fin_progress }}% of Target Budget</span></div>
@@ -91,7 +85,7 @@
 
             <div class="col-md-12">
                 <div class="col-md-4">                
-                    <h5>Cash in Hand: </h5>
+                    <h5>Cash at Hand: </h5>
                     <h4>P{{ $fin_status->cash_in_hand }}</h4>
                 </div>
                 <div class="col-md-4">                
@@ -186,7 +180,7 @@
                 <input type="hidden" name="event_id" value="{{ $event->id}}">
                 <input type="hidden" name="user_id" value="{{ $user->id}}">
             </div>
-            {!! Form::submit("POST", ["class"=>"btn btn-default"]) !!}
+            {!! Form::submit("POST", ["class"=>"btn btn-primary"]) !!}
           {!! Form::close() !!}
         @endif
         </div>

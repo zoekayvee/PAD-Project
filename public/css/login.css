@@ -1,11 +1,9 @@
 body{
-  background-color: whitev;
+  background-color: white;
   background-image: url("../images/background.jpg");
   background-image: url("../images/uplb-blur.jpg");
   background-repeat: no-repeat;
-	margin:0;
   background-size: 100%;
-  font-size: auto;
 }
 
 #login-panel {
@@ -35,26 +33,4 @@ body{
   margin-bottom: 30px;
   text-align: center;
   font-family: coutur;
-}
-
-input {
-  border: none;
-  border-radius: 5px;
-  border: solid 1px #DEDEDE;
-  margin-bottom: 10px;
-  width: 100%;
-  height: 35px;
-  padding-right: 10px;
-  padding-left: 10px;
-  box-shadow: 1px 1px 1px rgba(0,0,0,0.5) inset;
-}
-
-.btn {
-  border: none;
-  border-radius: 5px;  
-  width: 100%;
-  height: 35px;
-  margin: none;
-  margin-top: -10px;
-  box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
 }
