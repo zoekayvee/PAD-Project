@@ -70,24 +70,21 @@
         {!! Form::label('assigned_to','Assigned To') !!}
         	<br>
         	{!! Form::radio('assigned_to', $user['id'], ['class'=>'btn btn-default']) !!} {{ $user->username }}<br>
-    		@foreach($users as $user)
+    		@foreach($members as $user)
     		{!! Form::radio('assigned_to', $user['id'], ['class'=>'btn btn-default']) !!} {{ $user->username }}
     		<br>
 			@endforeach    
         </div>
 
          <div class="form-group">
-        {!! Form::label('comm_id','Committee:') !!}
-            @foreach($events as $event)
-                <h6><b>{{$event->title}} :: {{$event->theme}}</b></h6>
-                @foreach($committees as $committee)
+        {!! Form::label('comm_id','Committee:') !!}<br>
+            <!--    <h6><b>{{$event->title}} :: {{$event->theme}}</b></h6>   -->
+            @foreach($committees as $committee)
 
-                    @if($committee->event_id == $event->id)
-                    &nbsp;&nbsp;&nbsp;&nbsp;{!! Form::radio('comm_id', $committee['id'], ['class'=>'btn btn-default']) !!} {{ $committee->name }}
-                    <br>
-                    @endif
-
-                @endforeach    
+                @if($committee->event_id == $event->id)
+                &nbsp;&nbsp;&nbsp;&nbsp;{!! Form::radio('comm_id', $committee['id'], ['class'=>'btn btn-default']) !!} {{ $committee->name }}
+                <br>
+                @endif
 
             @endforeach    
 
