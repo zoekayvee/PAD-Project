@@ -1,3 +1,12 @@
+@section('includes')
+    <?php
+        $task_progress = $task->progress;
+    ?>
+
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('/css/task_progress.css') }}">
+@stop
+
 <div class="col-md-3 cards">
     <div>
         <h3>{{ $task->title }}</h3>
@@ -33,8 +42,8 @@
             -->
         </div>
 
-        <div id="canvas-holder">
-            <canvas class="chart-area"/>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{ $task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $task_progress }}%"><span class="">{{ $task_progress }}%</span></div>
         </div>
     </div>
     <!--=========================== COMMENT ================================== -->

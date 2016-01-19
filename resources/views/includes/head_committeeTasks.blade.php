@@ -1,3 +1,65 @@
+<!--    WORKING
+
+@section('includes')
+  <?php
+    $task_progress = $task->progress;
+  ?>
+
+@stop
+
+
+<script type="text/javascript">
+    var pieData = [
+        {
+            value: {!! $task_progress !!},
+            color:"#F7464A",
+            highlight: "#FF5A5E",
+            label: "Completed"
+        },
+        {
+            value: {!! 100 - $task_progress !!},
+            color: "#46BFBD",
+            highlight: "#5AD3D1",
+            label: "On the process"
+        }
+    ];
+
+        var elements = document.getElementsByClassName('chart-area');
+        for (var i = 0; i < elements.length; i++) {
+            var ctx = elements[i].getContext("2d");
+            window.myPie = new Chart(ctx).Pie(pieData);
+        }
+
+
+    $.getScript("/js/taskChart.js");
+</script> 
+-->
+
+
+<!--
+@section('includes')
+  <?php
+    $task_progress = $task->progress;
+  ?>
+
+@stop
+
+
+<script type="text/javascript">
+    var task_progress = {!! $task_progress !!}
+    $.getScript("/js/taskChart.js");
+</script>
+-->
+
+@section('includes')
+    <?php
+        $task_progress = $task->progress;
+    ?>
+
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('/css/task_progress.css') }}">
+@stop
+
 <div class="col-md-3 cards">
     <div>
         <h3>{{ $task->title }}</h3>
@@ -19,9 +81,13 @@
             <h5>Progress: {{ $task->progress }}%</h5>
         </div>
 
-        <div id="canvas-holder">
-            <canvas class="chart-area"/>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{ $task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $task_progress }}%"><span class="">{{ $task_progress }}%</span></div>
         </div>
+
+        <!--<div id="canvas-holder">
+            <canvas class="chart-area"/>
+        </div> -->
     </div>
     <!--=========================== COMMENT ================================== -->
     <div>

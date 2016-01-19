@@ -1,3 +1,8 @@
+@section('includes')
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('/css/task_progress.css') }}">
+@stop
+
 <div class="row informations">
   <div class="col-lg-3 profile">
     <div>
@@ -22,12 +27,47 @@
 
   <hr>
 
-  <div class="table-responsive col-lg-9">
-    <h3>Committee Progress</h3>
-        <!-- Committee progress Pag heads pababa, else Event progress pag OAh -->
-    <div class="progress">
-        <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%"><span class="">100% Complete</span></div>
-    </div>
+<div class="table-responsive col-lg-9">
+    @foreach($heads_comm as $head)
+      <tr>
+      @foreach ($committees as $committee)
+        @if($head->comm_id == $committee->id)
+          @foreach($events as $event)
+            @if($event->id == $committee->event_id)
+              <h3>{{$committee->name}} Progress</h3>
+              <?php
+                $curr_comm = $committee->progress;
+              ?>
+              <div class="progress">
+                  <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{ $curr_comm }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $curr_comm }}%"><span class="">{{ $curr_comm }}%</span></div>
+              </div>
+            @endif
+          @endforeach <!-- endforeach events  -->
+        @endif
+      @endforeach <!-- endforeach all_comm -->
+      </tr>
+    @endforeach <!-- endforeach heads_comm -->
+
+    @foreach ($mem_comm as $member)
+      <tr>
+        @foreach($committees as $committee)
+            @if($committee->id == $member->comm_id)
+                @foreach($events as $event)
+                    @if($event->id == $committee->event_id)
+                      <h3>{{$committee->name}} Progress</h3>
+                      <?php
+                        $curr_comm = $committee->progress;
+                      ?>
+                      <div class="progress">
+                          <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{ $curr_comm }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $curr_comm }}%"><span class="">{{ $curr_comm }}%</span></div>
+                      </div>
+                    @endif
+                @endforeach <!-- endforeach events  -->
+            @endif  
+        @endforeach <!-- endforeach all_comm -->
+        </tr>
+    @endforeach <!-- endforeach mem_comm -->
+    
     <br>
     <table class="table table-condensed table-hover table-border">
       <thead>
@@ -44,7 +84,10 @@
         @foreach($events as $event)
           <tr>
           @if($event->oah_id == $user->id)
-            <td><a href="#">{{$event->title}} : {{$event->theme}}</a></td>
+            <?php
+                $event_id = $event->id;
+            ?>
+            <td><a href="profile/{{$event_id}}">{{$event->title}} : {{$event->theme}}</a></td>
             <td>{{$event->sem}}, {{$event->year}}</td>
             <td>OAH</td>
           @endif
@@ -58,7 +101,10 @@
             @if($head->comm_id == $committee->id)
               @foreach($events as $event)
                 @if($event->id == $committee->event_id)
-                  <td><a href="#">{{$event->title}} : {{$event->theme}}</a></td>
+                  <?php
+                      $event_id = $event->id;
+                  ?>
+                  <td><a href="profile/{{$event_id}}">{{$event->title}} : {{$event->theme}}</a></td>
                   <td>{{$event->sem}}, {{$event->year}}</td>
                   <td>{{ $head->position }}</td>
                   <td>{{ $committee->name }}</td>
@@ -77,7 +123,10 @@
                 @if($committee->id == $member->comm_id)
                     @foreach($events as $event)
                         @if($event->id == $committee->event_id)
-                            <td><a href="#">{{$event->title}} : {{$event->theme}}</a></td>
+                            <?php
+                                $event_id = $event->id;
+                            ?>
+                            <td><a href="/profile/{{$event_id}}">{{$event->title}} : {{$event->theme}}</a></td>
                             <td>{{$event->sem}}, {{$event->year}}</td>
                         @endif
                     @endforeach <!-- endforeach events  -->
