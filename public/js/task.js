@@ -21,6 +21,8 @@ $(document).ready(function(){
     	$('#1').attr('class', 'active');
     	$('#Promotions').show();
     });
+
+    //$('#tasks').html('<object data="profile"/>');
       
 });
 

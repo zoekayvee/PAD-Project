@@ -1,0 +1,21 @@
+@-webkit-keyframes load {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: {{ $task_progress/2 }}%;
+  }
+  100% {
+    width: {{ $task_progress }}%;
+  }
+}
+
+.progress-bar-striped {
+  -webkit-animation: load 3s;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+
+.progress {
+  background-color: #DEDEDE;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.5) inset;
+}
