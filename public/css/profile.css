@@ -67,7 +67,7 @@ canvas{
 }
 
 .informations,
-#comm{
+.tasks{
   background-color: white;
   margin-bottom: 20px;
   box-shadow: 0px 5px 5px #888888;
@@ -108,6 +108,6 @@ td a:focus{
   vertical-align: middle;
 }
 
-#comm{
+.tasks{
   padding: 20px;
 }

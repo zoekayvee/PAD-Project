@@ -42,11 +42,74 @@
         {!! Form::close() !!}
         <br>
 
-        <a href="/account/register">
-            <button type="button" class="btn btn-primary">Sign Up</button>
-        </a>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Sign Up</button>
 
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Sign up</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div>    
+                        {!! Form::open(['url' => 'account/register']) !!}
+                            <div class="form-group">
+                            {!! Form::label('fname', 'First Name:') !!}
+                            {!! Form::text('fname', null, ['class' => 'form-control']) !!}
+                        
+                            {!! Form::label('mname', 'Middle Name:') !!}
+                            {!! Form::text('mname', null, ['class' => 'form-control']) !!}
+
+                            {!! Form::label('lname', 'Last Name:') !!}
+                            {!! Form::text('lname', null, ['class' => 'form-control']) !!}
+
+                            {!! Form::label('username', 'Username:') !!}
+                            {!! Form::text('username', null, ['class' => 'form-control']) !!}
+
+                            {!! Form::label('email', 'Email:') !!}
+                            {!! Form::email('email', null, ['class' => 'form-control']) !!}
+
+                            <br>
+
+                            {!! Form::label('password', 'Password:') !!}
+                            {!! Form::password('password', null, ['class' => 'form-control']) !!}
+
+                            <br><br>
+
+                            {!! Form::label('studno', 'Student Number:') !!}
+                            {!! Form::text('studno', null, ['class' => 'form-control']) !!}
+
+                            {!! Form::label('department', 'Department:') !!}
+                            {!! Form::text('department', null, ['class' => 'form-control']) !!}
+
+                            {!! Form::label('batch', 'YSES Batch:') !!}
+                            {!! Form::text('batch', null, ['class' => 'form-control']) !!}
+
+                            {!! Form::hidden('standing', 'unconfirmed') !!}
+
+                            <br>
+                            {!! Form::submit('Register', ['class' => 'btn btn-primary form-control']) !!}
+
+                            </div>
+                        {!! Form::close() !!}
+
+                        <br><br>
+
+                        @if($errors->any())
+                            <ul class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
 </div>
 @stop
