@@ -16,22 +16,36 @@
 @section('content')
 	<div class="container" id="finance-container">
 		<div class="col-md-12">
+			<h2 class="section-title">Balance Sheet </h2>
 			@foreach($users as $member)
 			@if($member->standing != 'admin')
 			<div class="col-md-2 utang-card-wrapper">
-				<div class="col-md-12 utang-card card">			
-					{{ $member->lname }}, {{ $member->fname[0] }}.
-					<h2>{{ $member->debt }}</h2>
-					<form>
-						<label name="value"></label>
-						<input type="text" name="value" class="form-control"/>
-						<input type="submit" value="UPDATE" class="btn btn-primary">
-					</form>
+				<?php
+					$with_balance = false;
+					if($member->debt > 0) $with_balance = true;
+				?>
+
+				@if($with_balance)
+					<div class="col-md-12 utang-card card with-balance">	
+				@endif
+
+				@if(!$with_balance)
+					<div class="col-md-12 utang-card card">	
+				@endif
+
+					<h5>{{ $member->lname }}, {{ $member->fname[0] }}.</h5>	
+					<h3>Php {{ $member->debt }}</h3>
+					<?php
+						$url = '/balance/' . $member->id;
+					?>
+					{!! Form::open(['url' => $url]) !!}
+						<input type="num" name="value" class="form-control" required/>
+		            {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
+					{!! Form::close() !!}
 				</div>
 			</div>
 			@endif
 			@endforeach
 		</div>
 	</div>
-
 @stop

@@ -8,9 +8,20 @@ use App\User;
 
 class FinanceController extends Controller {
 
-	public function getUtang() {
+	public function getBalance() {
 		$user = \Auth::user();
-		$users = User::oldest('lname')->get();
+		$users = User::where('standing', 'active')->oldest('lname')->get();
+		return view('pages/finance', compact('user', 'users'));
+	}
+
+	public function postBalance(Request $request, $id) {
+		$data = $request->all();
+		$user = User::where('id', $id)->first();
+		$user->debt = $data['value'];
+		$user->save();
+
+		$user = \Auth::user();
+		$users = User::where('standing', 'active')->oldest('lname')->get();
 		return view('pages/finance', compact('user', 'users'));
 	}
 

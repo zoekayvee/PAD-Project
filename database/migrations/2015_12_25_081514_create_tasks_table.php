@@ -27,10 +27,14 @@ class CreateTasksTable extends Migration {
 			$table->integer('createdby_id')->unsigned();
 			$table->foreign('createdby_id')->references('id')->on('users');
 
-			$table->integer('assigned_to')->references('id')->on('users');
+			$table->integer('assigned_to')->unsigned();
+			$table->foreign('assigned_to')->references('id')->on('users');
 
 			$table->integer('comm_id')->unsigned();
 			$table->foreign('comm_id')->references('id')->on('committees');
+
+			$table->integer('event_id')->unsigned();
+			$table->foreign('event_id')->references('id')->on('events');
 
 			//$table->rememberToken();
 			$table->timestamps();

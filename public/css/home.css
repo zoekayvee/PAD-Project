@@ -1,7 +1,3 @@
-div {
-/*    border: solid 1px red;
-*/}
-
 #home-wrapper {
   margin-top: 75px;
   margin-bottom: 25px;
@@ -128,9 +124,6 @@ canvas{
 @-webkit-keyframes load {
   0% {
     width: 0%;
-  }
-  50% {
-    width: {{ $fin_progress/2 }}%;
   }
   100% {
     width: {{ $fin_progress }}%;

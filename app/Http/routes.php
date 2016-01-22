@@ -16,7 +16,9 @@ Route::get('/home', 'HomeController@getIndex');
 Route::get('/task', 'TaskController@getTask');
 Route::post('/task', 'TaskController@postTask');
 
-Route::get('/utang', 'FinanceController@getUtang');
+Route::get('/balance', 'FinanceController@getBalance');
+Route::post('/balance/{id}', 'FinanceController@postBalance');
+
 
 Route::get('profile/{id}', 'ProfileController@getId');
 Route::resource('profile','ProfileController');

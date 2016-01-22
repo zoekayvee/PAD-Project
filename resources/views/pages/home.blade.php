@@ -5,9 +5,15 @@
 @stop
 
 @section('includes')
+
   <?php
     $fin_progress = $fin_status->cash_in_hand/$fin_status->target_budget;
     $fin_progress *= 100;
+
+    $raw_money = $fin_progress;
+    $dummy = $raw_money;
+
+    if($fin_progress > 100) $fin_progress = 100;
   ?>
   
   <link rel="stylesheet" type="text/css"
@@ -85,7 +91,7 @@
             </h4>
             <br>
             <div class="progress">
-                <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{ $fin_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $fin_progress }}%"><span class="">{{ $fin_progress }}% of Target Budget</span></div>
+                <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{ $fin_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $fin_progress }}%"><span class="">{{ $raw_money }}% of Target Budget</span></div>
             </div>
 
             <div class="col-md-12">
