@@ -15,6 +15,7 @@ class CreateDebtsTable extends Migration {
 		Schema::create('debts', function(Blueprint $table)
 		{
 			$table->increments('id');
+			
 			$table->timestamps();
 		});
 	}

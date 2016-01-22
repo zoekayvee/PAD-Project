@@ -30,7 +30,7 @@ class HomeController extends Controller {
 		}
 
 		$fin_status = FinancialStatus::latest('created_at')->first();
-		$tasks = Task::where('assigned_to', $user->id)->latest('deadline')->get();
+		$tasks = Task::where('assigned_to', $user->id)->where('event_id', $event->id)->latest('deadline')->get();
 
 		if($user == "") return view('auth/login');
 

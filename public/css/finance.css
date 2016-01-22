@@ -1,0 +1,39 @@
+#finance-container {
+	background: rgba(255,255,255,0.5);
+	box-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+	padding-bottom: 20px;
+}
+
+.utang-card-wrapper {
+	margin: 0;
+	padding: 5px;
+}
+
+.utang-card {
+	line-height: 0;
+	padding: 15px;
+	background: white;
+	text-align: center;
+}
+
+.utang-card h3 {
+	margin: 5px;
+}
+
+.utang-card h5 {
+	margin: 0;
+	font-weight: bold;
+}
+
+.utang-card input {
+	height: 25px;
+	font-size: 8pt;
+}
+
+.utang-card .btn {
+	margin-top: -5px;
+}
+
+.with-balance {
+	background: #fff568;
+}

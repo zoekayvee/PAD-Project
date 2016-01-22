@@ -7,13 +7,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="home">YSES Tracker</a>
+        <a class="navbar-brand" href="/">YSES Tracker</a>
         <!-- Pwede pong paki route 'to dun sa homepage pag na click? nag eerror po kasi thanks :)' -->
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="profile">{{ $user->username }}</a></li>
-                <li><a href="account/logout">Logout</a></li>
+                <li><a href="/profile">{{ $user->username }}</a></li>
+                <li><a href="/account/logout">Logout</a></li>
                 <li><a href="#">Help</a></li>
             </ul>
         </div>

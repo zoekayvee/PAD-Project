@@ -60,6 +60,7 @@ class UsersTableSeeder extends Seeder
 		'department' => "Projects and Activities",
 		'batch' => "blendeD",
 		'standing' => "admin",
+		'debt' => '0',
 		]);
 
 		User::create([
@@ -74,6 +75,7 @@ class UsersTableSeeder extends Seeder
 		'department' => "Secretariat",
 		'batch' => "Marvin Gaye",
 		'standing' => "active",
+		'debt' => '0',
 		]);
 
 		User::create([
@@ -88,6 +90,7 @@ class UsersTableSeeder extends Seeder
 		'department' => "Visuals and Logistics",
 		'batch' => "RAMpage",
 		'standing' => "active",
+		'debt' => '0',
 		]);
 
 		User::create([
@@ -102,6 +105,7 @@ class UsersTableSeeder extends Seeder
 		'department' => "Projects and Activities",
 		'batch' => "RAMpage",
 		'standing' => "active",
+		'debt' => '0',
 		]);
 
 		User::create([
@@ -116,6 +120,7 @@ class UsersTableSeeder extends Seeder
 		'department' => "Projects and Activities",
 		'batch' => "blendeD",
 		'standing' => "active",
+		'debt' => '0',
 		]);
 
 		User::create([
@@ -130,6 +135,7 @@ class UsersTableSeeder extends Seeder
 		'department' => "Projects and Activities",
 		'batch' => "blendeD",
 		'standing' => "active",
+		'debt' => '0',
 		]);
 
 		User::create([
@@ -144,6 +150,7 @@ class UsersTableSeeder extends Seeder
 		'department' => "Projects and Activities",
 		'batch' => "blendeD",
 		'standing' => "active",
+		'debt' => '0',
 		]);
 
 		User::create([
@@ -158,6 +165,7 @@ class UsersTableSeeder extends Seeder
 		'department' => "Projects and Activities",
 		'batch' => "blendeD",
 		'standing' => "active",
+		'debt' => '0',
 		]);
 
 		User::create([
@@ -172,6 +180,7 @@ class UsersTableSeeder extends Seeder
 		'department' => "Projects and Activities",
 		'batch' => "blendeD",
 		'standing' => "unconfirmed",
+		'debt' => '0',
 		]);
 
 		User::create([
@@ -186,6 +195,7 @@ class UsersTableSeeder extends Seeder
 		'department' => "Projects and Activities",
 		'batch' => "blendeD",
 		'standing' => "unconfirmed",
+		'debt' => '0',
 		]);
 
 		$this->call('EventsTableSeeder');
