@@ -10,7 +10,7 @@ use App\User;
 use App\Head;
 use App\Task;
 use App\Member;
-use App\Comment;
+use App\Comment;	
 
 class ProfileController extends Controller {
 
@@ -90,15 +90,79 @@ class ProfileController extends Controller {
 	   
 	   $taskUpdate=$request->all();
 	   $task=Task::find($id);
-	   $task->update($taskUpdate);
+	   $task->update($taskUpdate);	
+
+	   if($task->progress <= 100 && $task->progress >= 0){
+	   		
+	   		if($task->progress == 100){
+	   			$task->remark = "Finished";
+	   		}else if($task->progress == 0){
+	   			$task->remark = "Pending";
+	   		}else{
+	   			$task->remark = "In-Progress";
+	   		}
+	   }else{
+	   		if($task->progress > 100){
+	   			$task->remark = "Finished";
+	   			$task->progress = 100;
+	   		}else{
+	   			$task->remark = "Pending";
+	   			$task->progress = 0;
+	   		}
+	   }
+	   $task->update();
+
+	   //if(Carbon::createFromDate($year, $month, $day) > $task->deadline && $task->progress != 100){
+   		//	$task->remark = "Delayed";
+   		//}
+
+	   //updateProgress($task);
+
 	   return redirect('profile');
 	}
 
 	//DELETE TASK
 	public function destroy($id)
 	{
+	   $task=Task::find($id);
+	   $task->weight = 0;
 	   Task::find($id)->delete();
+
+	   //$this->updateProgress($task);
 	   return redirect('profile');
+	}
+
+	public function updateProgress($task)
+	{
+		$comm = Committee::where('id', $task['comm_id'])->first();
+       	$evnt = Event::where('id', $comm['event_id'])->first();
+
+	   	//UPDATING WEIGHT OF COMMITTEE AND EVENT
+        $comm->increment('weight', $task['weight']);
+        $evnt->increment('weight', $task['weight']);
+
+        //UPDATING PROGRESS OF COMMITTEE
+        $progress = 0;
+        $tasks = Task::where('comm_id', $comm->id)->get();
+        foreach ($tasks as $task1) {
+                $progress += ($task1->weight * $task1->progress);
+           
+        }
+        $progress = $progress / ($comm->weight);
+        $comm->progress = $progress;
+        $comm->save();
+
+        //UPDATING PROGRESS OF EVENT
+        $progress2 = 0;
+        $committees = Committee::all();
+        foreach ($committees as $committee) {
+            if($committee->event_id == $evnt->id){
+                $progress2 += ($committee->weight * $committee->progress);
+            }
+        }
+        $progress2 = $progress2 / ($evnt->weight);
+        $evnt->progress = $progress2;
+        $evnt->save();
 	}
 
 	//ADD COMMENT
@@ -117,7 +181,6 @@ class ProfileController extends Controller {
 
 	  	$users = User::all();
 		$user = $this->getUser();
-		echo $id;
 		$curr_event = Event::where('id', $id)->first();
 		$all_comm = Committee::all();
 		$committees = Committee::where('event_id', $curr_event->id)->get();

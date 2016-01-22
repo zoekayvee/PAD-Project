@@ -87,7 +87,7 @@
             <?php
                 $event_id = $event->id;
             ?>
-            <td><a href="profile/{{$event_id}}">{{$event->title}} : {{$event->theme}}</a></td>
+            <td><a href="/profile/{{$event_id}}">{{$event->title}} : {{$event->theme}}</a></td>
             <td>{{$event->sem}}, {{$event->year}}</td>
             <td>OAH</td>
           @endif
@@ -104,7 +104,7 @@
                   <?php
                       $event_id = $event->id;
                   ?>
-                  <td><a href="profile/{{$event_id}}">{{$event->title}} : {{$event->theme}}</a></td>
+                  <td><a href="/profile/{{$event_id}}">{{$event->title}} : {{$event->theme}}</a></td>
                   <td>{{$event->sem}}, {{$event->year}}</td>
                   <td>{{ $head->position }}</td>
                   <td>{{ $committee->name }}</td>

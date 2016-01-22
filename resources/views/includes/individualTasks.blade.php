@@ -10,6 +10,7 @@
 <div class="col-md-3 cards">
     <div>
         <h3>{{ $task->title }}</h3>
+        <h5>{{ $task->remark }}</h5>
         <h5>Due: {{ $task->deadline }}</h5>
         <p>{{{ $task->description }}}</p>
     </div>
@@ -19,8 +20,7 @@
             {!! Form::model($task,['method' => 'PATCH','route'=>['profile.update',$task->id]]) !!}
             
             <div class="form-group">
-            {!! Form::label('remark', 'Status') !!}
-            {!! Form::select('remark', $categories, $task->remark) !!}
+            {!! Form::hidden('remark', $task->remark, ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
             {!! Form::label('progress', 'Percentage done') !!}
@@ -29,10 +29,6 @@
             {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
             {!! Form::close() !!}
 
-            <!--DELETE TASK-->
-            {!! Form::open(['method' => 'DELETE', 'route'=>['profile.destroy', $task->id]]) !!}
-            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-            {!! Form::close() !!}
 
             <!--
             <br><br><br>
