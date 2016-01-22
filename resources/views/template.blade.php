@@ -15,8 +15,12 @@
 </head>
 <body>
 
-	@yield('navigation')
-	@yield('content')
+	<div id="app-container">
+		
+		@yield('navigation')
+		@yield('content')
+
+	</div>
 
     <div class="container">
     	YSES Tracker.2015 

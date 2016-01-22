@@ -46,6 +46,7 @@ class Registrar implements RegistrarContract {
 			'department' => $data['department'],
 			'batch' => $data['batch'],
 			'standing' => $data['standing'],
+			'debt' => $data['debt'],
 		]);
 
 	}

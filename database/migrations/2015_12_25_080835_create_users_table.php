@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration {
 			$table->string('department');
 			$table->string('batch');
 			$table->string('standing');
+			$table->string('debt');
 			//$table->rememberToken();
 			$table->timestamps();
 		});

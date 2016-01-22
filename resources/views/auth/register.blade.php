@@ -49,6 +49,7 @@ Register
 		{!! Form::text('batch', null, ['class' => 'form-control']) !!}
 
 		{!! Form::hidden('standing', 'unconfirmed') !!}
+		{!! Form::hidden('debt', '0') !!}
 
 		<br>
 		{!! Form::submit('Register', ['class' => 'btn btn-primary form-control']) !!}
