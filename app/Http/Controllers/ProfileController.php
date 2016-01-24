@@ -149,24 +149,28 @@ class ProfileController extends Controller {
 
         //UPDATING PROGRESS OF COMMITTEE
         $progress = 0;
-        $tasks = Task::where('comm_id', $comm->id)->get();
-        foreach ($tasks as $task1) {
-                $progress += ($task1->weight * $task1->progress);
-           
-        }
-        $progress = $progress / ($comm->weight);
+        if($comm->weight != 0){
+	        $tasks = Task::where('comm_id', $comm->id)->get();
+	        foreach ($tasks as $task1) {
+	                $progress += ($task1->weight * $task1->progress);
+	           
+	        }
+	        $progress = $progress / ($comm->weight);
+	    }
         $comm->progress = $progress;
         $comm->save();
 
         //UPDATING PROGRESS OF EVENT
         $progress2 = 0;
-        $committees = Committee::all();
-        foreach ($committees as $committee) {
-            if($committee->event_id == $evnt->id){
-                $progress2 += ($committee->weight * $committee->progress);
-            }
-        }
-        $progress2 = $progress2 / ($evnt->weight);
+        if($evnt->weight != 0){
+	        $committees = Committee::all();
+	        foreach ($committees as $committee) {
+	            if($committee->event_id == $evnt->id){
+	                $progress2 += ($committee->weight * $committee->progress);
+	            }
+	        }
+	        $progress2 = $progress2 / ($evnt->weight);
+	    }
         $evnt->progress = $progress2;
         $evnt->save();
 	}
