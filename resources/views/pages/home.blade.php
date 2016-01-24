@@ -10,8 +10,7 @@
     $fin_progress = $fin_status->cash_in_hand/$fin_status->target_budget;
     $fin_progress *= 100;
 
-    $raw_money = $fin_progress;
-    $dummy = $raw_money;
+    $raw_money = round($fin_progress);
 
     if($fin_progress > 100) $fin_progress = 100;
   ?>
@@ -90,33 +89,36 @@
                 @endif
             </h4>
             <br>
-            <div class="progress">
-                <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{ $fin_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $fin_progress }}%"><span class="">{{ $raw_money }}% of Target Budget</span></div>
-            </div>
 
-            <div class="col-md-12">
+            <div class="col-md-12" id="fin-total">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{ $fin_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $fin_progress }}%"><span class="fin-progress-value">{{ $raw_money }}% of Target Budget</span></div>
+                </div>
                 <div class="col-md-4">                
                     <h5>Cash at Hand: </h5>
-                    <h4>P{{ $fin_status->cash_in_hand }}</h4>
+                    <h4>&#x20B1;{{ $fin_status->cash_in_hand }}</h4>
                 </div>
                 <div class="col-md-4">                
                     <h5>Payables: </h5>
-                    <h4>P{{ $fin_status->payables }}</h4>
+                    <h4>&#x20B1;{{ $fin_status->payables }}</h4>
                 </div>
                 <div class="col-md-4">                
                     <h5>Target Budget: </h5>
-                    <h4>P{{ $fin_status->target_budget }}</h4>
+                    <h4>&#x20B1;{{ $fin_status->target_budget }}</h4>
                 </div>
             </div>
 
             <div class="col-md-12">
+                <hr>
                 <div class="col-md-4 fin-card">
                     <div>
                         <div class="col-md-12 cash_icon">
                             <img src="{{ asset('images/cash_in.png') }}">
                         </div>
+                        <div class="fin-ribbon">                            
+                            <h2 class="value section-title">&#x20B1;{{ $fin_status->cash_in }}</h2>
+                        </div>
                         <h5>Weekly Cash In</h5>
-                        <h2 class="value">P{{ $fin_status->cash_in }}</h2>
                     </div>
                 </div>
                 <div class="col-md-4 fin-card">
@@ -124,8 +126,10 @@
                         <div class="col-md-12 cash_icon">
                             <img src="{{ asset('images/cash_out.png') }}">
                         </div>
+                        <div class="fin-ribbon">                            
+                            <h2 class="value section-title">&#x20B1;{{ $fin_status->cash_out }}</h2>
+                        </div>
                         <h5>Weekly Cash Out</h5>
-                        <h2 class="value">P{{ $fin_status->cash_out }}</h2>
                     </div>
                 </div>
                 <div class="col-md-4 fin-card">
@@ -133,8 +137,10 @@
                         <div class="col-md-12 cash_icon">
                             <img src="{{ asset('images/cash_inc.png') }}">
                         </div>
+                        <div class="fin-ribbon">                            
+                            <h2 class="value section-title">&#x20B1;{{ $fin_status->weekly_income }}</h2>
+                        </div>
                         <h5>Weekly Income</h5>
-                        <h2 class="value">P{{ $fin_status->weekly_income }}</h2>
                     </div>
                 </div>
             </div>

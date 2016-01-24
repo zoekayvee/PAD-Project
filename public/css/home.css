@@ -6,10 +6,7 @@
 #home-left {
   padding: 0;
   background-color: rgba(255,255,255,0.5);
-  box-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-}
-
-#home-right {
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
 
 #tasks-panel-wrapper {
@@ -42,54 +39,8 @@ canvas{
   display: inline-block;
 }
 
-.oah{
-  margin-top:30%;
-  padding:5px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 3px 3px 5px #888888;
-}
-
-.oah h4{
-  text-align:center;
-}
-
-.oah p{
-  padding:10px;
-}
-
-.head{
-  margin-top:10px;
-  padding:5px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 3px 3px 5px #888888;
-}
-
-.head h4{
-  text-align:center;
-}
-
-.head p{
-  padding:10px;
-}
-
-.shout-form {
-}
-
-.shout-form .btn {
-  float: right;
-}
-
 .fin-card {
   text-align: center;
-  padding: 10px;
-}
-
-.fin-card > div {
-  padding: 10px 0;
-  box-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-  background-color: #DEDEDE;
 }
 
 .value {
@@ -132,7 +83,7 @@ canvas{
 
 .progress-bar-striped {
   -webkit-animation: load 3s;
-  box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
   background-image: -webkit-linear-gradient(45deg, #0aa1da 25%, #017cbf 25%, #017cbf 50%, #0aa1da 50%, #0aa1da 75%, #017cbf 75%, #017cbf);
   background-image:      -o-linear-gradient(45deg, #0aa1da 25%, #017cbf 25%, #017cbf 50%, #0aa1da 50%, #0aa1da 75%, #017cbf 75%, #017cbf);
   background-image:         linear-gradient(45deg, #0aa1da 25%, #017cbf 25%, #017cbf 50%, #0aa1da 50%, #0aa1da 75%, #017cbf 75%, #017cbf);
@@ -140,13 +91,8 @@ canvas{
 
 .progress {
   background-color: #DEDEDE;
-  box-shadow: 1px 1px 1px rgba(0,0,0,0.5) inset;
-}
-
-.shout {
-  padding: 0;
-  padding-top: 10px;
-  border-bottom: solid 1px rgba(0,0,0,0.1);
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.3) inset;
+  margin: 0;
 }
 
 .shout-body {
@@ -168,6 +114,10 @@ canvas{
     text-shadow: 1px 1px 1px black;
 }
 
+hr {
+  margin: 10px;
+}
+
 #section-header {
     height: 200px;
     background-color: #FAFAFA;
@@ -177,16 +127,45 @@ canvas{
     background-position: 10px;
 }
 
+#fin-total {
+  line-height: 0;
+  text-align: center;
+}
+
+.fin-ribbon {
+  height: 0;
+  border: solid 30px #fff568;
+  border-right: solid 25px rgba(0,0,0,0);
+  border-left: solid 25px rgba(0,0,0,0);
+  width: 80%;
+  bottom: 30%;
+  left: 10%;
+  position: absolute;
+  margin: auto;
+}
+
+.fin-ribbon h2 {
+  font-weight: normal;
+  margin-top: -15px;
+}
+
+.fin-progress-value {
+  color: white;
+  float: right;
+  font-weight: bolder;
+  padding-right: 15px;
+}
+
 .cash_icon img {
-    width: 70%;
+    width: 80%;
     border-radius: 100%;
     margin-top: 5px;
     margin-bottom: 15px;
 }
 
 .right-pannel {
-  background-color: rgba(255,255,255,0.5);
-  box-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+  background-color: white;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
   margin-bottom: 10px;
   padding: 20px;
 }

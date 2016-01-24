@@ -1,16 +1,6 @@
-body {
-  background-image: url('../../images/feather2.png');
-  background-size: 500px;
-}
-
 div {
 /*	border: solid 1px red;
 */}
-
-#admin-panel {
-	padding-top: 75px;
-	padding-bottom: 25px;
-}
 
 #admin-container {
 	padding-bottom: 15px;
@@ -21,19 +11,17 @@ div {
 	padding: 15px;
 }
 
-.section-title {
-	font-family: coutur;
-}
-
 .designation {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
 
+.request-panel-wrapper {
+	padding: 5px; 
+}
+
 .request-panel {
 	background: white;
-	padding: 15px;
-	margin-left: -15px;
 	margin-top: 5px;
 	margin-bottom: 10px;
 	box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
