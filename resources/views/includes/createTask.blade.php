@@ -11,8 +11,7 @@
     </div>
 
     <div class="form-group">
-    {!! Form::label('progress', 'Progress:') !!}
-    {!! Form::number('progress', 0, ['class' => 'form-control', 'min' => '0', 'max' => '100'], 'required') !!}
+    {!! Form::hidden('progress', 0, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
@@ -26,8 +25,7 @@
     </div>
 
     <div class="form-group">
-    {!! Form::label('remark', 'Remark:') !!}
-    {!! Form::select('remark', $categories, ['class' => 'form-control']) !!}
+    {!! Form::hidden('remark', 'Pending', ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
@@ -42,25 +40,33 @@
     <div class="form-group">
     {!! Form::label('assigned_to','Assigned To') !!}
         <br>
-        {!! Form::radio('assigned_to', $user['id'], ['class'=>'btn btn-default']) !!} {{ $user->username }}<br>
-        @foreach($users as $user)
-        {!! Form::radio('assigned_to', $user['id'], ['class'=>'btn btn-default']) !!} {{ $user->username }}
+        <select name="assigned_to">
+        <option value="{{ $user['id'] }}">              
+            {{ $user->username }}
+        </option>
+        @foreach($members as $user)
+        <option value="{{ $user['id'] }}">              
+            {{ $user->username }}
+        </option>
+        @endforeach
+
+        </select>
         <br>
-        @endforeach    
+    </div>
+
+    <div class="form-group">
+        {!! Form::hidden('event_id', $curr_event->id, ['class' => 'form-control']) !!}
     </div>
 
      <div class="form-group">
-    {!! Form::label('comm_id','Committee:') !!}
-        @foreach($events as $event)
-            <h6><b>{{$event->title}} :: {{$event->theme}}</b></h6>
-            @foreach($committees as $committee)
+        {!! Form::label('comm_id','Committee:') !!}<br>
+        @foreach($head_committees as $committee)
 
-                @if($committee->event_id == $event->id)
-                &nbsp;&nbsp;&nbsp;&nbsp;{!! Form::radio('comm_id', $committee['id'], ['class'=>'btn btn-default']) !!} {{ $committee->name }}
-                <br>
-                @endif
 
-            @endforeach    
+            @if($committee->event_id == $curr_event->id)
+            &nbsp;&nbsp;&nbsp;&nbsp;{!! Form::radio('comm_id', $committee['id'], ['class'=>'btn btn-default']) !!} {{ $committee->name }}
+            <br>
+            @endif
 
         @endforeach    
 

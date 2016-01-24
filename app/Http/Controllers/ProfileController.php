@@ -51,6 +51,10 @@ class ProfileController extends Controller {
 			$heads = Head::where('event_id', $curr_event_id)->where('user_id', $user->id)->get();
 			//get all comm_id(as array) in the current event where current user is a head 
 			$heads_comm = Head::where('event_id', $curr_event_id)->where('user_id', $user['id'])->get(array('comm_id'))->toArray();
+			//members of committee
+        	$mem = Member::whereIn('comm_id', $heads_comm)->get(array('user_id'))->toArray();
+        	$members = User::whereIn('id', $mem)->get();
+
 			//get all committees in the current event where current user is a head 
 			$head_committees = Committee::whereIn('id', $heads_comm)->get();
 
@@ -74,7 +78,7 @@ class ProfileController extends Controller {
 
 		if($user->standing == "unconfirmed") $url = "pages/oops";
 
-		return view($url, compact('users', 'user', 'events', 'all_comm','committees', 'tasks', 'all_tasks', 'categories', 'comments', 'head_committees', 'heads_comm', 'mem_comm'));
+		return view($url, compact('users', 'user', 'events', 'curr_event', 'all_comm','committees', 'tasks', 'all_tasks', 'categories', 'comments', 'head_committees', 'heads_comm', 'mem_comm', 'members'));
 	}
 
 	
@@ -110,13 +114,14 @@ class ProfileController extends Controller {
 	   			$task->progress = 0;
 	   		}
 	   }
-	   $task->update();
+	   
+	   	if(date('Y-m-d') > $task->deadline && $task->progress != 100){
+   			$task->remark = "Delayed";
+   		}
 
-	   //if(Carbon::createFromDate($year, $month, $day) > $task->deadline && $task->progress != 100){
-   		//	$task->remark = "Delayed";
-   		//}
+   		$task->update();
 
-	   //updateProgress($task);
+	   $this->updateProgress($task, 0);
 
 	   return redirect('profile');
 	}
@@ -125,21 +130,22 @@ class ProfileController extends Controller {
 	public function destroy($id)
 	{
 	   $task=Task::find($id);
-	   $task->weight = 0;
 	   Task::find($id)->delete();
 
-	   //$this->updateProgress($task);
+	   $this->updateProgress($task, 1);
 	   return redirect('profile');
 	}
 
-	public function updateProgress($task)
+	public function updateProgress(Task $task, $temp)
 	{
 		$comm = Committee::where('id', $task['comm_id'])->first();
        	$evnt = Event::where('id', $comm['event_id'])->first();
 
-	   	//UPDATING WEIGHT OF COMMITTEE AND EVENT
-        $comm->increment('weight', $task['weight']);
-        $evnt->increment('weight', $task['weight']);
+		if($temp==1){
+			//UPDATING WEIGHT OF COMMITTEE AND EVENT
+	        $comm->decrement('weight', $task['weight']);
+	        $evnt->decrement('weight', $task['weight']);
+		}       	
 
         //UPDATING PROGRESS OF COMMITTEE
         $progress = 0;
@@ -201,6 +207,10 @@ class ProfileController extends Controller {
 			$heads = Head::where('event_id', $curr_event_id)->where('user_id', $user->id)->get();
 			//get all comm_id(as array) in the current event where current user is a head 
 			$heads_comm = Head::where('event_id', $curr_event_id)->where('user_id', $user['id'])->get(array('comm_id'))->toArray();
+			//members of committee
+        	$mem = Member::whereIn('comm_id', $heads_comm)->get(array('user_id'))->toArray();
+        	$members = User::whereIn('id', $mem)->get();
+
 			//get all committees in the current event where current user is a head 
 			$head_committees = Committee::whereIn('id', $heads_comm)->get();
 
@@ -225,7 +235,7 @@ class ProfileController extends Controller {
 		if($user->standing == "unconfirmed") $url = "pages/oops";
 
 		echo $url;
-		return view($url, compact('users', 'user', 'events', 'all_comm','committees', 'tasks', 'all_tasks', 'categories', 'comments', 'head_committees', 'heads_comm', 'mem_comm'));
+		return view($url, compact('users', 'user', 'events', 'curr_event', 'all_comm','committees', 'tasks', 'all_tasks', 'categories', 'comments', 'head_committees', 'heads_comm', 'mem_comm', 'members'));
 
 	}
 }
