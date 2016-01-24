@@ -6,8 +6,6 @@ Admin Panel
 
 @section('includes')
     <link rel="stylesheet" type="text/css"
-        href="{{ asset('/css/main.css') }}">
-    <link rel="stylesheet" type="text/css"
         href="{{ asset('/css/admin/admin.css') }}">
 @stop
 
@@ -25,7 +23,7 @@ Admin Panel
 				@endif
 
 				@foreach($pendings as $pending)
-				<div class="col-md-4">
+				<div class="col-md-4 request-panel-wrapper">
 					<div class="col-md-12 request-panel">
 					<div class="col-md-12">
 						<div class="user">

@@ -48,8 +48,8 @@ Register
 		{!! Form::label('batch', 'YSES Batch:') !!}
 		{!! Form::text('batch', null, ['class' => 'form-control']) !!}
 
-		{!! Form::hidden('standing', 'unconfirmed') !!}
 		{!! Form::hidden('debt', '0') !!}
+		{!! Form::hidden('standing', 'unconfirmed') !!}
 
 		<br>
 		{!! Form::submit('Register', ['class' => 'btn btn-primary form-control']) !!}

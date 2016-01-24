@@ -6,7 +6,11 @@
 
 @section('includes')
     <link rel="stylesheet" type="text/css"
+          href="{{ asset('/css/main.css') }}">
+
+    <link rel="stylesheet" type="text/css"
           href="{{ asset('/css/finance.css') }}">
+
 @stop
 
 @section('navigation')
@@ -33,15 +37,22 @@
 					<div class="col-md-12 utang-card card">	
 				@endif
 
-					<h5>{{ $member->lname }}, {{ $member->fname[0] }}.</h5>	
-					<h3>Php {{ $member->debt }}</h3>
+					<div class="utang-card-head">
+						<h4>{{ $member->lname }}, {{ $member->fname[0] }}.</h4>
+					</div>	
 					<?php
 						$url = '/balance/' . $member->id;
 					?>
-					{!! Form::open(['url' => $url]) !!}
-						<input type="num" name="value" class="form-control" required/>
-		            {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
-					{!! Form::close() !!}
+		
+					<div class="utang-card-body">
+						{!! Form::open(['url' => $url]) !!}
+						<input type="num" name="value" value="{{ $member->debt }}" class="form-control" required/>
+						{!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
+						{!! Form::close() !!}						
+
+					</div>
+		
+		
 				</div>
 			</div>
 			@endif
