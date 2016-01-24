@@ -24,6 +24,8 @@ class HomeController extends Controller {
 	public function getIndex() {
 		$event = Event::latest('id')->first();
 		$user = \Auth::user();
+		$comm_name = Committee::where('event_id', $event->id)->get();
+		$comm_progress = Committee::where('event_id', $event->id)->get(array('progress'))->toArray();
 
 		if($user->standing == 'unconfirmed') {
 			return view('pages/oops', compact('user'));
@@ -37,7 +39,7 @@ class HomeController extends Controller {
 		$shouts = EventShout::where('event_id', $event->id)->latest('created_at')->get();
 		$heads = Head::where("event_id", $event->id)->get();
 
-		return view('pages/home', compact('user', 'event','shouts','heads', 'fin_status', 'tasks'));
+		return view('pages/home', compact('user', 'event','shouts','heads', 'fin_status', 'tasks', 'comm_name', 'comm_progress'));
 	}
 
 	public function postAnnouncement(Request $request) {

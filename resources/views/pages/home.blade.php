@@ -14,6 +14,17 @@
     $dummy = $raw_money;
 
     if($fin_progress > 100) $fin_progress = 100;
+
+    $names = array();
+    $progress = array();
+    foreach ($comm_name as $nama)
+    {
+      array_push($names, $nama->name);
+      array_push($progress, $nama->progress);
+    }
+
+    $names = json_encode($names);
+    $progress = json_encode($progress);
   ?>
   
   <link rel="stylesheet" type="text/css"
@@ -70,13 +81,14 @@
         </div>
         
             <!--Overall Progress Chart-->
-            <div class="col-md-6 section">
+            <div class="col-md-12 section">
                 <h4 class="section-title">Overall Progress</h4>
+                
+                <div id="canvas-holder">
+                  <canvas id="chart-area"/>
+                </div> 
             </div>
-            <!--Overall Progress Chart-->
-            <div class="col-md-6 section">
-                <h4 class="section-title">Committee Progress</h4>
-            </div>
+            
 
         <div class="col-md-12 section" id="fin-panel">
             <h4 class="section-title" id="fin-status-title"> FINANCIAL STATUS
@@ -244,3 +256,29 @@
     </div>
 </div>
 @stop
+
+<script type="text/javascript">
+ 
+   
+  var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+
+  var barChartData = {
+    labels :  {!! $names !!},
+    datasets : [
+      {
+        fillColor : "rgba(151,187,205,0.5)",
+        strokeColor : "rgba(151,187,205,0.8)",
+        highlightFill : "rgba(151,187,205,0.75)",
+        highlightStroke : "rgba(151,187,205,1)",
+        data : {!! $progress !!}
+      }
+    ]
+
+  }
+  window.onload = function(){
+    var ctx = document.getElementById("chart-area").getContext("2d");
+    window.myBar = new Chart(ctx).Bar(barChartData, {
+      responsive : true
+    });
+  }
+</script> 
