@@ -7,9 +7,11 @@
 @section('includes')
     <link rel="stylesheet" type="text/css"
           href="{{ asset('/css/profile.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('/css/task_progress.css') }}">
     <script type="text/javascript"
         src="{{ asset('/js/task.js') }}">
-        </script>
+    </script>
 @stop
 
 @section('navigation')
@@ -30,7 +32,7 @@
       <!-- Tab panes -->
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane fade in" id="tasks">
-                <div class="row">
+                <div class="row section">
                     @if(count($tasks)>0)
                         @foreach ($tasks as $task)
                             @include('../includes/individualTasks')
@@ -41,7 +43,7 @@
                 </div>     
             </div>
             <div role="tabpanel" class="tab-pane active fade in" id="committee">
-                <div class="row">
+                <div class="row section">
                     <div class="col-md-3"> 
                         <div class="addTask" type="button" data-toggle="modal" data-target="#myModal">+</div>
                         <!-- Modal -->

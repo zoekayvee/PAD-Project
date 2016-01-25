@@ -26,9 +26,66 @@
 		</tr>
 		@endforeach
 		</table>
-		<a href="/admin/event">
+		<a data-toggle="modal" data-target="#event">
 			<button class="btn btn-default create-button">+</button>		
 		</a>
+
+		<!-- Modal -->
+		<div class="modal fade" id="event" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Create Event</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+							{!! Form::open(['url' => 'admin/event']) !!}
+
+					        <div class="form-group">
+					        {!! Form::label('title','Event') !!}
+					        <br>
+					        {!! Form::radio('title', 'Get 1/4' , ['class'=>'btn btn-default']) !!} Get 1/4
+					        <br>
+					        {!! Form::radio('title', 'PFJF' , ['class'=>'btn btn-default']) !!} PFJF
+					        </div>
+					        
+					        <div class="form-group">
+					        {!! Form::label('theme', 'Theme:') !!}
+					        {!! Form::text('theme', null, ['class' => 'form-control', 'placeholder' => 'Overclocked']) !!}
+							</div>
+
+					        <div class="form-group">
+					        {!! Form::label('year', 'Year:') !!}
+					        {!! Form::number('year', 2016, ['class' => 'form-control', 'min' => '2005', 'max' => '2016'], 'required') !!}
+					        </div>
+
+					        <div class="form-group">
+					        {!! Form::label('sem','Semester') !!}
+					        <br>
+					        {!! Form::radio('sem', 'First Semester' , ['class'=>'btn btn-default']) !!} First Semester
+					        <br>
+					        {!! Form::radio('sem', 'Second Semester' , ['class'=>'btn btn-default']) !!} Second Semester
+					        </div>
+
+
+					        <div class="form-group">
+					        {!! Form::label('oah_id','OAH') !!}
+					        	<br>
+					    		@foreach($users as $user)
+					    		{!! Form::radio('oah_id', $user['id'], ['class'=>'btn btn-default']) !!} {{ $user->username }}
+					    		<br>
+								@endforeach    
+					        </div>
+
+					        {!! Form::submit('Create Event', ['class' => 'btn btn-primary form-control']) !!}
+							{!! Form::close() !!}
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 	</div>
 
 	<div class="col-md-12 table-wrapper" id="committees-table">
@@ -53,9 +110,44 @@
 		@endforeach
 		</table>
 
-		<a href="/admin/committee">
+		<a data-toggle="modal" data-target="#committee">
 			<button class="btn btn-default create-button">+</button>		
 		</a>
+
+		<!-- Modal -->
+		<div class="modal fade" id="committee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Create Committee</h4>
+                    </div>
+                    <div class="modal-body">
+                       	<div>
+							{!! Form::open(['url' => 'admin/committee']) !!}
+
+					        <div class="form-group">
+					        {!! Form::label('name','Name') !!}
+					        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Visuals Committee']) !!}
+					        </div>
+
+					        <div class="form-group">
+					        {!! Form::label('event_id','Event') !!}
+					        	<br>
+					    		@foreach($events as $event)
+					    		{!! Form::radio('event_id', $event['event_id'], ['class'=>'btn btn-default']) !!} {{ $event->title }} :: {{ $event->theme }}
+					    		<br>
+								@endforeach    
+					        </div>
+
+					        {!! Form::submit('Create Committee', ['class' => 'btn btn-primary form-control']) !!}
+							{!! Form::close() !!}
+						</div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+	
 	</div>
 
 	<div class="col-md-12 table-wrapper" id="heads-table">
@@ -85,9 +177,72 @@
 		</tr>
 		@endforeach
 		</table>
-		<a href="/admin/head">
+		<a data-toggle="modal" data-target="#head">
 			<button class="btn btn-default create-button">+</button>		
 		</a>
+
+		<!-- Modal -->
+		<div class="modal fade" id="head" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Assign Head</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+							{!! Form::open(['url' => 'admin/head']) !!}
+
+					        <div class="form-group">
+					        {!! Form::label('position','Position') !!}
+					        {!! Form::text('position', null, ['class' => 'form-control', 'placeholder' => 'Visuals Committee Head']) !!}
+					        </div>
+
+					        <div class="form-group">
+					        {!! Form::label('user_id','Who?') !!}
+					        	<br>
+					    		@foreach($users as $user)
+					    		{!! Form::radio('user_id', $user['id'], ['class'=>'btn btn-default']) !!} {{ $user->username }}
+					    		<br>
+								@endforeach    
+					        </div>
+
+					        <br><br>
+					        <div class="form-group">
+					        {!! Form::label('event_id','What Event?') !!}
+					            <br>
+					            @foreach($events as $event)
+					            {!! Form::radio('event_id', $event['event_id'], ['class'=>'btn btn-default']) !!} {{ $event->title }} :: {{ $event->theme }}
+					            <br>
+					            @endforeach    
+					        </div>
+					        
+					        <br><br>
+					        <div class="form-group">
+					        {!! Form::label('comm_id','What Committee?') !!}
+					            @foreach($events as $event)
+					                <h6><b>{{$event->title}} :: {{$event->theme}}</b></h6>
+					                @foreach($committees as $committee)
+
+					                    @if($committee->event_id == $event->event_id)
+					                    &nbsp;&nbsp;&nbsp;&nbsp;{!! Form::radio('comm_id', $committee['comm_id'], ['class'=>'btn btn-default']) !!} {{ $committee->name }}
+					                    <br>
+					                    @endif
+
+					                @endforeach    
+
+					            @endforeach    
+
+					        </div>
+
+					        {!! Form::submit('Assign Head', ['class' => 'btn btn-primary form-control']) !!}
+							{!! Form::close() !!}
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	
 	</div>
 
 </div>

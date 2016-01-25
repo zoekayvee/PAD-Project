@@ -19,3 +19,34 @@
   background-color: #DEDEDE;
   box-shadow: 1px 1px 1px rgba(0,0,0,0.5) inset;
 }
+
+/* Design ng task cards */
+
+.cards{
+  height: fixed;
+}
+
+.card-header{
+  background:#fff568;
+  margin:0px;
+  padding:0px;
+}
+
+.card-body{
+  margin:20px;
+}
+
+span{
+  font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+  font-family: roboto-reg;
+  font-size: 17px;
+  font-size: auto;
+}
+
+.form-group label{
+  text-align: left;
+}
+
+.btn{
+  text-align: center;
+}

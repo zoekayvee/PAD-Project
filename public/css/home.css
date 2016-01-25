@@ -47,29 +47,11 @@ canvas{
   margin-top: 0;
 }
 
-#fin-form .btn {
-  margin-top: 10px;
-}
-
-#fin-overlay-panel {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  z-index: 2000;
-  background-color: rgba(0,0,0,0.5);
-}
-
-#fin-overlay-panel .card {
-  width: 600px;
-  background-color: white;
-  margin: auto;
-  margin-top: 75px;
-  box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-}
-
-#fin-overlay-panel #fin-form {
-  padding: 25px;
+.modal-body label{
+  font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+  font-family: roboto-reg;
+  font-size: 17px;
+  font-size: auto;
 }
 
 @-webkit-keyframes load {

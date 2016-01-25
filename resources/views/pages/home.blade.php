@@ -40,7 +40,7 @@
 
 
 @section('content')
-<div class="col-md-12" id="fin-overlay-panel">
+<!-- <div class="col-md-12" id="fin-overlay-panel">
   <div class="card container">
     <div class="col-md-12" id='fin-form'>
     {!! Form::open(['url' => '/financial-status']) !!}
@@ -62,7 +62,7 @@
       <button class="btn btn-default form-control" id="close-fin-form">CLOSE</button>
     </div>   
   </div>
-</div>
+</div> -->
 
 <div class="container" id="home-wrapper">
     <div class="row">
@@ -97,7 +97,30 @@
                     if( $head != "") $is_fin_head = true;
                 ?>
                 @if( $is_fin_head)
-                    <button class="btn btn-primary" style="width:auto; float:right" id="fin-update" style="float:right">UPDATE</button>
+                    <button class="btn btn-primary" style="width:auto; float:right" data-toggle="modal" data-target="#myModal" style="float:right">UPDATE</button>
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Update Financial Status</h4>
+                                </div>
+                                <div class="modal-body">
+                                    {!! Form::open(['url' => '/financial-status']) !!}
+                                    <label name="cash_in">Weekly Cash In</label>
+                                    <input type="number" name="cash_in" class="form-control" required/><br>
+                                    <label name="cash_out">Weekly Cash Out</label>
+                                    <input type="number" name="cash_out" class="form-control" required/>        <br>
+                                    <label name="payables">Total Amout Payables</label>
+                                    <input type="number" name="payables" class="form-control" required/>
+                                    <br>
+
+                                    {!! Form::submit("UPDATE", ["class"=>"btn btn-primary form-control"]) !!}
+                                    {!! Form::close() !!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 @endif
             </h4>
             <br>
