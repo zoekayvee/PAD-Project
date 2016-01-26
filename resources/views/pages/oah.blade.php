@@ -25,18 +25,16 @@
     <div class="container tasks">
       <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#secretariat" aria-controls="secretariat" role="tab" data-toggle="tab">Secretariat</a></li>
-            <li role="presentation"><a href="#programs" aria-controls="programs" role="tab" data-toggle="tab">Programs</a></li>
-            <li role="presentation"><a href="#finance" aria-controls="finance" role="tab" data-toggle="tab">Finance</a></li>
-            <li role="presentation"><a href="#visuals" aria-controls="visuals" role="tab" data-toggle="tab">Visuals</a></li>
-            <li role="presentation"><a href="#technicals" aria-controls="technicals" role="tab" data-toggle="tab">Technicals</a></li>
-            <li role="presentation"><a href="#promotions" aria-controls="promotions" role="tab" data-toggle="tab">Promotions</a></li>
-            <li role="presentation"><a href="#tasks" aria-controls="tasks" role="tab" data-toggle="tab">Tasks</a></li>
+            <li role="presentation" class="active"><a href="#tasks" aria-controls="tasks" role="tab" data-toggle="tab">Tasks</a></li>
+            @foreach ($committees as $committee)
+                <li role="presentation"><a href="#{{$committee->id}}" aria-controls="{{$committee->id}}" role="tab" data-toggle="tab">{{$committee->name}}</a></li>
+            @endforeach
+            
         </ul>
 
       <!-- Tab panes -->
         <div class="tab-content">
-            <div role="tabpanel" class="tab-pane fade in" id="tasks">
+            <div role="tabpanel" class="tab-pane active fade in" id="tasks">
                 <div class="row section">
                     @if(count($tasks)>0)
                         @foreach ($tasks as $task)
@@ -47,72 +45,23 @@
                     @endif
                 </div>     
             </div>
-            <div role="tabpanel" class="tab-pane active fade in" id="secretariat">
-                <div class="row">
-                    @foreach ($head_committees as $committee)
+            @foreach ($committees as $committee)
+                <div role="tabpanel" class="tab-pane fade in" id="{{$committee->id}}">
+                    <div class="row section">
+                        <?php $i=0; ?>
                         @foreach ($all_tasks as $task)
                             @if($task->comm_id == $committee->id)
+                                <?php $i++; ?>  
                                 @include('../includes/head_committeeTasks')
                             @endif
                         @endforeach
-                    @endforeach 
-                </div>     
-            </div>
-            <div role="tabpanel" class="tab-pane fade in" id="programs">
-                <div class="row">
-                    @foreach ($head_committees as $committee)
-                        @foreach ($all_tasks as $task)
-                            @if($task->comm_id == $committee->id)
-                                @include('../includes/head_committeeTasks')
-                            @endif
-                        @endforeach
-                    @endforeach 
-                </div> 
-            </div>
-            <div role="tabpanel" class="tab-pane fade in" id="finance">
-                <div class="row">
-                    @foreach ($head_committees as $committee)
-                        @foreach ($all_tasks as $task)
-                            @if($task->comm_id == $committee->id)
-                                @include('../includes/head_committeeTasks')
-                            @endif
-                        @endforeach
-                    @endforeach 
-                </div> 
-            </div>
-            <div role="tabpanel" class="tab-pane fade in" id="visuals">
-                <div class="row">
-                    @foreach ($head_committees as $committee)
-                        @foreach ($all_tasks as $task)
-                            @if($task->comm_id == $committee->id)
-                                @include('../includes/head_committeeTasks')
-                            @endif
-                        @endforeach
-                    @endforeach 
-                </div> 
-            </div>
-            <div role="tabpanel" class="tab-pane fade in" id="technicals">
-                <div class="row">
-                    @foreach ($head_committees as $committee)
-                        @foreach ($all_tasks as $task)
-                            @if($task->comm_id == $committee->id)
-                                @include('../includes/head_committeeTasks')
-                            @endif
-                        @endforeach
-                    @endforeach 
-                </div> 
-            </div>
-            <div role="tabpanel" class="tab-pane fade in" id="finance">
-                <div class="row">
-                    @foreach ($head_committees as $committee)
-                        @foreach ($all_tasks as $task)
-                            @if($task->comm_id == $committee->id)
-                                @include('../includes/head_committeeTasks')
-                            @endif
-                        @endforeach
-                    @endforeach 
-                </div> 
-            </div>
+                        @if($i == 0)
+                            <p>No assigned Tasks</p>
+                        @endif
+                    </div>     
+                </div>
+            @endforeach
+            
 
         </div>
     </div>
