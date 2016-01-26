@@ -130,6 +130,7 @@ class ProfileController extends Controller {
 	public function destroy($id)
 	{
 	   $task=Task::find($id);
+	   Comment::where('task_id', $task['id'])->delete();
 	   Task::find($id)->delete();
 
 	   $this->updateProgress($task, 1);
