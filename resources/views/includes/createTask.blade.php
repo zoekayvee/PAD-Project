@@ -39,8 +39,8 @@
 
     <div class="form-group">
     {!! Form::label('assigned_to','Assigned To') !!}
-        <br>
-        <select name="assigned_to">
+        <br>    
+        <select name="assigned_to" class="form-control">
         <option value="{{ $user['id'] }}">              
             {{ $user->username }}
         </option>
@@ -59,15 +59,11 @@
     </div>
 
      <div class="form-group">
-        {!! Form::label('comm_id','Committee:') !!}<br>
+
         @foreach($head_committees as $committee)
-
-
             @if($committee->event_id == $curr_event->id)
-            &nbsp;&nbsp;&nbsp;&nbsp;{!! Form::radio('comm_id', $committee['id'], ['class'=>'btn btn-default']) !!} {{ $committee->name }}
-            <br>
+               {!! Form::hidden('comm_id', $committee['id'], ['class' => 'form-control']) !!} 
             @endif
-
         @endforeach    
 
     </div>

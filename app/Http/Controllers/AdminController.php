@@ -34,7 +34,7 @@ class AdminController extends Controller {
 		$users = User::all();
 		$events = Event::all();
 		$tasks = Task::all();
-		return view('admin/admin', compact('user','users','pendings','events','heads','committee','committees','tasks'));
+		return view('admin/admin', compact('user','users','pendings','events', 'event','heads','committee','committees','tasks'));
 	}
 
 	public function postEvaluate(Request $request) {
@@ -89,41 +89,24 @@ class AdminController extends Controller {
         return view('admin/data', compact('users', 'events', 'committees', 'heads'));
 	}
 
-	public function getEvent() {
-        $users = User::all();
-		return view('admin/event', compact('users'));
-	}
-
 	public function postEvent(Request $request) {
 		$event = $request->all();
 		$event['weight'] = 0;
 		Event::create($event);
-		return redirect('admin/data');
-	}
-
-	public function getCommittee() {
-        $events = Event::all();
-		return view('admin/committee', compact('events'));
+		return redirect('/admin');
 	}
 
 	public function postCommittee(Request $request) {
 		$committee = $request->all();
 		$committee['weight'] = 0;
 		Committee::create($committee);
-		return redirect('admin/data');
-	}
-
-	public function getHead() {
-		$committees = Committee::all();
-		$users = User::all();
-		$events = Event::all();
-		return view('admin/head', compact('events', 'users', 'committees'));
+		return redirect('/admin');
 	}
 
 	public function postHead(Request $request) {
 		$head = $request->all();
 		Head::create($head);
-		return redirect('admin/data');
+		return redirect('/admin');
 	}
 
 }

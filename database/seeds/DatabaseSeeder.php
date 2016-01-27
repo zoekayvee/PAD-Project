@@ -386,76 +386,20 @@ class MembersTableSeeder extends Seeder
 
 		Member::create([
 			'id' => '4',
-			'user_id' => User::where('lname', 'Puth')->first()->id,
+			'user_id' => User::where('lname', 'Zarraga')->first()->id,
 			'comm_id' => '4',
 			'event_id' => Committee::where('id', '4')->first()->event_id,
 		]);
 
 		Member::create([
 			'id' => '5',
-			'user_id' => User::where('lname', 'Zarraga')->first()->id,
-			'comm_id' => '4',
-			'event_id' => Committee::where('id', '4')->first()->event_id,
-		]);
-
-		Member::create([
-			'id' => '6',
-			'user_id' => User::where('lname', 'Puth')->first()->id,
-			'comm_id' => '5',
-			'event_id' => Committee::where('id', '5')->first()->event_id,
-		]);
-
-		Member::create([
-			'id' => '7',
-			'user_id' => User::where('lname', 'Zarraga')->first()->id,
-			'comm_id' => '5',
-			'event_id' => Committee::where('id', '5')->first()->event_id,
-		]);
-
-		Member::create([
-			'id' => '8',
-			'user_id' => User::where('lname', 'Puth')->first()->id,
-			'comm_id' => '6',
-			'event_id' => Committee::where('id', '6')->first()->event_id,
-		]);
-
-		Member::create([
-			'id' => '9',
-			'user_id' => User::where('lname', 'Zarraga')->first()->id,
-			'comm_id' => '6',
-			'event_id' => Committee::where('id', '6')->first()->event_id,
-		]);
-
-		Member::create([
-			'id' => '10',
-			'user_id' => User::where('lname', 'Puth')->first()->id,
-			'comm_id' => '7',
-			'event_id' => Committee::where('id', '7')->first()->event_id,
-		]);
-
-		Member::create([
-			'id' => '11',
-			'user_id' => User::where('lname', 'Zarraga')->first()->id,
-			'comm_id' => '7',
-			'event_id' => Committee::where('id', '7')->first()->event_id,
-		]);
-
-		Member::create([
-			'id' => '12',
 			'user_id' => User::where('lname', 'Cepe')->first()->id,
 			'comm_id' => '1',
 			'event_id' => Committee::where('id', '1')->first()->event_id,
 		]);
 
 		Member::create([
-			'id' => '13',
-			'user_id' => User::where('lname', 'Cepe')->first()->id,
-			'comm_id' => '2',
-			'event_id' => Committee::where('id', '2')->first()->event_id,
-		]);
-
-		Member::create([
-			'id' => '14',
+			'id' => '6',
 			'user_id' => User::where('lname', 'Larin')->first()->id,
 			'comm_id' => '3',
 			'event_id' => Committee::where('id', '3')->first()->event_id,

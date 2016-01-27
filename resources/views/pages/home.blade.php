@@ -204,13 +204,14 @@
             </div>
         </div>
 
-        <div class="col-md-12 section shout-form right-pannel">
+        
         <?php
             $is_head = false;
             if($heads->where("user_id", $user->id) != '[]') $is_head = true;
             elseif ($event->oah_id == $user->id) $is_head = true;
         ?>
         @if($is_head)
+        <div class="col-md-12 section shout-form right-pannel">
         {!! Form::open(['url' => '/announcement']) !!}
             <h4 class="section-title">Post Announcement</h4>
             
@@ -221,8 +222,8 @@
             </div>
             {!! Form::submit("POST", ["class"=>"btn btn-primary"]) !!}
           {!! Form::close() !!}
-        @endif
         </div>
+        @endif
 
         <div class="col-md-12 section right-pannel">
             <h4 class="section-title">Announcements</h4>

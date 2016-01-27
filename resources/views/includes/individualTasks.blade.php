@@ -19,19 +19,10 @@
                 {!! Form::model($task,['method' => 'PATCH','route'=>['profile.update',$task->id]]) !!}
                 
                 <div class="form-group">
-                {!! Form::label('remark', 'Status') !!}
-                {!! Form::select('remark', $categories, $task->remark) !!}
-                </div>
-                <div class="form-group">
                 {!! Form::label('progress', 'Percentage done') !!}
                 {!! Form::text('progress', null, ['class' => 'form-control', 'placeholder' => $task->progress], 'required') !!}
                 </div>
                 {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}
-                {!! Form::close() !!}
-
-                <!--DELETE TASK-->
-                {!! Form::open(['method' => 'DELETE', 'route'=>['profile.destroy', $task->id]]) !!}
-                {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                 {!! Form::close() !!}
 
             </div>

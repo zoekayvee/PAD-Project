@@ -27,6 +27,9 @@ class HomeController extends Controller {
 		$comm_name = Committee::where('event_id', $event->id)->get();
 		$comm_progress = Committee::where('event_id', $event->id)->get(array('progress'))->toArray();
 
+		if($user->id == 1) {
+			return redirect('/admin');
+		}
 		if($user->standing == 'unconfirmed') {
 			return view('pages/oops', compact('user'));
 		}

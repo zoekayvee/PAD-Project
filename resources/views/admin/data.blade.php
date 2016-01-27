@@ -40,7 +40,7 @@
                     </div>
                     <div class="modal-body">
                         <div>
-							{!! Form::open(['url' => 'admin/event']) !!}
+							{!! Form::open(['url' => '/admin/event']) !!}
 
 					        <div class="form-group">
 					        {!! Form::label('title','Event') !!}
@@ -124,21 +124,14 @@
                     </div>
                     <div class="modal-body">
                        	<div>
-							{!! Form::open(['url' => 'admin/committee']) !!}
+							{!! Form::open(['url' => '/admin/committee']) !!}
 
 					        <div class="form-group">
 					        {!! Form::label('name','Name') !!}
 					        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Visuals Committee']) !!}
 					        </div>
 
-					        <div class="form-group">
-					        {!! Form::label('event_id','Event') !!}
-					        	<br>
-					    		@foreach($events as $event)
-					    		{!! Form::radio('event_id', $event['event_id'], ['class'=>'btn btn-default']) !!} {{ $event->title }} :: {{ $event->theme }}
-					    		<br>
-								@endforeach    
-					        </div>
+				        	<input type="hidden" name="event_id" value="{{$event->id}}">
 
 					        {!! Form::submit('Create Committee', ['class' => 'btn btn-primary form-control']) !!}
 							{!! Form::close() !!}
@@ -191,7 +184,7 @@
                     </div>
                     <div class="modal-body">
                         <div>
-							{!! Form::open(['url' => 'admin/head']) !!}
+							{!! Form::open(['url' => '/admin/head']) !!}
 
 					        <div class="form-group">
 					        {!! Form::label('position','Position') !!}
@@ -201,39 +194,36 @@
 					        <div class="form-group">
 					        {!! Form::label('user_id','Who?') !!}
 					        	<br>
+					        	<select name="user_id" class="form-control">
 					    		@foreach($users as $user)
-					    		{!! Form::radio('user_id', $user['id'], ['class'=>'btn btn-default']) !!} {{ $user->username }}
-					    		<br>
+					    			@if( $user->id != 1)
+					        		<option value="{{ $user->id }}">
+					        			{{ $user->username }}
+					        		</option>
+					        		@endif
 								@endforeach    
+					        	</select>
 					        </div>
 
-					        <br><br>
+					        <input type="hidden" name="event_id" value="{{$event->id}}">
+
 					        <div class="form-group">
-					        {!! Form::label('event_id','What Event?') !!}
-					            <br>
-					            @foreach($events as $event)
-					            {!! Form::radio('event_id', $event['event_id'], ['class'=>'btn btn-default']) !!} {{ $event->title }} :: {{ $event->theme }}
-					            <br>
-					            @endforeach    
+					        	<?php
+					        		$committee = $committees->where('event_id', $event->id);
+					        	?>
+
+						        {!! Form::label('user_id','Who?') !!}
+					        	<br>
+					        	<select name="comm_id" class="form-control">
+					    		@foreach($committee as $comm)
+					        		<option value="{{ $comm->id }}">
+					        			{{ $comm->name }}
+					        		</option>
+								@endforeach    
+					        	</select>
 					        </div>
-					        
-					        <br><br>
-					        <div class="form-group">
-					        {!! Form::label('comm_id','What Committee?') !!}
-					            @foreach($events as $event)
-					                <h6><b>{{$event->title}} :: {{$event->theme}}</b></h6>
-					                @foreach($committees as $committee)
 
-					                    @if($committee->event_id == $event->event_id)
-					                    &nbsp;&nbsp;&nbsp;&nbsp;{!! Form::radio('comm_id', $committee['comm_id'], ['class'=>'btn btn-default']) !!} {{ $committee->name }}
-					                    <br>
-					                    @endif
-
-					                @endforeach    
-
-					            @endforeach    
-
-					        </div>
+					        <br>
 
 					        {!! Form::submit('Assign Head', ['class' => 'btn btn-primary form-control']) !!}
 							{!! Form::close() !!}

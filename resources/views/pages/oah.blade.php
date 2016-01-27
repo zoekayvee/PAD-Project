@@ -25,7 +25,6 @@
     <div class="container tasks">
       <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#tasks" aria-controls="tasks" role="tab" data-toggle="tab">Tasks</a></li>
             @foreach ($committees as $committee)
                 <li role="presentation"><a href="#{{$committee->id}}" aria-controls="{{$committee->id}}" role="tab" data-toggle="tab">{{$committee->name}}</a></li>
             @endforeach
@@ -34,17 +33,6 @@
 
       <!-- Tab panes -->
         <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active fade in" id="tasks">
-                <div class="row section">
-                    @if(count($tasks)>0)
-                        @foreach ($tasks as $task)
-                            @include('../includes/individualTasks')
-                        @endforeach
-                    @else
-                        <p>No assigned Tasks</p>
-                    @endif
-                </div>     
-            </div>
             @foreach ($committees as $committee)
                 <div role="tabpanel" class="tab-pane fade in" id="{{$committee->id}}">
                     <div class="row section">
@@ -56,6 +44,7 @@
                             @endif
                         @endforeach
                         @if($i == 0)
+                        chepar
                             <p>No assigned Tasks</p>
                         @endif
                     </div>     

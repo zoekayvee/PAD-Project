@@ -20,16 +20,12 @@
         
         <div>
             <div>
-                @for ($i = 3; $i >= 0; $i--)
-                    @if($task->remark == $i)
-                        <h5>Status: {{ $categories[$i] }}</h5>
-                    @endif
-                @endfor
+                <h5>Status: {{ $task->remark }}</h5>
                 <h5>Progress: {{ $task->progress }}%</h5>
             </div>
 
             <div class="progress">
-                <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{ $task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $task_progress }}%"><span class="">{{ $task_progress }}%</span></div>
+                <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{ $task_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $task_progress }}%"><span class=""> {{ $task_progress }}%</span></div>
             </div>
         </div>
 
