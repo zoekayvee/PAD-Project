@@ -97,6 +97,9 @@
                     if( $head != "") $is_fin_head = true;
                 ?>
                 @if( $is_fin_head)
+                    <a href="/balance">
+                        <button class="btn btn-primary" style="width:auto; float:right; margin-left:10px;" style="float:right">View Recievables</button>
+                    </a>
                     <button class="btn btn-primary" style="width:auto; float:right" data-toggle="modal" data-target="#myModal" style="float:right">UPDATE</button>
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">

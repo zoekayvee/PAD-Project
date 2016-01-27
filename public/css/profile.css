@@ -19,9 +19,7 @@ p{
   padding: 0px;
   box-shadow: 0px 5px 5px #a1bee6;
   border: 2px solid #a1bee6;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 15px;
+  margin-bottom: 20px
 }
 
 .form-group,
@@ -83,7 +81,6 @@ th{
 /* Heads page only */
 
 .addTask{
-  margin:20px;
   font-size: 100px;
   padding: 20px;
   font-weight: bold;
@@ -91,4 +88,9 @@ th{
   background-color: rgba(225, 225, 225, 0.95);
   text-align: center;
   vertical-align: middle;
+  margin:0px;
+}
+
+.section{
+  padding-left: 10px;
 }

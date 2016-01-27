@@ -22,9 +22,6 @@
 
 /* Design ng task cards */
 
-.cards{
-  height: fixed;
-}
 
 .card-header{
   background:#fff568;
