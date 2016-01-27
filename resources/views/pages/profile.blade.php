@@ -19,18 +19,25 @@
     <div class="container">
         @include('../includes/profileInfo')
     </div>
-    <div class="container">
-        <div class="row ">
-            <h1 class="page-header">Tasks</h1>
-            <!-- Will only be visible if a task is given,
-                otherwise, put "No assigne task/s" -->
-            @if(count($tasks) > 0)
-                @foreach ($tasks as $task)
-                    @include('../includes/individualTasks')
-                @endforeach
-            @else 
-                <p>No assigned task</p>
-            @endif
+    <div class="container tasks">
+      <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation"><a href="#tasks" aria-controls="tasks" role="tab" data-toggle="tab">Tasks</a></li>
+        </ul>
+
+      <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in" id="tasks">
+                <div class="row section">
+                    @if(count($tasks)>0)
+                        @foreach ($tasks as $task)
+                            @include('../includes/individualTasks')
+                        @endforeach
+                    @else
+                        <p>No assigned Tasks</p>
+                    @endif
+                </div>     
+            </div>
         </div>
     </div>
     

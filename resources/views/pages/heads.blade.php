@@ -22,13 +22,17 @@
     <div class="container" id="temp">
         @include('../includes/profileInfo')
     </div>
-    <div class="container tasks">
-      <!-- Nav tabs -->
+    <div class="container">
+        <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><a href="#committee" aria-controls="home" role="tab" data-toggle="tab">Committee</a></li>
             <li role="presentation"><a href="#tasks" aria-controls="tasks" role="tab" data-toggle="tab">Tasks</a></li>
         </ul>
 
+    </div>
+      
+
+    <div class="container tasks">
       <!-- Tab panes -->
         <div class="tab-content">
             <div role="tabpanel" class="tab-pane fade in" id="tasks">

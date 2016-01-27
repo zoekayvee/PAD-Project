@@ -7,17 +7,17 @@
 @section('includes')
     <link rel="stylesheet" type="text/css"
           href="{{ asset('/css/main.css') }}">
-  	<link rel="stylesheet" type="text/css"
-      	  href="{{ asset('/css/login.css') }}">
+    <link rel="stylesheet" type="text/css"
+          href="{{ asset('/css/login.css') }}">
 @stop
 
 @section('content')
 
 <div class="container">
     <div class="container" id="login-panel">
-            
+
         <img src="{{ asset('images/logo.png') }}" id="logo" alt="logo">
-        
+
         @if($errors->any())
             <span class="alert alert-danger">
                 @foreach($errors->all() as $error)
@@ -54,12 +54,12 @@
                     </div>
 
                     <div class="modal-body">
-                        <div>    
+                        <div>
                         {!! Form::open(['url' => 'account/register']) !!}
                             <div class="form-group">
                             {!! Form::label('fname', 'First Name:') !!}
                             {!! Form::text('fname', null, ['class' => 'form-control']) !!}
-                        
+
                             {!! Form::label('mname', 'Middle Name:') !!}
                             {!! Form::text('mname', null, ['class' => 'form-control']) !!}
 
@@ -72,32 +72,34 @@
                             {!! Form::label('email', 'Email:') !!}
                             {!! Form::email('email', null, ['class' => 'form-control']) !!}
 
-                            <br>
-
                             {!! Form::label('password', 'Password:') !!}
                             {!! Form::password('password', null, ['class' => 'form-control']) !!}
 
-                            <br><br>
+                            {!! Form::label('confirmpassword', 'Confirm Password:') !!}
+                            {!! Form::password('confirmpassword', null, ['class' => 'form-control']) !!}
+
+
+                            <br>
 
                             {!! Form::label('studno', 'Student Number:') !!}
                             {!! Form::text('studno', null, ['class' => 'form-control']) !!}
 
                             {!! Form::label('department', 'Department:') !!}
-                            {!! Form::text('department', null, ['class' => 'form-control']) !!}
+                            {!! Form::select('department', array('Executive Department'=>'Executive Department','Finance Department'=>'Finance Department','Human Resources Department'=>'Human Resources Department', 'Projects and Activites Department'=>'Projects and Activities Department', 'Scholastics Department'=>'Scholastics Department', 'Secretariat Department'=>'Secretariat Department','Visuals and Logistics Department'=>'Visuals and Logistics Department'), null, ['class' => 'form-control']) !!}
+
+                            <br>
 
                             {!! Form::label('batch', 'YSES Batch:') !!}
-                            {!! Form::text('batch', null, ['class' => 'form-control']) !!}
+                            {!! Form::select('batch', array('4tified'=>'4tified','blendeD'=>'blendeD','Jenga'=>'Jenga','Prautes Canonical'=>'Prautes Canonical','RAMpage'=>'RAMpage','rainByte'=>'rainByte'), null, ['class' => 'form-control']) !!}
 
                             {!! Form::hidden('debt', '0') !!}
                             {!! Form::hidden('standing', 'unconfirmed') !!}
 
-                            <br>
+                            <br><br>
                             {!! Form::submit('Register', ['class' => 'btn btn-primary form-control']) !!}
 
                             </div>
                         {!! Form::close() !!}
-
-                        <br><br>
 
                         @if($errors->any())
                             <ul class="alert alert-danger">
