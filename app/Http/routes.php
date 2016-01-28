@@ -19,6 +19,8 @@ Route::post('/task', 'TaskController@postTask');
 Route::get('/balance', 'FinanceController@getBalance');
 Route::post('/balance/{id}', 'FinanceController@postBalance');
 
+Route::get('/faq', 'FaqController@getIndex');
+
 Route::get('/profile/{id}', 'ProfileController@getId');
 Route::resource('profile','ProfileController');
 
@@ -26,5 +28,5 @@ Route::controllers([
 	'account' => 'Auth\AuthController',
 	'profile' => 'ProfileController',
 	'admin' => 'AdminController',
-	'/' => 'HomeController'
+	'/' => 'HomeController',
 ]);

@@ -26,10 +26,9 @@
 				<h1>Setting up your account.</h1>
 				<hr>
 				<p>The Admin will confirm your registration soon.</p>
-				<p>Calm your ass, kid.</p>
+				<p>PleaSe wait.</p>
 				<br>
 				<p>You may now logout,</p>
-				<p>or stare at the cuteness of this Pusheen.</p>
 				<p>Pusheen heart heart. Pusheen is love.</p>
 			</div>
 		</div>

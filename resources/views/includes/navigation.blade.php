@@ -14,7 +14,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/profile">{{ $user->username }}</a></li>
                 <li><a href="/account/logout">Logout</a></li>
-                <li><a href="#">Help</a></li>
+                <li><a href="/faq">Help</a></li>
             </ul>
         </div>
     </div>

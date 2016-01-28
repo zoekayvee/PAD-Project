@@ -11,6 +11,7 @@ use App\Committee;
 use App\Head;
 use App\Member;
 use App\Task;
+use App\FinancialStatus;
 
 class AdminController extends Controller {
 
@@ -40,8 +41,6 @@ class AdminController extends Controller {
 	public function postEvaluate(Request $request) {
 		$data = $request->all();
 		$user_id = $data['user_id'];
-		$comm_id = $data['comm_id'];
-		$position = $data['position'];
 		$evaluation = $data['evaluation'];
 
 		$user = User::where("id", $user_id)->first();
@@ -51,16 +50,21 @@ class AdminController extends Controller {
 			$user->delete();
 		}
 
+
 		else {
 			$user->standing = "active";
 			$user->save();
+	
+			$position = $data['position'];
 
 			if($position == "Overall Activity Head") {
 				$event->oah_id = $user_id;
 				$event->save();
 			}
 
+
 			elseif($position == "Committee Head") {
+				$comm_id = $data['comm_id'];
 				$comm = Committee::where("event_id", $event->id)->where("id", $comm_id)->first();
 				$head = new Head();
 				$head->position = $comm->name . " Head";
@@ -92,6 +96,11 @@ class AdminController extends Controller {
 	public function postEvent(Request $request) {
 		$event = $request->all();
 		$event['weight'] = 0;
+
+		$finance = FinancialStatus::all();
+		foreach($finance as $fin)
+			$fin->delete();
+
 		Event::create($event);
 		return redirect('/admin');
 	}

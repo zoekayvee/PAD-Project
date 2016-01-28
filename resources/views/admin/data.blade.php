@@ -44,10 +44,10 @@
 
 					        <div class="form-group">
 					        {!! Form::label('title','Event') !!}
-					        <br>
-					        {!! Form::radio('title', 'Get 1/4' , ['class'=>'btn btn-default']) !!} Get 1/4
-					        <br>
-					        {!! Form::radio('title', 'PFJF' , ['class'=>'btn btn-default']) !!} PFJF
+						        <select name="title" class="form-control" required>
+						        	<option value="Get 1/4">Get 1/4</option>
+						        	<option value="Get 1/4">PFJF</option>
+						        </select>
 					        </div>
 					        
 					        <div class="form-group">
@@ -57,27 +57,31 @@
 
 					        <div class="form-group">
 					        {!! Form::label('year', 'Year:') !!}
-					        {!! Form::number('year', 2016, ['class' => 'form-control', 'min' => '2005', 'max' => '2016'], 'required') !!}
+					        {!! Form::number('year', 2016, ['class' => 'form-control', 'min' => '2005', 'max' => '2030'], 'required') !!}
 					        </div>
 
 					        <div class="form-group">
-					        {!! Form::label('sem','Semester') !!}
-					        <br>
-					        {!! Form::radio('sem', 'First Semester' , ['class'=>'btn btn-default']) !!} First Semester
-					        <br>
-					        {!! Form::radio('sem', 'Second Semester' , ['class'=>'btn btn-default']) !!} Second Semester
+						        {!! Form::label('sem','Semester') !!}
+						        <select name="sem" class="form-control" required>
+						        	<option value="First Semester">First Semester</option>
+						        	<option value="Second Semester">Second Semester</option>
+						        </select>
 					        </div>
 
 
 					        <div class="form-group">
 					        {!! Form::label('oah_id','OAH') !!}
-					        	<br>
+					        	<select name="oah_id" class="form-control" required>					        		
 					    		@foreach($users as $user)
-					    		{!! Form::radio('oah_id', $user['id'], ['class'=>'btn btn-default']) !!} {{ $user->username }}
-					    		<br>
+					    			@if($user->id != 1)
+					    			<option value="{{ $user->id }}">
+					    				{{ $user->lname }}
+					    			</option>
+					    			@endif
 								@endforeach    
+					        	</select>
 					        </div>
-
+					        <br>
 					        {!! Form::submit('Create Event', ['class' => 'btn btn-primary form-control']) !!}
 							{!! Form::close() !!}
 						</div>

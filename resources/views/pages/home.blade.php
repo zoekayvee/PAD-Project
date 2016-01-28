@@ -298,9 +298,9 @@
   var barChartData = {
     labels :  {!! $names !!},
     datasets : [
-      {
-        fillColor : "rgba(151,187,205,0.5)",
-        strokeColor : "rgba(151,187,205,0.8)",
+      { 
+        fillColor : "#017cbf",
+        strokeColor : "rgba(0,0,0,0.3)",
         highlightFill : "rgba(151,187,205,0.75)",
         highlightStroke : "rgba(151,187,205,1)",
         data : {!! $progress !!}
