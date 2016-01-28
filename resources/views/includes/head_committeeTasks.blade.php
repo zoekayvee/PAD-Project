@@ -36,37 +36,58 @@
 
 
             <!-- ========== COMMENT =========== -->
-            <div>
-                <h4 class="section-title">COMMENTS</h4>
-                @foreach ($comments as $comment)
-                    @if($task->id == $comment->task_id)
-                        @foreach ($users as $createdby)
-                            @if($createdby->id == $comment->user_id)
-                                <h5>{{ $createdby->username }}:</h5>
-                            @endif
-                        @endforeach
-                        <p>{{{ $comment->description }}}</p>
-                    @endif
-                @endforeach
-            </div>
-            <div class="form-group">
-                <!--ADD COMMENT-->
-                {!! Form::open(['url' => 'profile']) !!}
+            <a class="section-title" data-toggle="modal" data-target="#{{$task->id}}">Comments</a>
+            <div class="modal fade" id="{{$task->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Comments</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="show-comments">
+                                        @foreach ($comments as $comment)
+                                        <div class="col-md-12 comments-cont">
+                                            @if($task->id == $comment->task_id)
+                                                @foreach ($users as $createdby)
+                                                    @if($createdby->id == $comment->user_id)
+                                                        <h5 class="section-title">{{ $createdby->username }}: </h5>
+                                                    @endif
+                                                @endforeach
+                                                {{{ $comment->description }}}
+                                            @endif
+                                        </div>
+                                        @endforeach
+                                    </div>
+                                </div>
 
-                <div class="form-group">
-                {!! Form::hidden('user_id', $user['id'], ['class' => 'form-control']) !!}
-                </div>
+                                <div class="col-md-12">
+                                    <div class="col-md-12 input-comment">
+                                        <!--ADD COMMENT-->
+                                        {!! Form::open(['url' => 'profile']) !!}
+                                            {!! Form::hidden('user_id', $user['id'], ['class' => 'form-control']) !!}
+                                            {!! Form::hidden('task_id', $task['id'], ['class' => 'form-control']) !!}
+                                            <br>
+                                            <div class="col-md-12">
+                                                {!! Form::textarea('description', null, ['class' => 'text-area'], 'required') !!}
+                                            </div>
+                                            <div class="col-md-12">
+                                                {!! Form::submit('>', ['class' => 'btn btn-primary btn-comment']) !!}
+                                            </div>
+                                        {!! Form::close() !!}
+                                            <br><br>                                            <br><br>
 
-                <div class="form-group">
-                {!! Form::hidden('task_id', $task['id'], ['class' => 'form-control']) !!}
-                </div>
+                                     </div>
+                                </div>
 
-                <div class="form-group">
-                    <textarea class"textArea" name="description" required></textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                {!! Form::submit('Add Comment', ['class' => 'btn btn-primary form-control']) !!}
-                {!! Form::close() !!}
             </div>
         </div>
     </div>
 </div>
+                

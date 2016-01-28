@@ -22,7 +22,7 @@
     <div class="container" id="temp">
         @include('../includes/profileInfo')
     </div>
-    <div class="container tasks">
+    <div class="container">
       <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
             @foreach ($committees as $committee)
@@ -30,23 +30,19 @@
             @endforeach
             
         </ul>
+        </div>
+    <div class="container tasks">
 
       <!-- Tab panes -->
         <div class="tab-content">
             @foreach ($committees as $committee)
                 <div role="tabpanel" class="tab-pane fade in" id="{{$committee->id}}">
                     <div class="row section">
-                        <?php $i=0; ?>
                         @foreach ($all_tasks as $task)
                             @if($task->comm_id == $committee->id)
-                                <?php $i++; ?>  
                                 @include('../includes/head_committeeTasks')
                             @endif
                         @endforeach
-                        @if($i == 0)
-                        chepar
-                            <p>No assigned Tasks</p>
-                        @endif
                     </div>     
                 </div>
             @endforeach

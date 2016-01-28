@@ -34,9 +34,10 @@
 
     <div class="container tasks">
       <!-- Tab panes -->
-        <div class="tab-content">
-            <div role="tabpanel" class="tab-pane fade in" id="tasks">
-                <div class="row section">
+        <div class="row tab-content">
+            
+            <div role="tabpanel" class="col-md-12 tab-pane fade in" id="tasks">
+                <div class="section">
                     @if(count($tasks)>0)
                         @foreach ($tasks as $task)
                             @include('../includes/individualTasks')
@@ -50,7 +51,7 @@
                 <div class="row section">
                     <div class="col-md-3"> 
                         <div class="addTask" type="button" data-toggle="modal" data-target="#myModal">+</div>
-                        <!-- Modal -->
+                        <!-- Modal to add task -->
                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -63,8 +64,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
+                        </div>                    
+                    </div>
                     @foreach ($head_committees as $committee)
                         @foreach ($all_tasks as $task)
                             @if($task->comm_id == $committee->id)
@@ -72,7 +73,6 @@
                             @endif
                         @endforeach
                     @endforeach 
-                    </div> 
                 </div>     
             </div>
         </div>

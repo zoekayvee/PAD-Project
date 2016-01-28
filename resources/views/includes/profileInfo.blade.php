@@ -21,13 +21,13 @@
 <div class="row informations">
   <div class="col-md-3 profile">
     <div>
-      <img src="{{asset('images/back.jpg')}}" class="displayPic" alt="you">
+      <img src="{{asset('images/pusheen.gif')}}" class="displayPic" alt="you">
     </div>
     <div class="info">
       {{ $user->username }}
     </div>
     <div class="info">
-      {{ $user->lname }}, {{ $user->fname }} {{ $user->mname }} 
+      <h6 class="section-title">{{ $user->lname }}, {{ $user->fname }} {{ $user->mname }} </h6>
     </div>
     <div class="info">
       {{ $user->studno }}

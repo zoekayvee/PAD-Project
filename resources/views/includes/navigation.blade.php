@@ -8,7 +8,6 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/">YSES Tracker</a>
-        <!-- Pwede pong paki route 'to dun sa homepage pag na click? nag eerror po kasi thanks :)' -->
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -19,6 +18,3 @@
         </div>
     </div>
 </nav>
-
-<!-- Nag eerror yung kapag may username sa navigation pag iniimport yung navigation bar sa create task. why? -->
-
